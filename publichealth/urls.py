@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -36,6 +37,8 @@ if settings.DEBUG:
     ]
 
 
-urlpatterns += [
+urlpatterns += i18n_patterns(
+    # These URLs will have /<language_code>/ appended to the beginning
+
     url(r'', include(wagtail_urls)),
-]
+)

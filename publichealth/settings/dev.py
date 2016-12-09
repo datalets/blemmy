@@ -14,6 +14,12 @@ BASE_URL = 'http://localhost:8000'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'env/publichealth-dev.sqlite3',
+    }
+}
 
 try:
     from .local import *
