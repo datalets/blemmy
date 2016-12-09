@@ -39,7 +39,7 @@ class HomePage(Page):
         index.SearchField('body_fr'),
     ]
     content_panels = Page.content_panels + [
-        StreamFieldPanel('title_fr'),
+        FieldPanel('title_fr'),
         StreamFieldPanel('body_de'),
         StreamFieldPanel('body_fr'),
     ]
