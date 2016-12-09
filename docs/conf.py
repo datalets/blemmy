@@ -164,7 +164,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'publichealthschweizdoc'
+htmlhelp_basename = 'publichealthdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'publichealthschweiz.tex', u'Public Health Schweiz Documentation',
+  ('index', 'publichealth.tex', u'Public Health Schweiz Documentation',
    u'ChangeToMyName', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'publichealthschweiz', u'Public Health Schweiz Documentation',
+    ('index', 'publichealth', u'Public Health Schweiz Documentation',
      [u'ChangeToMyName'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'publichealthschweiz', u'Public Health Schweiz Documentation',
-   u'ChangeToMyName', 'publichealthschweiz', 'One line description of project.',
+  ('index', 'publichealth', u'Public Health Schweiz Documentation',
+   u'ChangeToMyName', 'publichealth', 'One line description of project.',
    'Miscellaneous'),
 ]
 

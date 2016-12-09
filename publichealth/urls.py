@@ -6,7 +6,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
-from publichealthschweiz.search import views as search_views
+from publichealth.search import views as search_views
 
 
 urlpatterns = [

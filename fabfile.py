@@ -74,9 +74,9 @@ def pull_production_data():
 
     _pull_data(
         env_name='production',
-        remote_db_name='publichealthschweiz',
-        local_db_name='publichealthschweiz',
-        remote_dump_path='/usr/local/django/publichealthschweiz/tmp/',
+        remote_db_name='publichealth',
+        local_db_name='publichealth',
+        remote_dump_path='/usr/local/django/publichealth/tmp/',
         local_dump_path='/tmp/',
     )
 
@@ -88,8 +88,8 @@ def pull_staging_data():
 
     _pull_data(
         env_name='staging',
-        remote_db_name='publichealthschweiz',
-        local_db_name='publichealthschweiz',
-        remote_dump_path='/usr/local/django/publichealthschweiz/tmp/',
+        remote_db_name='publichealth',
+        local_db_name='publichealth',
+        remote_dump_path='/usr/local/django/publichealth/tmp/',
         local_dump_path='/tmp/',
     )
