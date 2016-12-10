@@ -12,8 +12,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" type="text/css" href="{% static 'verti/assets/css/main.css' %}">
         {% compress css %}
-            <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
         {% endcompress %}
 
         {% block extra_css %}
@@ -31,8 +32,12 @@
         {% endcompress %}
 
         {% block extra_js %}
-
+          <script src="{% static 'verti/assets/js/jquery.min.js' %}"></script>
+          <script src="{% static 'verti/assets/js/jquery.dropotron.min.js' %}"></script>
+          <script src="{% static 'verti/assets/js/skel.min.js' %}"></script>
+          <script src="{% static 'verti/assets/js/util.js' %}"></script>
+          <!--[if lte IE 8]><script src="{% static 'verti/assets/js/ie/respond.min.js' %}"></script><![endif]-->
+          <script src="{% static 'verti/assets/js/main.js' %}"></script>
         {% endblock %}
     </body>
 </html>
-

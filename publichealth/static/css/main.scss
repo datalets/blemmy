@@ -1,3 +1,23 @@
+/* Page header */
+
+#logo {
+  background: url(../org/public-health-bg.png) no-repeat top left;
+  background-size: cover;
+  border: 1px solid white;
+  font-size: 0px;
+  display: block;
+  width: 450px;
+  height: 140px;
+}
+
+#nav {
+  margin-top: -50px;
+}
+
+#header {
+  margin-bottom: 0px;
+}
+
 /* Responsive image/video classes */
 .rich-text img {
     max-width: 100%;
