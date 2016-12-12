@@ -1,21 +1,21 @@
+@charset 'utf-8';
+
+@import 'libs/bootswatch/paper/variables';
+@import 'libs/bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'libs/bootswatch/paper/bootswatch';
+
+
 /* Page header */
 
-#logo {
+#banner {
   background: url(../org/public-health-bg.png) no-repeat top left;
   background-size: cover;
-  border: 1px solid white;
   font-size: 0px;
   display: block;
   width: 450px;
   height: 140px;
-}
-
-#nav {
-  margin-top: -50px;
-}
-
-#header {
-  margin-bottom: 0px;
+  color: transparent;
+  text-indent: -9999px;
 }
 
 /* Responsive image/video classes */
