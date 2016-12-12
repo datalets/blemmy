@@ -5,12 +5,6 @@ Website of the Swiss Society for Public Health
 
 ## Development environment
 
-Frontend setup
-
-```
-bower install
-```
-
 Backend setup
 
 ```
@@ -24,4 +18,12 @@ pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py runserver
+```
+
+Frontend setup
+
+```
+npm install
+bower install
+grunt browser-sync
 ```
