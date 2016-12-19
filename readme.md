@@ -8,7 +8,7 @@ Website of the Swiss Society for Public Health
 Backend setup
 
 ```
-sudo apt-get install python3-venv python3-dev
+sudo apt-get install python3-venv python3-dev libjpeg-dev
 pyvenv env
 . env/bin/activate
 
@@ -23,6 +23,7 @@ pip install -r requirements.txt
 Frontend setup
 
 ```
+npm install -g bower grunt-cli
 npm install
 bower install
 grunt browser-sync
