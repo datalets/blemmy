@@ -10,12 +10,14 @@
   <!-- Main content -->
   <div class="container" role="main">
 
-    {% for block in self.body %}
-    <section>
-      <h3>{% include_block block.heading %}</h3>
-      <span style="float:left">{% include_block block.block.image %}</span>
-      <p>{% include_block block.paragraph %}</p>
-    </section>
+    {% for block in page.body %}
+      {% if block.block_type == 'heading' %}
+        <h2>{{ block.value }}</h2>
+      {% else %}
+      <section class="block-{{ block.block_type }}">
+        {% include_block block %}
+      </section>
+      {% endif %}
     {% endfor %}
 
   </div>
