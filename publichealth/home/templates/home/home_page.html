@@ -10,15 +10,11 @@
   <!-- Main content -->
   <div class="container" role="main">
 
-    <div class="jumbotron">
-      <h1>{% include_block self.title %}</h1>
-    </div>
-
     {% for block in self.body %}
     <section>
-      <h3>{% include_block heading %}</h3>
-      <span style="float:left">{% include_block image %}</span>
-      <p>{% include_block paragraph %}</p>
+      <h3>{% include_block block.heading %}</h3>
+      <span style="float:left">{% include_block block.block.image %}</span>
+      <p>{% include_block block.paragraph %}</p>
     </section>
     {% endfor %}
 
