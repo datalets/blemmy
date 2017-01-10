@@ -5,7 +5,15 @@ Website of the Swiss Society for Public Health
 
 ## Development environment
 
-Backend setup
+The easiest way to set up your machine would be to use [Vagrant](https://vagrantup.com), then in the project folder in the terminal type:
+
+```
+vagrant liverun
+```
+
+**Backend setup**
+
+After installing Python 3, from the project folder:
 
 ```
 sudo apt-get install python3-venv python3-dev libjpeg-dev
@@ -17,14 +25,28 @@ pip install -r requirements.txt
 
 ./manage.py migrate
 ./manage.py createsuperuser
-./manage.py runserver
 ```
 
-Frontend setup
+You will be asked a few questions to create an administrator account.
+
+**Frontend setup**
+
+Make sure a recent version of node.js is installed, then:
 
 ```
 npm install -g bower grunt-cli
 npm install
+npm install -g bower grunt-cli
 bower install
+```
+
+**Starting up**
+
+Run this after completing setup:
+
+```
+./manage.py runserver
 grunt browser-sync
 ```
+
+If you have one installed, also start your local redis server.
