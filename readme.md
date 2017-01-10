@@ -36,17 +36,20 @@ Make sure a recent version of node.js is installed, then:
 ```
 npm install -g bower grunt-cli
 npm install
-npm install -g bower grunt-cli
 bower install
 ```
+
+If you have one installed, also start your local redis server (`service redis start`).
 
 **Starting up**
 
 Run this after completing setup:
 
 ```
-./manage.py runserver
+./manage.py runserver &
 grunt browser-sync
 ```
 
-If you have one installed, also start your local redis server.
+A default browser should open pointing to the default home page.
+
+Now access the admin panel with the user account you created earlier: http://localhost:3000/admin/
