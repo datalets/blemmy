@@ -347,7 +347,7 @@
 		"oF": 0
 		},
 	"\/publichealth\/static\/css\/main.scss": {
-		"aP": 0,
+		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"dS": 0,
@@ -356,6 +356,32 @@
 		"oA": 0,
 		"oAP": "\/publichealth\/static\/mockup\/assets\/css\/main.css",
 		"oF": 2,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/css\/modules\/_banner.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/_banner.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/css\/modules\/_modules.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/_modules.css",
+		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
@@ -446,6 +472,73 @@
 		"sI": 0,
 		"sM": 0,
 		"sU": 0
+		},
+	"\/publichealth\/static\/css\/slick.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/css\/slick.css",
+		"oF": 2,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/css\/slick\/slick-theme.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/slick-theme.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/css\/slick\/slick.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/slick.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/fonts\/slick.eot": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/fonts\/slick.eot",
+		"oF": 0
+		},
+	"\/publichealth\/static\/fonts\/slick.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/fonts\/slick.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/publichealth\/static\/fonts\/slick.ttf": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/fonts\/slick.ttf",
+		"oF": 0
+		},
+	"\/publichealth\/static\/fonts\/slick.woff": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/fonts\/slick.woff",
+		"oF": 0
 		},
 	"\/publichealth\/static\/js\/main.js": {
 		"ft": 64,
@@ -2746,6 +2839,14 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"\/publichealth\/static\/mockup\/assets\/css\/ajax-loader.gif": {
+		"ft": 4194304,
+		"iS": 4178,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/css\/ajax-loader.gif",
+		"oF": 0,
+		"opt": 0
+		},
 	"\/publichealth\/static\/mockup\/assets\/css\/font-awesome.min.css": {
 		"aP": 0,
 		"bl": 0,
@@ -2763,6 +2864,16 @@
 		"ma": 0,
 		"oA": 2,
 		"oAP": "\/publichealth\/static\/mockup\/assets\/css\/main-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/css\/slick.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/css\/slick-min.css",
 		"oF": 0,
 		"oS": 0
 		},
@@ -2804,6 +2915,34 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/FontAwesome.otf",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/slick.eot": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/slick.eot",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/slick.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/slick.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/slick.ttf": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/slick.ttf",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/slick.woff": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/slick.woff",
 		"oF": 0
 		},
 	"\/publichealth\/static\/mockup\/assets\/js\/jquery.min.js": {
@@ -2982,12 +3121,6 @@
 		"oS": 0,
 		"uL": 1
 		},
-	"\/publichealth\/static\/mockup\/generic.html": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/static\/mockup\/generic.html",
-		"oF": 0
-		},
 	"\/publichealth\/static\/mockup\/images\/banner_0.jpg": {
 		"ft": 16384,
 		"iS": 56500,
@@ -3072,12 +3205,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/publichealth\/static\/mockup\/index.html",
-		"oF": 0
-		},
-	"\/publichealth\/static\/mockup\/LICENSE.txt": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/static\/mockup\/LICENSE.txt",
 		"oF": 0
 		},
 	"\/publichealth\/static\/org\/public-health-bg.png": {
@@ -5255,7 +5382,7 @@
 			}
 		},
 	"uglifyReservedNamesString": "$",
-	"websiteRelativeRoot": ""
+	"websiteRelativeRoot": "publichealth\/static\/mockup"
 	},
 "settingsFileVersion": "3"
 }
