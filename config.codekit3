@@ -372,6 +372,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/publichealth\/static\/css\/modules\/_footer.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/_footer.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/publichealth\/static\/css\/modules\/_modules.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -381,6 +394,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/publichealth\/static\/css\/css\/_modules.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/css\/modules\/_news.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/_news.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -2877,6 +2903,40 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.eot": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.eot",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.ttf": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.ttf",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.woff": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.woff",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.woff2": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/bootstrap\/glyphicons-halflings-regular.woff2",
+		"oF": 0
+		},
 	"\/publichealth\/static\/mockup\/assets\/fonts\/fontawesome-webfont.eot": {
 		"ft": 8192,
 		"oA": 2,
@@ -3176,6 +3236,14 @@
 		"oAP": "\/publichealth\/static\/mockup\/images\/lit.jpg",
 		"oF": 0,
 		"opt": 0
+		},
+	"\/publichealth\/static\/mockup\/images\/news_1.jpg": {
+		"ft": 16384,
+		"iS": 189948,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/images\/news_1.jpg",
+		"oF": 0,
+		"opt": 1
 		},
 	"\/publichealth\/static\/mockup\/images\/public-health-bg.png": {
 		"ft": 32768,

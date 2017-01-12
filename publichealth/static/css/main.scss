@@ -9,6 +9,16 @@
 @import "modules/modules";
 
 
+body {
+  margin-top: 64px;
+}
+
+section {
+  padding: 6em 0;
+  &:nth-child(odd) {
+    background-color: $gray-lighter;
+  }
+}
 
 /* Responsive image/video classes */
 .rich-text img {

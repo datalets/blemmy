@@ -2,18 +2,14 @@
 $banner-height: 700px;
 
 #banner {
-  // background: url(../org/public-health-bg.png) no-repeat top left;
-  // background-size: cover;
-  // font-size: 0px;
-  // display: block;
-  // width: 450px;
-  // height: 140px;
-  // color: transparent;
-  // text-indent: -9999px;
+  padding-top: 0 !important;
+  padding-bottom: 4em;
 
-  .banner .item  {
-    position: relative;
+  .carousel-inner .item  {
     height: $banner-height;
+    position: relative;
+    background-color: white;
+
 
     img {
       width: 100%;
@@ -22,59 +18,32 @@ $banner-height: 700px;
       display: block;
       background-size: cover;
       background-position: center;
-    }
-    .caption {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 0 auto;
-      background-color: rgba(#f9f9f9, .8);
-      padding: 30px;
+      opacity: .3;
+
     }
   }
-}
+  h3, p, button {
+    color: #333;
+    text-shadow: none;
+    text-align: left;
+  }
 
-#header .logo {
-  font-size: 0px;
-  background: url(images/public-health-logo.png) no-repeat top left;
-  width: 350px; height: 100px;
-  background-size: 100% auto;
-}
-#banner .inner {
-  padding-top: 1em;
-  border-top: none;
-}
-#banner h3, #banner p, #header a, #banner button {
-  color: #333;
+  p {
+    font-size: 90%;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
+  }
+  footer p {
+    color: black;
+    text-align: left;
+    font-size: 110%;
+    margin-top: 4em;
+  }
 }
 .slick-prev::before, .slick-next::before {
   color: inherit;
 }
 .slick-dots li button {
   box-shadow: none;
-}
-#banner:before {
-  background: #e0e0e0;
-}
-
-#banner p {
-  font-size: 90%;
-  text-align: left;
-  color: #777;
-  -webkit-hyphens: manual;
-  -ms-hyphens: manual;
-  hyphens: manual;
-}
-#banner {
-  padding-bottom: 4em;
-}
-#banner footer p {
-  color: black;
-  text-align: left;
-  font-size: 110%;
-  margin-top: 4em;
-}
-#three img {
-  width: 300px; height: 300px;
 }
