@@ -12,7 +12,20 @@
 <body>
 
 	<!-- Header -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-pre navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Kontakt</a></li>
+					<p class="navbar-text"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> +41 31 389 92 86</p>
+					<p class="navbar-text"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@public-health.ch</p>
+					<li class="active"><a href="#">De</a></li>
+					<li><a href="#">Fr</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<nav class="navbar navbar-default navbar-main navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -28,9 +41,28 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Willkommen <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Über uns <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Mitglied werden</a></li>
+            <li><a href="#">Informationen zu Public Health</a></li>
+            <li><a href="#">Stellenangebote</a></li>
+            <li role="separator" class="divider"></li>
+						<li><a href="#">Migliederversammlung</a></li>
+						<li><a href="#">Fachrat</a></li>
+						<li><a href="#">Vorstand</a></li>
+						<li><a href="#">Fachgruppen</a></li>
+						<li><a href="#">Geschäftsstelle</a></li>
+						<li><a href="#">Grundlagedokumente</a></li>
+						<li><a href="#">Jahresberichte</a></li>
+						<li><a href="#">Archiv</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Kontakt</a></li>
+          </ul>
+        </li>
+					<li><a href="#">News</a></li>
 					<li><a href="#">Agenda</a></li>
-					<li><a href="#">Kontakt</a></li>
+					<li><a href="#">Projekte</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -45,7 +77,15 @@
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner slick" role="listbox">
-				<div class="item active">
+				<div class="item">
+					<image style="background-image:url(images/banner_4.jpg)" />
+					<div class="carousel-caption">
+						<h3>Mitgliedschaft</h3>
+						<p>Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen kann.</p>
+						<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Mitglied werden</a></p>
+					</div>
+				</div>
+				<div class="item">
 					<image style="background-image:url(images/banner_1.jpg)" />
 					<div class="carousel-caption">
 						<h3>Swiss Public Health Conference 15. November 2016 in Bern</h3>
@@ -85,7 +125,7 @@
 		<div class="container">
 			<h2>News</h2>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-sm-4">
 					<div class="panel panel-default">
 						<div class="panel-header">
 							<img src="images/news_1.jpg" alt="">
@@ -94,9 +134,13 @@
 							<p>Ehrenmitgliedschaften</p>
 							<p><a href="/news-details.html" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
 						</div>
+						<div class="panel-footer">
+							<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>  Kategorie 1, Kategorie 2
+						</div>
+						<a href="/news-details.html" class="fill"></a>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-sm-4">
 					<div class="panel panel-default">
 						<div class="panel-header">
 							<img src="images/banner_0.jpg" alt="">
@@ -105,19 +149,22 @@
 							<p>Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet</p>
 							<p><a href="#" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
 						</div>
+						<a href="/news-details.html" class="fill"></a>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-sm-4">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<p>Wirksamer Schutz der Kinder und Jugendlichen vor Tabakkonsum rückt in weite Ferne</p>
 							<p><a href="#" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
 						</div>
+						<a href="/news-details.html" class="fill"></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<section>
 		<div class="container">
 			<div class="">
@@ -125,7 +172,8 @@
 				<p>Hier finden Sie Links zu wichtigen Institutionen und Organisationen aus dem Public Health Bereich. Die Liste erhebt keinen Anspruch auf Vollständigkeit. Gerne nehmen wir Ihre Anregungen und Ergänzungsvorschläge entgegen.</p>
 				<a href="#" class="btn btn-default">Mehr erfahren</a>
 			</div>
-
+			<hr>
+			{Twitter}
 		</div>
 	</section>
 
@@ -138,7 +186,7 @@
 						<img src="images/ipad.jpg" alt="Pic 01" />
 					</div>
 					<header>
-						<h2>Über uns</h2>
+						<h3>Über uns</h3>
 					</header>
 					<p>Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen
 						kann.</p>
@@ -231,10 +279,8 @@
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/slick/slick.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
 
 	<script>
 		$('.carousel-inner.slick').slick({
@@ -244,7 +290,9 @@
 			infinite: true,
 			speed: 1000,
 			fade: true,
-			cssEase: 'linear'
+			cssEase: 'linear',
+			prevArrow: '<span class="arrow left glyphicon glyphicon-chevron-left" aria-hidden="true">Previous</span>',
+			nextArrow: '<span class="arrow right glyphicon glyphicon-chevron-right" aria-hidden="true">Previous</span>',
 		});
 	</script>
 

@@ -12,38 +12,70 @@
 <body>
 
   <!-- Header -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  <nav class="navbar navbar-default navbar-pre navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Kontakt</a></li>
+					<p class="navbar-text"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> +41 31 389 92 86</p>
+					<p class="navbar-text"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@public-health.ch</p>
+					<li class="active"><a href="#">De</a></li>
+					<li><a href="#">Fr</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+  <nav class="navbar navbar-default navbar-main navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 		        <span class="sr-only">Toggle navigation</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-          <a class="navbar-brand" href="#"><img src="images/public-health-logo-sign.png" alt=""> <span class="hidden-xs"><strong>Public Health</strong> Schweiz</span></a>
-      </div>
+				<a class="navbar-brand" href="#"><img src="images/public-health-logo-sign.png" alt=""> <span class="hidden-xs"><strong>Public Health</strong> Schweiz</span></a>
+			</div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Willkommen <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Agenda</a></li>
-          <li><a href="#">Kontakt</a></li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Über uns <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Mitglied werden</a></li>
+            <li><a href="#">Informationen zu Public Health</a></li>
+            <li><a href="#">Stellenangebote</a></li>
+            <li role="separator" class="divider"></li>
+						<li><a href="#">Migliederversammlung</a></li>
+						<li><a href="#">Fachrat</a></li>
+						<li><a href="#">Vorstand</a></li>
+						<li><a href="#">Fachgruppen</a></li>
+						<li><a href="#">Geschäftsstelle</a></li>
+						<li><a href="#">Grundlagedokumente</a></li>
+						<li><a href="#">Jahresberichte</a></li>
+						<li><a href="#">Archiv</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Kontakt</a></li>
+          </ul>
+        </li>
+					<li class="active"><a href="#">News</a></li>
+					<li><a href="#">Agenda</a></li>
+					<li><a href="#">Projekte</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
 
   <section id="news-details">
     <div class="container">
       <div class="image">
         <img class="img-responsive" src="images/news_1.jpg" alt="">
       </div>
-      <p class="category">Kategorie</p>
+      <p class="category"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i> <span>Kategorie 1</span>, <span>Kategorie 2</span></p>
       <h2>Ehrenmitgliedschaften</h2>
       <p class="lead">
         Nicole Probst-Hensch, Professorin für Pharmakologie und Epidemiologie am Schweizerischen Tropen- und Public Health Institut der Universität Basel, wurde die Ehrenmitgliedschaft von Public Health Schweiz verliehen.
@@ -62,9 +94,9 @@
         Consequatur ullam, voluptatum incidunt neque porro numquam doloremque vel inventore distinctio laudantium harum illo quam nulla dolor alias iure impedit. Accusamus. Consequatur, a, ullam, voluptatum incidunt neque porro numquam doloremque vel inventore distinctio laudantium harum illo quam nulla dolor alias iure impedit! Accusamus.
       </p>
       <hr>
-      <p class="author">Name des Autors</p>
+      <p class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Name des Autors</p>
 
-      <p class="backlink"><a href="/index.html">◀︎ Zurück</a></p>
+      <p class="backlink"><a href="/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Zurück</a></p>
 
     </div>
   </section>
@@ -124,10 +156,8 @@
 
   <!-- Scripts -->
   <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/skel.min.js"></script>
-  <script src="assets/slick/slick.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/slick/slick.min.js"></script>
 
   <script>
     $('.carousel-inner.slick').slick({

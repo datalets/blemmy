@@ -3018,6 +3018,15 @@
 		"oAP": "\/publichealth\/static\/mockup\/assets\/fonts\/slick.woff",
 		"oF": 0
 		},
+	"\/publichealth\/static\/mockup\/assets\/js\/bootstrap.min.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/assets\/js\/min\/bootstrap.min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"\/publichealth\/static\/mockup\/assets\/js\/jquery.min.js": {
 		"ft": 64,
 		"mi": 1,
@@ -3223,6 +3232,14 @@
 		"iS": 72163,
 		"oA": 0,
 		"oAP": "\/publichealth\/static\/mockup\/images\/banner_3.jpg",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/publichealth\/static\/mockup\/images\/banner_4.jpg": {
+		"ft": 16384,
+		"iS": 341200,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/images\/banner_4.jpg",
 		"oF": 0,
 		"opt": 0
 		},

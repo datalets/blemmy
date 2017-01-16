@@ -5,21 +5,39 @@ $banner-height: 700px;
   padding-top: 0 !important;
   padding-bottom: 4em;
 
-  .carousel-inner .item  {
-    height: $banner-height;
-    position: relative;
-    background-color: white;
+  .carousel-inner {
+    overflow: visible;
+    padding-bottom: 2.5em;
 
-
-    img {
-      width: 100%;
+    .item  {
       height: $banner-height;
-      overflow: hidden;
-      display: block;
-      background-size: cover;
-      background-position: center;
-      opacity: .3;
+      position: relative;
+      background-color: white;
 
+
+      img {
+        width: 100%;
+        height: $banner-height;
+        overflow: hidden;
+        display: block;
+        background-size: cover;
+        background-position: center;
+        opacity: 1;
+
+      }
+      .carousel-caption {
+        background-color: white;
+        padding: 2em;
+        bottom: -2em;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+        h3 {
+          margin-top: 0;
+        }
+        p:last-child() {
+          margin-bottom: 0;
+        }
+      }
     }
   }
   h3, p, button {
@@ -38,8 +56,44 @@ $banner-height: 700px;
     color: black;
     text-align: left;
     font-size: 110%;
-    margin-top: 4em;
+    margin-top: 2em;
   }
+}
+.arrow {
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 30px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: transparent;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none;
+
+  &.left {
+    left: 30px;
+  }
+  &.right {
+    right: 30px;
+  }
+  &:before {
+    font-size: 30px;
+  }
+}
+.slick-list {
+  overflow: visible;
+}
+.slick-dots li {
+  margin: 0;
 }
 .slick-prev::before, .slick-next::before {
   color: inherit;
