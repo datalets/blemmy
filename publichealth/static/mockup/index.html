@@ -22,7 +22,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-				<a class="navbar-brand" href="#"><strong>Public Health</strong> Schweiz</a>
+				<a class="navbar-brand" href="#"><img src="images/public-health-logo-sign.png" alt=""> <span class="hidden-xs"><strong>Public Health</strong> Schweiz</span></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,7 +83,7 @@
 	</section>
 	<section id="news">
 		<div class="container">
-			<h3>News</h3>
+			<h2>News</h2>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="panel panel-default">
@@ -92,7 +92,7 @@
 						</div>
 						<div class="panel-body">
 							<p>Ehrenmitgliedschaften</p>
-							<p><a href="#" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
+							<p><a href="/news-details.html" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
 						</div>
 					</div>
 				</div>
@@ -121,7 +121,7 @@
 	<section>
 		<div class="container">
 			<div class="">
-				<h3>Informationen zu Public Health</h3>
+				<h2>Informationen zu Public Health</h2>
 				<p>Hier finden Sie Links zu wichtigen Institutionen und Organisationen aus dem Public Health Bereich. Die Liste erhebt keinen Anspruch auf Vollständigkeit. Gerne nehmen wir Ihre Anregungen und Ergänzungsvorschläge entgegen.</p>
 				<a href="#" class="btn btn-default">Mehr erfahren</a>
 			</div>
@@ -138,7 +138,7 @@
 						<img src="images/ipad.jpg" alt="Pic 01" />
 					</div>
 					<header>
-						<h3>Über uns</h3>
+						<h2>Über uns</h2>
 					</header>
 					<p>Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen
 						kann.</p>
@@ -238,9 +238,11 @@
 
 	<script>
 		$('.carousel-inner.slick').slick({
+			autoplay: true,
+			autoplaySpeed: '10000',
 			dots: true,
 			infinite: true,
-			speed: 500,
+			speed: 1000,
 			fade: true,
 			cssEase: 'linear'
 		});

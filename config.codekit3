@@ -398,6 +398,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/publichealth\/static\/css\/modules\/_navbar.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/_navbar.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/publichealth\/static\/css\/modules\/_news.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -3253,6 +3266,14 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"\/publichealth\/static\/mockup\/images\/public-health-logo-sign.png": {
+		"ft": 32768,
+		"iS": 2615,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/images\/public-health-logo-sign.png",
+		"oF": 0,
+		"opt": 0
+		},
 	"\/publichealth\/static\/mockup\/images\/public-health-logo.png": {
 		"ft": 32768,
 		"iS": 42474,
@@ -3273,6 +3294,12 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/publichealth\/static\/mockup\/index.html",
+		"oF": 0
+		},
+	"\/publichealth\/static\/mockup\/news-details.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/publichealth\/static\/mockup\/news-details.html",
 		"oF": 0
 		},
 	"\/publichealth\/static\/org\/public-health-bg.png": {
