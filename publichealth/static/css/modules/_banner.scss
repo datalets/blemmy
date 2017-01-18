@@ -1,19 +1,23 @@
 /* Page header */
 $banner-height: 700px;
 
-#banner {
+@mixin max-screen($max) {
+  @media only screen and (max-width: $max) {
+    @content;
+  }
+}
+
+#banner, #carousel-banner {
   padding-top: 0 !important;
-  padding-bottom: 4em;
+  padding-bottom: 0em;
 
   .carousel-inner {
-    overflow: visible;
     padding-bottom: 2.5em;
 
     .item  {
       height: $banner-height;
       position: relative;
       background-color: white;
-
 
       img {
         width: 100%;
@@ -34,8 +38,18 @@ $banner-height: 700px;
         h3 {
           margin-top: 0;
         }
-        p:last-child() {
+        p:last-child {
           margin-bottom: 0;
+        }
+      }
+    }
+    .slick-dots {
+      bottom: 50px;
+
+      li {
+        margin: 0;
+        button {
+          box-shadow: none;
         }
       }
     }
@@ -92,12 +106,15 @@ $banner-height: 700px;
 .slick-list {
   overflow: visible;
 }
-.slick-dots li {
-  margin: 0;
-}
 .slick-prev::before, .slick-next::before {
   color: inherit;
 }
-.slick-dots li button {
-  box-shadow: none;
+
+@include max-screen(1000px) {
+  .slick-dots { display: none !important; }
+}
+@include max-screen(480px) {
+  .navbar-pre .navbar-nav,
+  #carousel-banner { display: none !important; }
+  #banner { margin-top: 100px; }
 }
