@@ -1,0 +1,120 @@
+/* Page header */
+$banner-height: 700px;
+
+@mixin max-screen($max) {
+  @media only screen and (max-width: $max) {
+    @content;
+  }
+}
+
+#banner, #carousel-banner {
+  padding-top: 0 !important;
+  padding-bottom: 0em;
+
+  .carousel-inner {
+    padding-bottom: 2.5em;
+
+    .item  {
+      height: $banner-height;
+      position: relative;
+      background-color: white;
+
+      img {
+        width: 100%;
+        height: $banner-height;
+        overflow: hidden;
+        display: block;
+        background-size: cover;
+        background-position: center;
+        opacity: 1;
+
+      }
+      .carousel-caption {
+        background-color: white;
+        padding: 2em;
+        bottom: -2em;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+        h3 {
+          margin-top: 0;
+        }
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .slick-dots {
+      bottom: 50px;
+
+      li {
+        margin: 0;
+        button {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  h3, p, button {
+    color: #333;
+    text-shadow: none;
+    text-align: left;
+  }
+
+  p {
+    font-size: 90%;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
+  }
+  footer p {
+    color: black;
+    text-align: left;
+    font-size: 110%;
+    margin-top: 2em;
+  }
+}
+.arrow {
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 30px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: transparent;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none;
+
+  &.left {
+    left: 30px;
+  }
+  &.right {
+    right: 30px;
+  }
+  &:before {
+    font-size: 30px;
+  }
+}
+.slick-list {
+  overflow: visible;
+}
+.slick-prev::before, .slick-next::before {
+  color: inherit;
+}
+
+@include max-screen(1000px) {
+  .slick-dots { display: none !important; }
+}
+@include max-screen(480px) {
+  .navbar-pre .navbar-nav,
+  #carousel-banner { display: none !important; }
+  #banner { margin-top: 100px; }
+}

@@ -14,6 +14,34 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      sass: {
+        files: "publichealth/static/**/*.scss",
+        tasks: ['sass:dev']
+      }
+    },
+
+    sass: {                              // Task
+      dev: {                            // Target
+        options: {                       // Target options
+          style: 'expanded',
+          sourcemap: 'none'
+        },
+        files: {                         // Dictionary of files
+          "publichealth/static/mockup/assets/css/main.css": "publichealth/static/css/main.scss"
+        }
+      },
+      dist: {
+        options: {
+          style: 'compressed',
+          sourcemap: 'none'
+        },
+        files: {
+          "publichealth/static/mockup/assets/css/main.min.css": "publichealth/static/css/main.scss"
+        }
+      }
+    },
+
     bgShell: {
       _defaults: {
         bg: true,
@@ -28,9 +56,13 @@ module.exports = function(grunt) {
     browserSync: {
       dev: {
         bsFiles: {
-          src : 'pages/static/css/main.scss'
+          src: [
+            "publichealth/static/mockup/assets/css/*.css",
+            "publichealth/static/mockup/*.html"
+          ]
         },
         options: {
+          watchTask: true,
           proxy:  "localhost:8000"
         }
       }
@@ -38,11 +70,14 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bg-shell');
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.registerTask('default', ['imagemin']);
+  grunt.registerTask('default', ['imagemin', 'sass']);
   grunt.registerTask('browser-sync', [
     'bgShell',
-    'browserSync'
+    'browserSync',
+    'watch'
   ]);
 };

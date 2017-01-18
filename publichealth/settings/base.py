@@ -180,7 +180,8 @@ CACHES = {
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+        'BACKEND': 'wagtail.wagtailsearch.backends.db',
+        #'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
         'INDEX': 'publichealth',
     },
 }

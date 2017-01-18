@@ -1,0 +1,37 @@
+.navbar-default {
+  &.navbar-pre {
+    background-color: $brand-primary;
+
+    .navbar-text, li a {
+      margin: 5px 15px;
+      color: white;
+      font-size: 70%;
+    }
+    li {
+      margin: 0  5px;
+      padding: 0;
+      a {
+        margin: 0;
+        padding: 0 10px;
+      }
+    }
+  }
+
+  &.navbar-main {
+    top: 35px;
+  }
+  .navbar-header {
+    .navbar-brand {
+      text-transform: uppercase;
+      font-size: 1em;
+
+      img {
+        display: inline;
+        width: auto;
+        height: 28px;
+        margin-top: -5px;
+        margin-right: .5em;
+      }
+    }
+  }
+}

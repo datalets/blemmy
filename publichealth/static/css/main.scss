@@ -1,21 +1,29 @@
 @charset 'utf-8';
 
-@import 'libs/bootswatch/paper/variables';
-@import 'libs/bootstrap-sass/assets/stylesheets/bootstrap';
-@import 'libs/bootswatch/paper/bootswatch';
+@import 'paper/variables';
+@import '../libs/bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'paper/bootswatch';
 
 
-/* Page header */
+// Modules
+@import "modules/modules";
 
-#banner {
-  background: url(../org/public-health-bg.png) no-repeat top left;
-  background-size: cover;
-  font-size: 0px;
-  display: block;
-  width: 450px;
-  height: 140px;
-  color: transparent;
-  text-indent: -9999px;
+
+body {
+  margin-top: 64px;
+}
+
+section {
+  padding: 6em 0;
+  &:nth-child(odd) {
+    background-color: $gray-lighter;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+  }
 }
 
 /* Responsive image/video classes */
