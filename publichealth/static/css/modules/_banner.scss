@@ -1,13 +1,96 @@
-/* Page header */
-$banner-height: 700px;
+// Carousel
+#myCarousel {
+  background: $gray-lighter;
+  .item {
+    background-color: lighten($brand-primary, 10%);
+    min-height: 300px;
+    img {
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      opacity: .5;
+      width: 100%;
+    }
+    h3 {
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    p {
+      line-height: 1.2;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .btn {
+      margin-top: 20px;
+    }
+  }
+  .nav-thumbs {
 
-@mixin max-screen($max) {
-  @media only screen and (max-width: $max) {
-    @content;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    li {
+      float: left;
+      width: 25%;
+      &.active {
+        background-color: $brand-primary;
+        a {
+          color: white;
+        }
+      }
+      .glyphicon {
+        display: block;
+      }
+    }
+
+    .title {
+      text-transform: uppercase;
+      font-weight: 300;
+      text-decoration: none;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      small {
+        font-weight: 500;
+        text-transform: none;
+        display: block;
+        font-size: .7em;
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    &.nav-justified > li > a {
+      border-radius: 0px;
+    }
+  }
+  @include max-screen($screen-xs-max) {
+    .nav-thumbs {
+      .title {
+        font-size: .7em;
+      }
+
+    }
   }
 }
 
+
+
+
+/* Page header */
+$banner-height: 700px;
+#carousel-banner {
+  display: none;
+}
 #banner, #carousel-banner {
+
+
   padding-top: 0 !important;
   padding-bottom: 0em;
 

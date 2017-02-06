@@ -1,0 +1,7 @@
+
+// max-screen
+@mixin max-screen($max) {
+  @media only screen and (max-width: $max) {
+    @content;
+  }
+}
