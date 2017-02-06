@@ -6487,7 +6487,6 @@ input[type="checkbox"],
       height: 300px;
       background-size: cover;
       background-position: center;
-      opacity: .5;
       width: 100%; }
     #myCarousel .item h3 {
       text-transform: uppercase;
