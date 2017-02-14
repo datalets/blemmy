@@ -7,7 +7,7 @@
 		"uuidString": "0F980939-F438-4FD0-A285-8ECBB562D22C"
 		}
 	],
-"creatorBuild": "25479",
+"creatorBuild": "25504",
 "files": {
 	"\/.bowerrc": {
 		"ft": 8192,
@@ -27,46 +27,16 @@
 		"oAP": "\/.gitignore",
 		"oF": 0
 		},
-	"\/.vagrant\/machines\/default\/virtualbox\/action_provision": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.vagrant\/machines\/default\/virtualbox\/action_provision",
-		"oF": 0
-		},
-	"\/.vagrant\/machines\/default\/virtualbox\/action_set_name": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.vagrant\/machines\/default\/virtualbox\/action_set_name",
-		"oF": 0
-		},
-	"\/.vagrant\/machines\/default\/virtualbox\/creator_uid": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.vagrant\/machines\/default\/virtualbox\/creator_uid",
-		"oF": 0
-		},
-	"\/.vagrant\/machines\/default\/virtualbox\/id": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.vagrant\/machines\/default\/virtualbox\/id",
-		"oF": 0
-		},
-	"\/.vagrant\/machines\/default\/virtualbox\/index_uuid": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.vagrant\/machines\/default\/virtualbox\/index_uuid",
-		"oF": 0
-		},
-	"\/.vagrant\/machines\/default\/virtualbox\/synced_folders": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.vagrant\/machines\/default\/virtualbox\/synced_folders",
-		"oF": 0
-		},
 	"\/bin\/post_compile": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/bin\/post_compile",
+		"oF": 0
+		},
+	"\/bitbucket-pipelines.yml": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/bitbucket-pipelines.yml",
 		"oF": 0
 		},
 	"\/bower.json": {
@@ -160,40 +130,10 @@
 		"oAP": "\/publichealth\/__init__.py",
 		"oF": 0
 		},
-	"\/publichealth\/__pycache__\/__init__.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/publichealth\/__pycache__\/__init__.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/__pycache__\/urls.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/__pycache__\/urls.cpython-34.pyc",
-		"oF": 0
-		},
 	"\/publichealth\/home\/__init__.py": {
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/publichealth\/home\/__init__.py",
-		"oF": 0
-		},
-	"\/publichealth\/home\/__pycache__\/__init__.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/publichealth\/home\/__pycache__\/__init__.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/home\/__pycache__\/models.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/home\/__pycache__\/models.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/home\/__pycache__\/util.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/home\/__pycache__\/util.cpython-34.pyc",
 		"oF": 0
 		},
 	"\/publichealth\/home\/migrations\/0001_initial.py": {
@@ -218,30 +158,6 @@
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/publichealth\/home\/migrations\/__init__.py",
-		"oF": 0
-		},
-	"\/publichealth\/home\/migrations\/__pycache__\/0001_initial.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/home\/migrations\/__pycache__\/0001_initial.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/home\/migrations\/__pycache__\/0002_create_homepage.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/home\/migrations\/__pycache__\/0002_create_homepage.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/home\/migrations\/__pycache__\/0003_auto_20161209_0655.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/home\/migrations\/__pycache__\/0003_auto_20161209_0655.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/home\/migrations\/__pycache__\/__init__.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/publichealth\/home\/migrations\/__pycache__\/__init__.cpython-34.pyc",
 		"oF": 0
 		},
 	"\/publichealth\/home\/models.py": {
@@ -274,18 +190,6 @@
 		"oAP": "\/publichealth\/search\/__init__.py",
 		"oF": 0
 		},
-	"\/publichealth\/search\/__pycache__\/__init__.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/publichealth\/search\/__pycache__\/__init__.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/search\/__pycache__\/views.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/search\/__pycache__\/views.cpython-34.pyc",
-		"oF": 0
-		},
 	"\/publichealth\/search\/templates\/search\/search.html": {
 		"ft": 8192,
 		"oA": 2,
@@ -308,24 +212,6 @@
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/publichealth\/settings\/__init__.py",
-		"oF": 0
-		},
-	"\/publichealth\/settings\/__pycache__\/__init__.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/publichealth\/settings\/__pycache__\/__init__.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/settings\/__pycache__\/base.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/settings\/__pycache__\/base.cpython-34.pyc",
-		"oF": 0
-		},
-	"\/publichealth\/settings\/__pycache__\/dev.cpython-34.pyc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/publichealth\/settings\/__pycache__\/dev.cpython-34.pyc",
 		"oF": 0
 		},
 	"\/publichealth\/settings\/base.py": {
@@ -381,6 +267,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/publichealth\/static\/css\/css\/_footer.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/publichealth\/static\/css\/modules\/_mixins.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/publichealth\/static\/css\/css\/_mixins.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -3307,6 +3206,22 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"\/publichealth\/static\/mockup\/images\/thumb_news_1.jpg": {
+		"ft": 16384,
+		"iS": 173465,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/images\/thumb_news_1.jpg",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/publichealth\/static\/mockup\/images\/thumb_news_2.jpg": {
+		"ft": 16384,
+		"iS": 72163,
+		"oA": 0,
+		"oAP": "\/publichealth\/static\/mockup\/images\/thumb_news_2.jpg",
+		"oF": 0,
+		"opt": 1
+		},
 	"\/publichealth\/static\/mockup\/index.html": {
 		"ft": 8192,
 		"oA": 2,
@@ -4062,6 +3977,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-await-in-loop": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-bitwise": {
 			"active": 0,
 			"optionString": "{'allow': ['~'], 'int32Hint': true}"
@@ -4601,6 +4520,10 @@
 		"prefer-const": {
 			"active": 0,
 			"optionString": "{'destructuring': 'any', 'ignoreReadBeforeAssign': false}"
+			},
+		"prefer-destructuring": {
+			"active": 0,
+			"optionString": "{'array': true, 'object': true}, {'enforceForRenamedProperties': false}"
 			},
 		"prefer-numeric-literals": {
 			"active": 0,

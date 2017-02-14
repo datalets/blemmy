@@ -3,38 +3,74 @@
 #news {
 
   .panel-default {
-    position: relative;
     font-size: 90%;
-    transition: transform .6s;
+    padding-top: 75%; /* 1:1 Aspect Ratio */
+    position: relative; /* If you want text inside of it */
+    overflow: hidden;
+    background: lighten($brand-primary, 10%);
 
-    &:hover {
-      transform: scale(1.05);
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
-    .panel-header img {
-      max-width: 100%;
-    }
     .panel-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      transform: translateY(60%);
+      background-color: rgba($brand-primary, .8);
+      transition: transform .65s;
+
+      h3, p {
+        color: white;
+      }
+      h3 {
+        padding: 15px;
+        font-size: 1.2em;
+        margin: 0;
+        height: 40%;
+        display: table;
+
+        span {
+          display: table-cell;
+          vertical-align: bottom;
+        }
+
+      }
+      p, a {
+        font-size: .8em;
+
+      }
+      p {
+        padding: 0 15px;
+        line-height: 1.2;
+        margin: 0;
+      }
       a {
-        position: relative;
-        font-size: 80%;
-        z-index: 2;
+        margin: 10px 0 0 15px;
+        text-align: center;
       }
     }
-    .panel-footer {
-      font-size: 80%;
-      text-transform: uppercase;
-      color: lighten($text-color, 10%);
+    &:hover .panel-body {
+      transform: rotateY(0);
     }
+
+    // expand link over the thumbnail
     a.fill {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
+      font-size: 0;
     }
-
   }
 }
 
