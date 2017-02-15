@@ -1,4 +1,4 @@
-$(document).load(function() {
+$(document).ready(function() {
 
 	$('.carousel-inner.slick').slick({
 		autoplay: true,
