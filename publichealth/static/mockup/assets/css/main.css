@@ -8282,10 +8282,6 @@ input[type="checkbox"]:disabled:checked:after,
 }
 
 /* Page header */
-#carousel-banner {
-  display: none;
-}
-
 #banner, #carousel-banner {
   padding-top: 0 !important;
   padding-bottom: 0em;
@@ -8555,4 +8551,8 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+article footer .btn {
+  margin-bottom: 1em;
 }
