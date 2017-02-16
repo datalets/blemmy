@@ -1,16 +1,16 @@
 footer#footer {
   padding: 6em 0;
-  background-color: $brand-secondary;
+  background-color: $brand-primary;
 
   color: white;
 
   a {
-    color: lighten($brand-primary, 10%);
+    color: lighten($brand-secondary, 10%);
   }
 }
 
 .copyright {
-  background-color: darken($brand-secondary, 15%);
+  background-color: darken($brand-primary, 15%);
   color: white;
   text-align: center;
   font-size: 70%;

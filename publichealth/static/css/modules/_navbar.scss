@@ -1,24 +1,49 @@
-.navbar-default {
-  &.navbar-pre {
-    background-color: $brand-primary;
+.navbar-pre {
+  background-color: $brand-primary;
+  height: 40px;
 
-    .navbar-text, li a {
-      margin: 5px 15px;
+  .nav {
+    text-align: right;
+    a {
       color: white;
-      font-size: 70%;
+      padding: 10px;
+      line-height: 40px;
+      vertical-align: middle;
     }
-    li {
-      margin: 0  5px;
-      padding: 0;
+    .contact-nav {
+      margin-right: 1em;
+      a {
+        margin: 0 5px;
+        font-size: .7em;
+        &.link {
+          text-transform: uppercase;
+        }
+      }
+    }
+    .language-nav {
+      text-transform: uppercase;
       a {
         margin: 0;
-        padding: 0 10px;
+        &.active, &:hover {
+          background-color: white;
+          color: $brand-primary;
+        }
+
+      }
+    }
+    @include max-screen($screen-xs-max) {
+      .contact-nav a {
+        font-size: .9em;
+        padding: 10px 5px;
       }
     }
   }
 
+}
+.navbar-default {
+
   &.navbar-main {
-    top: 35px;
+    top: 40px;
   }
   .navbar-header {
     .navbar-brand {

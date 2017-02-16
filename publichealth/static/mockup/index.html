@@ -12,17 +12,19 @@
 <body>
 
 	<!-- Header -->
-	<nav class="navbar navbar-default navbar-pre navbar-fixed-top">
+	<nav class="navbar-pre navbar-fixed-top">
 		<div class="container">
-			<div class="navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Kontakt</a></li>
-					<p class="navbar-text"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> +41 31 389 92 86</p>
-					<p class="navbar-text"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@public-health.ch</p>
-					<li class="active"><a href="#">De</a></li>
-					<li><a href="#">Fr</a></li>
-				</ul>
-			</div>
+				<div class="nav">
+					<span class="contact-nav">
+						<a class="link" href="#">Kontakt</a>
+						<a href="#"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <span class="hidden-xs">+41 31 389 92 86</span></a>
+						<a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span class="hidden-xs">info@public-health.ch</span></a>
+					</span>
+					<span class="language-nav">
+						<a class="active "href="#">De</a>
+						<a href="#">Fr</a>
+					</span>
+				</div>
 		</div>
 	</nav>
 	<nav class="navbar navbar-default navbar-main navbar-fixed-top">
@@ -69,6 +71,62 @@
 		</div>
 		<!-- /.container -->
 	</nav>
+
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	    <!-- Wrapper for slides -->
+	    <div class="carousel-inner">
+	        <div class="item active">
+							<image style="background-image:url(images/banner_0.jpg)" />
+	            <div class="carousel-caption">
+	                <h3>
+	                    Swiss Public Health Conference</h3>
+	                <p class="hidden-xs">Die Swiss Public Health Conference 2016 ist erfolgreich zu Ende gegangen. Wir bedanken uns bei Ihnen an dieser Stelle für Ihre engagierte Teilnahme und die vielen angeregten Gespräche während der Konferenz.</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	        <div class="item">
+	            <div class="carousel-caption">
+	                <h3>Projekte & Aktivitäten</h3>
+	                <p class="hidden-xs">Public Health Schweiz will Prävention und Gesundheitsförderung stärken. Durch unsere Aktionen und Stellungsnahmen treten wir für dieses Ziel ein und stehen damit immer im Zentrum der Aktualität:</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	        <div class="item">
+	            <div class="carousel-caption">
+	                <h3>
+	                    Über uns</h3>
+	                <p class="hidden-xs">Public Health Schweiz ist der Fachverband der Public-Health-Fachleute. Er vertritt die Anliegen seiner Mitglieder und unterstützt die Entscheidungsträgerinnen und Entscheidungsträger fachlich</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	        <div class="item">
+							<image style="background-image:url(images/banner_4.jpg)" />
+	            <div class="carousel-caption">
+	                <h3>
+	                    Mitgliedschaft</h3>
+	                <p class="hidden-xs">Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen kann.</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	    </div>
+	    <!-- End Carousel Inner -->
+			<div class="container">
+
+		    <ul class="nav nav-thumbs">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;<span class="title">Aktuell<small class="hidden-xs">Swiss Public Health Conference</small></span></a></li>
+		      <li data-target="#myCarousel" data-slide-to="1"><a href="#"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp;<span class="title">Projekte<small class="hidden-xs">Prävention und Gesundheitsförderung</small></span></a></li>
+		      <li data-target="#myCarousel" data-slide-to="2"><a href="#"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;<span class="title">Über uns<small class="hidden-xs">Informationen zu Public Health</small></span></a></li>
+		      <li data-target="#myCarousel" data-slide-to="3"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<span class="title">Mitgliedschaft<small class="hidden-xs">Werden Sie jetzt Mitglied</small></span></a></li>
+		    </ul>
+			</div>
+	</div>
+	<!-- End Carousel -->
+
 
 	<!-- Banner -->
 	<div id="carousel-banner" class="slide">
@@ -124,40 +182,36 @@
 
 	<section id="news">
 		<div class="container">
-			<h2>News</h2>
 			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="panel panel-default">
-						<div class="panel-header">
-							<img src="images/news_1.jpg" alt="">
-						</div>
+						<img src="images/thumb_news_1.jpg" alt="">
 						<div class="panel-body">
-							<p>Ehrenmitgliedschaften</p>
-							<p><a href="/news-details.html" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
-						</div>
-						<div class="panel-footer">
-							<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>  Kategorie 1, Kategorie 2
+							<h3><span>Ehrenmitgliedschaften</span></h3>
+							<p>Nicole Probst-Hensch, Professorin für Pharmakologie und Epidemiologie am Schweizerischen Tropen- und Public Health Institut der Universität Basel, wurde die Ehrenmitgliedschaft von Public Health Schweiz verliehen.</p>
+							<a href="/news-details.html" class="btn btn-default btn-xs">Mehr erfahren</a>
 						</div>
 						<a href="/news-details.html" class="fill"></a>
 					</div>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="panel panel-default">
-						<div class="panel-header">
-							<img src="images/banner_0.jpg" alt="">
-						</div>
+						<img src="images/thumb_news_2.jpg" alt="">
 						<div class="panel-body">
-							<p>Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet</p>
-							<p><a href="#" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
+
+							<h3><span>Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet</span></h3>
+
+							<a href="/news-details.html" class="btn btn-default btn-xs">Mehr erfahren</a>
 						</div>
 						<a href="/news-details.html" class="fill"></a>
 					</div>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="panel panel-default">
+						<div class="img-crop"></div>
 						<div class="panel-body">
-							<p>Wirksamer Schutz der Kinder und Jugendlichen vor Tabakkonsum rückt in weite Ferne</p>
-							<p><a href="#" class="btn btn-primary btn-xs">Mehr erfahren</a></p>
+							<h3><span>Wirksamer Schutz der Kinder und Jugendlichen vor Tabakkonsum rückt in weite Ferne<span></h3>
+								<a href="/news-details.html" class="btn btn-default btn-xs">Mehr erfahren</a>
 						</div>
 						<a href="/news-details.html" class="fill"></a>
 					</div>
@@ -284,6 +338,32 @@
 	<script src="assets/slick/slick.min.js"></script>
 
 	<script>
+
+	$(document).ready( function() {
+	    $('#myCarousel').carousel({
+			interval:   10000
+		});
+
+		var clickEvent = false;
+		$('#myCarousel').on('click', '.nav a', function() {
+				clickEvent = true;
+				$('.nav li').removeClass('active');
+				$(this).parent().addClass('active');
+		}).on('slid.bs.carousel', function(e) {
+			if(!clickEvent) {
+				var count = $('.nav').children().length -1;
+				var current = $('.nav li.active');
+				current.removeClass('active').next().addClass('active');
+				var id = parseInt(current.data('slide-to'));
+				if(count == id) {
+					$('.nav li').first().addClass('active');
+				}
+			}
+			clickEvent = false;
+		});
+	});
+
+
 		$('.carousel-inner.slick').slick({
 			autoplay: true,
 			autoplaySpeed: '10000',
