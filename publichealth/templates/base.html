@@ -5,14 +5,17 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!-- TODO: aad html lang="de-CH" attribute -->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{% block description %}{% endblock %}">
 
         {% compress css %}
+            <link rel="stylesheet" type="text/x-scss" href="{% static 'libs/slick-carousel/slick/slick.scss' %}">
+            <link rel="stylesheet" type="text/x-scss" href="{% static 'libs/slick-carousel/slick/slick-theme.scss' %}">
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
         {% endcompress %}
 
@@ -24,15 +27,20 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        {% include 'header.html' %}
+
         {% block content %}{% endblock %}
+
+        {% include 'footer.html' %}
+
+        {% block extra_js %}
+            <script src="{% static 'libs/jquery/dist/jquery.js' %}"></script>
+            <script src="{% static 'libs/bootstrap-sass/assets/javascripts/bootstrap.min.js' %}"></script>
+            <script src="{% static 'libs/slick-carousel/slick/slick.min.js' %}"></script>
+        {% endblock %}
 
         {% compress js %}
             <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
         {% endcompress %}
-
-        {% block extra_js %}
-            <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
-            <script src="{% static 'libs/bootstrap-sass/assets/javascripts/bootstrap.min.js' %}"></script>
-        {% endblock %}
     </body>
 </html>

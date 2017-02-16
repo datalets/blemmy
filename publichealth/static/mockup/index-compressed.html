@@ -7,6 +7,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/slick.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<style type="text/css">
+	.carousel-caption {
+    position: initial;
+    background: #eee;
+    color: black;
+    text-shadow: none !important;
+	}
+	#myCarousel .container {
+		display: none;
+	}
+	</style>
 </head>
 
 <body>
@@ -72,48 +83,61 @@
 		<!-- /.container -->
 	</nav>
 
-	<!-- Banner -->
-	<div id="carousel-banner" class="slide">
 
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner slick" role="listbox">
-			<div class="item">
-				<image style="background-image:url(images/banner_4.jpg)" />
-				<div class="carousel-caption">
-					<h3>Mitgliedschaft</h3>
-					<p>Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen kann.</p>
-					<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Mitglied werden</a></p>
-				</div>
-			</div>
-			<div class="item">
-				<image style="background-image:url(images/banner_1.jpg)" />
-				<div class="carousel-caption">
-					<h3>Swiss Public Health Conference 15. November 2016 in Bern</h3>
-					<p>Die Swiss Public Health Conference 2016 ist erfolgreich zu Ende gegangen. Wir bedanken uns bei Ihnen an dieser Stelle für Ihre engagierte Teilnahme und die vielen angeregten Gespräche während der Konferenz.</p>
-					<p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-				</div>
-			</div>
-			<div class="item">
-				<image style="background-image:url(images/banner_0.jpg)" />
-				<div class="carousel-caption">
-					<h3>Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet</h3>
-					<p>Die Ständeräte Hans Stöckli und Joachim Eder sowie die Nationalrätin Ruth Humbel haben die Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet. Ziel ist es, das Thema NCD in der Schweizer Politik nachhaltig zu verankern. </p>
-					<p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-				</div>
-			</div>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	    <!-- Wrapper for slides -->
+	    <div class="carousel-inner">
+	        <div class="item active">
+							<image style="background-image:url(images/banner_0.jpg)" />
+	            <div class="carousel-caption">
+	                <h3>
+	                    Swiss Public Health Conference</h3>
+	                <p class="hidden-xs">Die Swiss Public Health Conference 2016 ist erfolgreich zu Ende gegangen. Wir bedanken uns bei Ihnen an dieser Stelle für Ihre engagierte Teilnahme und die vielen angeregten Gespräche während der Konferenz.</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	        <div class="item">
+	            <div class="carousel-caption">
+	                <h3>Projekte & Aktivitäten</h3>
+	                <p class="hidden-xs">Public Health Schweiz will Prävention und Gesundheitsförderung stärken. Durch unsere Aktionen und Stellungsnahmen treten wir für dieses Ziel ein und stehen damit immer im Zentrum der Aktualität:</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	        <div class="item">
+	            <div class="carousel-caption">
+	                <h3>
+	                    Über uns</h3>
+	                <p class="hidden-xs">Public Health Schweiz ist der Fachverband der Public-Health-Fachleute. Er vertritt die Anliegen seiner Mitglieder und unterstützt die Entscheidungsträgerinnen und Entscheidungsträger fachlich</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	        <div class="item">
+							<image style="background-image:url(images/banner_4.jpg)" />
+	            <div class="carousel-caption">
+	                <h3>
+	                    Mitgliedschaft</h3>
+	                <p class="hidden-xs">Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen kann.</p>
+									<a href="#" class="btn btn-default">Mehr Infos</a>
+	            </div>
+	        </div>
+	        <!-- End Item -->
+	    </div>
+	    <!-- End Carousel Inner -->
+			<div class="container">
 
-			<div class="item">
-				<image style="background-image:url(images/banner_2.jpg)" />
-				<div class="carousel-caption ">
-					<h3>Wirksamer Schutz der Kinder und Jugendlichen vor Tabakkonsum rückt in weite Ferne </h3>
-					<p>National- und Ständerat finden, dass die wenigen heute geltenden Einschränkungen für Tabakwerbung genügen. Dabei verkennen sie jedoch, dass die omnipräsente Tabakwerbung insbesondere auf Kinder und Jugendliche einen grossen Einfluss hat – und oft
-						auch auf diese ausgerichtet ist.</p>
-					<p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-				</div>
+		    <ul class="nav nav-thumbs">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;<span class="title">Aktuell<small class="hidden-xs">Swiss Public Health Conference</small></span></a></li>
+		      <li data-target="#myCarousel" data-slide-to="1"><a href="#"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp;<span class="title">Projekte<small class="hidden-xs">Prävention und Gesundheitsförderung</small></span></a></li>
+		      <li data-target="#myCarousel" data-slide-to="2"><a href="#"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;<span class="title">Über uns<small class="hidden-xs">Informationen zu Public Health</small></span></a></li>
+		      <li data-target="#myCarousel" data-slide-to="3"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<span class="title">Mitgliedschaft<small class="hidden-xs">Werden Sie jetzt Mitglied</small></span></a></li>
+		    </ul>
 			</div>
-		</div>
+	</div>
+	<!-- End Carousel -->
 
-	</div><!-- /carousel-banner -->
 
 	<section id="banner">
 		<div class="container">
