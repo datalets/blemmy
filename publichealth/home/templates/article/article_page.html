@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+
+  <h1>{{ page.translated_title }}</h1>
+  <small>{{ page.date }}</small>
+
+  {% include_block feed_image %}
+
+  <!-- Main content -->
+  <div class="container" role="main">
+
+    {% for block in page.body %}
+      {% if block.block_type == 'heading' %}
+        <h2>{{ block.value }}</h2>
+      {% else %}
+      <section class="block-{{ block.block_type }}">
+        {% include_block block %}
+      </section>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+
+{% endblock %}
