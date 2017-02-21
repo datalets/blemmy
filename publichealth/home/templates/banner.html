@@ -1,3 +1,5 @@
+{% load wagtailcore_tags %}
+
 <!-- Banner -->
 <div id="carousel-banner" class="slide">
 
@@ -44,8 +46,9 @@
 <section id="banner">
 	<div class="container">
 		<footer class="container">
-			<p class="lead">Public Health Schweiz ist die unabhängige, nationale Organisation, die die Anliegen der Public-Health-Fachleute vertritt, ein themen- und disziplinenübergreifendes gesamtschweizerisches Netzwerk in Public Health bietet, sich für optimale Rahmenbedingungen
-				für die Gesundheit der Bevölkerung in der Schweiz engagiert und Entscheidungsträgerinnen und Entscheidungsträger fachlich unterstützt. Public Health Schweiz stützt ihr Handeln auf wissenschaftlicher Basis ab.</p>
+			<p class="lead">
+				{{ page.intro|richtext }}
+			</p>
 		</footer>
 	</div>
 </section><!-- /banner -->

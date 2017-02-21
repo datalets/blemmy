@@ -11,15 +11,9 @@
 
 	<section>
 		<div class="container">
-			<div class="">
-				<h2>Informationen zu Public Health</h2>
-				<p>Hier finden Sie Links zu wichtigen Institutionen und Organisationen aus dem Public Health Bereich. Die Liste erhebt keinen Anspruch auf Vollständigkeit. Gerne nehmen wir Ihre Anregungen und Ergänzungsvorschläge entgegen.</p>
-        <a href="#" class="btn btn-default">Mehr erfahren</a>
+			<div class="homepage-body">
+        {{ page.body|richtext }}
       </div>
-      <center style="margin-top:2em">
-        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/publichealth" data-widget-id="831771377740967937">#publichealth Tweets</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </center>
 		</div>
 	</section>
 
@@ -27,60 +21,30 @@
 	<section id="three" class="wrapper align-center">
 		<div class="container">
 			<div class="row">
+        {% for block in page.infos %}
 				<article class="col-md-4">
 					<div class="image round">
-						<img src="/static/images/ipad.jpg" alt="Pic 01" />
+						<img src="{{ block.photo }}" />
 					</div>
 					<header>
-						<h3>Über uns</h3>
+						<h3>{{ block.title }}</h3>
 					</header>
-					<p>Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen
-						kann.</p>
+					{{ block.summary|richtext }}
 					<footer>
-						<a href="#" class="btn btn-default">Mitglied werden</a>
+						<a href="{{ block.url }}" class="btn btn-default">{{ block.action }}</a>
 					</footer>
 				</article>
-				<article class="col-md-4">
-					<div class="image round">
-						<img src="/static/images/konf.jpg" alt="Pic 02" />
-					</div>
-					<header>
-						<h3>Veranstaltungen</h3>
-					</header>
-					<p>An unseren Konferenzen und Symposien können Sie erfahren, wie sich die entsprechenden Versorgungsstrukturen in der Schweiz vorbereiten können und welche Erfahrungen und Best-Practice-Beispiele bereits vorliegen.</p>
-					<footer>
-						<a href="#" class="btn btn-default">Kommende Symposien</a>
-					</footer>
-				</article>
-				<article class="col-md-4">
-					<div class="image round">
-						<img src="/static/images/steth.jpg" alt="Pic 02" />
-					</div>
-					<header>
-						<h3>Projekte und Aktivitäten</h3>
-					</header>
-					<p>Public Health Schweiz will Prävention und Gesundheitsförderung stärken. Durch unsere Aktionen und Stellungsnahmen treten wir für dieses Ziel ein und stehen damit immer im Zentrum der Aktualität.</p>
-					<footer>
-						<a href="#" class="btn btn-default">Unterstützen</a>
-					</footer>
-				</article>
-			</div>
-
+        {% endif %}
 			</div>
 		</div>
 	</section>
 
-  <!-- Main content -->
-  <div class="container" role="main">
-
-    {% for block in page.body %}
       {% if block.block_type == 'heading' %}
         <h2>{{ block.value }}</h2>
       {% else %}
       <section class="block-{{ block.block_type }}">
         {% include_block block %}
       </section>
-      {% endif %}
     {% endfor %}
 
   </div>
