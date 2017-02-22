@@ -80,6 +80,7 @@ class ArticlePage(Page):
     ]
     parent_page_types = ['home.ArticleIndexPage']
     subpage_types = []
+    template = 'article/article_page.html'
 
 class ArticleRelatedLink(Orderable):
     page = ParentalKey(ArticlePage, related_name='related_links')

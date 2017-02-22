@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -23,15 +24,15 @@
 			<div class="row">
         {% for block in page.infos %}
 				<article class="col-md-4">
-					<div class="image round">
-						<img src="{{ block.photo }}" />
+					<div class="image">
+						{% image block.value.photo fill-300x300 %}
 					</div>
 					<header>
-						<h3>{{ block.title }}</h3>
+						<h3>{{ block.value.title }}</h3>
 					</header>
-					{{ block.summary|richtext }}
+					{{ block.value.summary|richtext }}
 					<footer>
-						<a href="{{ block.url }}" class="btn btn-default">{{ block.action }}</a>
+						<a href="{{ block.value.url }}" class="btn btn-default">{{ block.value.action }}</a>
 					</footer>
 				</article>
         {% endfor %}
