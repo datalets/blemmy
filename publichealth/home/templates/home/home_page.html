@@ -34,19 +34,9 @@
 						<a href="{{ block.url }}" class="btn btn-default">{{ block.action }}</a>
 					</footer>
 				</article>
-        {% endif %}
+        {% endfor %}
 			</div>
 		</div>
 	</section>
-
-      {% if block.block_type == 'heading' %}
-        <h2>{{ block.value }}</h2>
-      {% else %}
-      <section class="block-{{ block.block_type }}">
-        {% include_block block %}
-      </section>
-    {% endfor %}
-
-  </div>
 
 {% endblock %}
