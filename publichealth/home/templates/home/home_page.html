@@ -10,34 +10,34 @@
 
   {% include 'news.html' %}
 
-	<section>
-		<div class="container">
-			<div class="homepage-body">
-        {{ page.body|richtext }}
-      </div>
+<section>
+	<div class="container">
+		<div class="homepage-body">
+			{{ page.trans_body|richtext }}
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Three -->
-	<section id="three" class="wrapper align-center">
-		<div class="container">
-			<div class="row">
-        {% for block in page.infos %}
-				<article class="col-md-4">
-					<div class="image">
-						{% image block.value.photo fill-300x300 %}
-					</div>
-					<header>
-						<h3>{{ block.value.title }}</h3>
-					</header>
-					{{ block.value.summary|richtext }}
-					<footer>
-						<a href="{{ block.value.url }}" class="btn btn-default">{{ block.value.action }}</a>
-					</footer>
-				</article>
-        {% endfor %}
-			</div>
+<!-- Three -->
+<section id="three" class="wrapper align-center">
+	<div class="container">
+		<div class="row">
+    	{% for block in page.trans_infos %}
+			<article class="col-md-4">
+				<div class="image">
+					{% image block.value.photo fill-300x300 %}
+				</div>
+				<header>
+					<h3>{{ block.value.title }}</h3>
+				</header>
+				{{ block.value.summary|richtext }}
+				<footer>
+					<a href="{{ block.value.url }}" class="btn btn-default">{{ block.value.action }}</a>
+				</footer>
+			</article>
+    	{% endfor %}
 		</div>
-	</section>
+	</div>
+</section>
 
 {% endblock %}

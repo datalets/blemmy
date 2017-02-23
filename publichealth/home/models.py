@@ -15,7 +15,7 @@ from .util import TranslatedField
 
 class ArticleIndexPage(Page):
     title_fr = models.CharField(max_length=255, default="")
-    translated_title = TranslatedField(
+    trans_title = TranslatedField(
         'title',
         'title_fr',
     )
@@ -27,10 +27,12 @@ class ArticleIndexPage(Page):
         # Add extra variables and return the updated context
         context['article_entries'] = ArticlePage.objects.child_of(self).live()
         return context
+    class Meta:
+        verbose_name = "Rubrik"
 
 class ArticlePage(Page):
     title_fr = models.CharField(max_length=255, default="")
-    translated_title = TranslatedField(
+    trans_title = TranslatedField(
         'title',
         'title_fr',
     )
@@ -39,22 +41,22 @@ class ArticlePage(Page):
     
     intro_de = RichTextField(default='')
     intro_fr = RichTextField(default='')
-    intro = TranslatedField(
+    trans_intro = TranslatedField(
         'intro_de',
         'intro_fr',
     )
 
     body_de = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
+        ('section', blocks.CharBlock(classname="full title")),
     ], null=True, blank=True)
     body_fr = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
+        ('section', blocks.CharBlock(classname="full title")),
     ], null=True, blank=True)
-    body = TranslatedField(
+    trans_body = TranslatedField(
         'body_de',
         'body_fr',
     )
@@ -72,11 +74,15 @@ class ArticlePage(Page):
         index.SearchField('body_fr'),
         index.SearchField('title'),
         index.SearchField('title_fr'),
+        index.SearchField('intro_de'),
+        index.SearchField('intro_fr'),
         index.FilterField('date'),
     ]
     content_panels = Page.content_panels + [
         FieldPanel('title_fr'),
         FieldPanel('date'),
+        FieldPanel('intro_de'),
+        FieldPanel('intro_fr'),
         StreamFieldPanel('body_de'),
         StreamFieldPanel('body_fr'),
         InlinePanel('related_links', label="Related links"),
@@ -87,6 +93,8 @@ class ArticlePage(Page):
     ]
     parent_page_types = ['home.ArticleIndexPage']
     subpage_types = []
+    class Meta:
+        verbose_name = "Artikel"
 
 class ArticleRelatedLink(Orderable):
     page = ParentalKey(ArticlePage, related_name='related_links')
@@ -100,21 +108,21 @@ class ArticleRelatedLink(Orderable):
 class InfoBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
     photo = ImageChooserBlock()
-    summary = blocks.RichTextBlock()
-    action = blocks.CharBlock(required=True)
-    url = models.URLField()
+    summary = blocks.RichTextBlock(required=True)
+    action = blocks.CharBlock()
+    url = blocks.URLBlock()
 
 class HomePage(Page):
     intro_de = RichTextField(default='')
     intro_fr = RichTextField(default='')
-    intro = TranslatedField(
+    trans_intro = TranslatedField(
         'intro_de',
         'intro_fr',
     )
 
     body_de = RichTextField(default='')
     body_fr = RichTextField(default='')
-    body = TranslatedField(
+    trans_body = TranslatedField(
         'body_de',
         'body_fr',
     )
@@ -125,7 +133,7 @@ class HomePage(Page):
     infos_fr = StreamField([
         ('info', InfoBlock())
     ], null=True, blank=True)
-    infos = TranslatedField(
+    trans_infos = TranslatedField(
         'infos_de',
         'infos_fr',
     )

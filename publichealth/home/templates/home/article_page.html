@@ -4,25 +4,34 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
+<section id="news-details">
+  <div class="container">
 
-  <h1>{{ page.translated_title }}</h1>
-  <small>{{ page.date }}</small>
+    <div class="image">
+      {% include_block feed_image %}
+    </div>
+      
+    <h2>{{ page.trans_title }}</h2>
+    
+    <p class="lead">{{ page.trans_intro }}</p>
 
-  {% include_block feed_image %}
+    <p class="date">{{ page.date }}</p>
 
-  <!-- Main content -->
-  <div class="container" role="main">
+    <!-- Main content -->
+    <div class="article-body" role="main">
 
-    {% for block in page.body %}
+    {% for block in page.trans_body %}
       {% if block.block_type == 'heading' %}
-        <h2>{{ block.value }}</h2>
+        <h3>{{ block.value }}</h3>
       {% else %}
-      <section class="block-{{ block.block_type }}">
+      <p class="block-{{ block.block_type }}">
         {% include_block block %}
-      </section>
+      </p>
       {% endif %}
     {% endfor %}
 
+    </div>
   </div>
+</section>
 
 {% endblock %}
