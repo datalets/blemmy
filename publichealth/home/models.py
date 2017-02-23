@@ -36,6 +36,13 @@ class ArticlePage(Page):
     )
 
     date = models.DateField("Date")
+    
+    intro_de = RichTextField(default='')
+    intro_fr = RichTextField(default='')
+    intro = TranslatedField(
+        'intro_de',
+        'intro_fr',
+    )
 
     body_de = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
@@ -80,7 +87,6 @@ class ArticlePage(Page):
     ]
     parent_page_types = ['home.ArticleIndexPage']
     subpage_types = []
-    template = 'article/article_page.html'
 
 class ArticleRelatedLink(Orderable):
     page = ParentalKey(ArticlePage, related_name='related_links')
