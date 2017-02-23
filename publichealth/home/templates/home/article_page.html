@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+<section id="news-details">
+  <div class="container">
+
+    <div class="image">
+      {% include_block feed_image %}
+    </div>
+      
+    <h2>{{ page.trans_title }}</h2>
+    
+    <p class="lead">{{ page.trans_intro|richtext }}</p>
+
+    <p class="date">{{ page.date }}</p>
+
+    <!-- Main content -->
+    <div class="article-body" role="main">
+
+    {% for block in page.trans_body %}
+      {% if block.block_type == 'heading' %}
+        <h3>{{ block.value }}</h3>
+      {% else %}
+      <p class="block-{{ block.block_type }}">
+        {% include_block block %}
+      </p>
+      {% endif %}
+    {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
