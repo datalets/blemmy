@@ -53,3 +53,7 @@ grunt browser-sync
 A default browser should open pointing to the default home page.
 
 Now access the admin panel with the user account you created earlier: http://localhost:3000/admin/
+
+## Troubleshooting
+
+- Issues with migrating database tables in SQLite during development? Try `./manage.py migrate --fake`
