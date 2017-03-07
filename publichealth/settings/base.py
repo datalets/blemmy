@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'publichealth.search',
 
     'wagtail.contrib.wagtailsearchpromotions',
+    'wagtail.contrib.wagtailroutablepage',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',

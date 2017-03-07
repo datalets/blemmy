@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -37,8 +39,6 @@ class ArticlePage(Page):
         'title_fr',
     )
 
-    date = models.DateField("Date")
-    
     intro_de = RichTextField(default='')
     intro_fr = RichTextField(default='')
     trans_intro = TranslatedField(
@@ -61,6 +61,7 @@ class ArticlePage(Page):
         'body_fr',
     )
 
+    date = models.DateField("Date")
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -76,20 +77,24 @@ class ArticlePage(Page):
         index.SearchField('title_fr'),
         index.SearchField('intro_de'),
         index.SearchField('intro_fr'),
-        index.FilterField('date'),
     ]
-    content_panels = Page.content_panels + [
-        FieldPanel('title_fr'),
-        FieldPanel('date'),
-        FieldPanel('intro_de'),
-        FieldPanel('intro_fr'),
-        StreamFieldPanel('body_de'),
-        StreamFieldPanel('body_fr'),
-        InlinePanel('related_links', label="Related links"),
+    content_panels = [
+        MultiFieldPanel([
+            FieldPanel('title'),
+            FieldPanel('intro_de'),
+            StreamFieldPanel('body_de'),
+        ], heading="Deutsch"),
+        MultiFieldPanel([
+            FieldPanel('title_fr'),
+            FieldPanel('intro_fr'),
+            StreamFieldPanel('body_fr'),
+        ], heading="Français"),
     ]
     promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('date'),
         ImageChooserPanel('feed_image'),
+        InlinePanel('related_links', label="Links"),
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
     parent_page_types = ['home.ArticleIndexPage']
     subpage_types = []
@@ -137,6 +142,9 @@ class HomePage(Page):
         'infos_de',
         'infos_fr',
     )
+
+    def get_articles(self):
+        return ArticleIndexPage.objects.descendant_of(self).live().order_by('-date').select_related('owner')
 
     content_panels = Page.content_panels + [
         FieldPanel('intro_de', classname="full"),
