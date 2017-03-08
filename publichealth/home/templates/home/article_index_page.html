@@ -4,15 +4,27 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
-{% for entry in banner_articles %}
-    <div class="item">
-      <image style="background-image:url({{ entry.feed_image.src }})" />
-      <div class="carousel-caption">
-        <h3>{{ entry.trans_title }}</h3>
-        <p>{{ entry.trans_intro|richtext }}</p>
-      </div>
+<section id="news-details">
+  <div class="container">
+
+	<h2>{{ page.trans_title }}</h2>
+
+	<p class="lead">{{ page.trans_intro|richtext }}</p>
+
+    <div class="article-body" role="main">
+	{% for entry in banner_articles %}
+	    <div class="item">
+	      <image style="background-image:url({{ entry.feed_image.src }})" />
+	      <div class="carousel-caption">
+	        <h3>{{ entry.trans_title }}</h3>
+	        <p>{{ entry.trans_intro|richtext }}</p>
+	      </div>
+	    </div>
+	{% empty %}
+	    No articles found
+	{% endfor %}
+	
     </div>
-{% empty %}
-    No articles found
-{% endfor %}
+  </div>
+</section>
 {% endblock %}

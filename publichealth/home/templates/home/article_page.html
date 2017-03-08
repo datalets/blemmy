@@ -15,7 +15,9 @@
     
     <p class="lead">{{ page.trans_intro|richtext }}</p>
 
+    {% if page.date %}
     <p class="date">{{ page.date }}</p>
+    {% endif %}
 
     <!-- Main content -->
     <div class="article-body" role="main">
@@ -33,5 +35,4 @@
     </div>
   </div>
 </section>
-
 {% endblock %}
