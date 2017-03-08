@@ -1,15 +1,19 @@
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 <div id="carousel-banner" class="slide">
 	<div class="carousel-inner slick" role="listbox">
-        {% for entry in articles %}
+        {% for entry in featured %}
 		<div class="item">
-			<image style="background-image:url({{ entry.feed_image.src }})" />
+			{% image entry.feed_image original as entry_photo %}
+			<image style="background-image:url({{ entry_photo.url }})">
 			<div class="carousel-caption">
 				<h3>{{ entry.trans_title }}</h3>
 				<p>{{ entry.trans_intro|richtext }}</p>
 			</div>
 		</div>
+		{% empty %}
+		    No articles found
         {% endfor %}
 	</div>
 </div><!-- /carousel-banner -->

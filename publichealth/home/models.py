@@ -21,8 +21,18 @@ class ArticleIndexPage(Page):
         'title',
         'title_fr',
     )
+
+    intro_de = RichTextField(default='', blank=True)
+    intro_fr = RichTextField(default='', blank=True)
+    trans_intro = TranslatedField(
+        'intro_de',
+        'intro_fr',
+    )
+
     content_panels = Page.content_panels + [
+        FieldPanel('intro_de'),
         FieldPanel('title_fr'),
+        FieldPanel('intro_fr'),
     ]
     def get_context(self, request):
         context = super(ArticleIndexPage, self).get_context(request)
@@ -39,8 +49,8 @@ class ArticlePage(Page):
         'title_fr',
     )
 
-    intro_de = RichTextField(default='')
-    intro_fr = RichTextField(default='')
+    intro_de = RichTextField(default='', blank=True)
+    intro_fr = RichTextField(default='', blank=True)
     trans_intro = TranslatedField(
         'intro_de',
         'intro_fr',
@@ -61,7 +71,6 @@ class ArticlePage(Page):
         'body_fr',
     )
 
-    date = models.DateField("Date")
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -91,7 +100,6 @@ class ArticlePage(Page):
         ], heading="Français"),
     ]
     promote_panels = [
-        FieldPanel('date'),
         ImageChooserPanel('feed_image'),
         InlinePanel('related_links', label="Links"),
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
@@ -125,8 +133,8 @@ class HomePage(Page):
         'intro_fr',
     )
 
-    body_de = RichTextField(default='')
-    body_fr = RichTextField(default='')
+    body_de = RichTextField(default='', blank=True)
+    body_fr = RichTextField(default='', blank=True)
     trans_body = TranslatedField(
         'body_de',
         'body_fr',
@@ -143,14 +151,30 @@ class HomePage(Page):
         'infos_fr',
     )
 
-    def get_articles(self):
-        return ArticleIndexPage.objects.descendant_of(self).live().order_by('-date').select_related('owner')
-
     content_panels = Page.content_panels + [
-        FieldPanel('intro_de', classname="full"),
-        FieldPanel('intro_fr', classname="full"),
-        FieldPanel('body_de', classname="full"),
-        FieldPanel('body_fr', classname="full"),
-        StreamFieldPanel('infos_de'),
-        StreamFieldPanel('infos_fr'),
+        MultiFieldPanel([
+            FieldPanel('intro_de', classname="full"),
+            FieldPanel('body_de', classname="full"),
+            StreamFieldPanel('infos_de'),
+        ], heading="Deutsch"),
+            MultiFieldPanel([
+            FieldPanel('intro_fr', classname="full"),
+            FieldPanel('body_fr', classname="full"),
+            StreamFieldPanel('infos_fr'),
+        ], heading="Français"),
     ]
+
+    @property
+    def featured(self):
+        # Get list of live pages that are descendants of this page
+        articles = ArticlePage.objects.live().descendant_of(self)
+        # Order by most recent date first
+        #articles = articles.order_by('-date')
+        return articles
+
+    def get_context(self, request):
+        featured = self.featured[:4]
+        # Update template context
+        context = super(HomePage, self).get_context(request)
+        context['featured'] = featured
+        return context
