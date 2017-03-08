@@ -6,10 +6,12 @@
 		<div class="item">
 			{% image entry.feed_image original as entry_photo %}
 			<image style="background-image:url({{ entry_photo.url }})">
-			<div class="carousel-caption">
-				<h3>{{ entry.trans_title }}</h3>
-				<p>{{ entry.trans_intro|richtext }}</p>
-			</div>
+			<a href="{% pageurl entry %}">
+				<div class="carousel-caption">
+					<h3>{{ entry.trans_title }}</h3>
+					<p>{{ entry.trans_intro|richtext }}</p>
+				</div>
+			</a>
 		</div>
 		{% empty %}
 		    No articles found

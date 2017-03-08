@@ -34,11 +34,13 @@ class ArticleIndexPage(Page):
         FieldPanel('title_fr'),
         FieldPanel('intro_fr'),
     ]
+
     def get_context(self, request):
         context = super(ArticleIndexPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['article_entries'] = ArticlePage.objects.child_of(self).live()
+        articles = ArticlePage.objects.child_of(self).live()
+        context['articles'] = articles
         return context
+
     class Meta:
         verbose_name = "Rubrik"
 
