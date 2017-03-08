@@ -39,10 +39,19 @@ def top_menu(context, parent, calling_page=None):
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.live().in_menu()
+    menuitems_children = parent.get_children().live().in_menu()
     return {
         'parent': parent,
         'menuitems_children': menuitems_children,
+        'request': context['request'],
+    }
+
+# Retrieves the footer menu items
+@register.inclusion_tag('tags/footer_menu.html', takes_context=True)
+def footer_menu(context, parent, calling_page=None):
+    menuitems = parent.get_children().live().in_menu()
+    return {
+        'calling_page': calling_page,
+        'menuitems': menuitems,
         'request': context['request'],
     }

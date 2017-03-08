@@ -1,17 +1,14 @@
+{% load wagtailcore_tags navigation %}
+{% get_site_root as site_root %}
+
 <!-- Footer -->
 <footer id="footer">
 <div class="container">
 <div class="row">
 
 <div class="col-md-4">
-	<ul class="list-unstyled">
-		<li><a href="#">Über uns</a></li>
-		<li><a href="#">Mitglied werden</a></li>
-		<li><a href="#">Veranstaltungen</a></li>
-		<li><a href="#">Projekte und Aktivitäten</a></li>
-		<li><a href="#">Information zu Public Health</a></li>
-		<li><a href="#">Agenda</a></li>
-	</ul>
+	<!-- Bottom Menu -->
+	{% footer_menu parent=site_root calling_page=self %}
 </div>
 <div class="col-md-4" id="contact">
 	<address>
