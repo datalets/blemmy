@@ -25,11 +25,12 @@ def has_menu_children(page):
 # Retrieves the top menu items
 @register.inclusion_tag('tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
-    menuitems = parent.get_children().live().in_menu()
+    menuitems = parent.get_children().live().in_menu().specific()
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
         menuitem.active = (calling_page.url.startswith(menuitem.url)
                            if calling_page else False)
+        menuitem.title = menuitem.trans_title
     return {
         'calling_page': calling_page,
         'menuitems': menuitems,
@@ -39,7 +40,9 @@ def top_menu(context, parent, calling_page=None):
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
-    menuitems_children = parent.get_children().live().in_menu()
+    menuitems_children = parent.get_children().live().in_menu().specific()
+    for menuitem in menuitems_children:
+        menuitem.title = menuitem.trans_title
     return {
         'parent': parent,
         'menuitems_children': menuitems_children,
