@@ -7,9 +7,11 @@
 <section id="news-details">
   <div class="container">
 
+    {% if page.feed_image %}
     <div class="image">
       {% image page.feed_image fill-940x400 class="img-responsive" %}
     </div>
+    {% endif %}
       
     <h2>{{ page.trans_title }}</h2>
     
@@ -21,7 +23,6 @@
 
     <!-- Main content -->
     <div class="article-body" role="main">
-
     {% for block in page.trans_body %}
       {% if block.block_type == 'heading' %}
         <h3>{{ block.value }}</h3>
@@ -31,7 +32,6 @@
       </p>
       {% endif %}
     {% endfor %}
-
     </div>
   </div>
 </section>

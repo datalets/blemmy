@@ -24,24 +24,26 @@
 {% endblock social_share %}
 
 {% block content %}
-<div class="container">
-  <article class="box page-content"
+<section id="news-details">
+  <article class="container"
            {%if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
-      {% include 'puput/entry_page_header.html' with entry=self %}
-      {% if self.header_image %}
-          <section>
-              <span class="image featured">
-                  {% image self.header_image fill-800x450 as header_image %}
-                  <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
-              </span>
-          </section>
-      {% endif %}
-      <section>
-          {{ self.body|richtext}}
-      </section>
-      {% show_comments %}
+
+    {% if self.header_image %}
+    <div class="image">
+      {% image self.header_image fill-940x300 as header_image %}
+      <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}" class="img-responsive">
+    </div>
+    {% endif %}
+
+    {% include 'puput/entry_page_header.html' with entry=self %}
+
+    <div class="article-body" role="main">
+      {{ self.body|richtext}}
+    </div>
+
+    {% show_comments %}
   </article>
-</div>
+</section>
 {% endblock content %}
 
 {% block extra_content %}
