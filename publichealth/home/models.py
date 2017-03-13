@@ -184,5 +184,6 @@ class HomePage(Page):
         context['featured'] = featured
         return context
 
+    parent_page_types = []
     class Meta:
         verbose_name = "Frontpage"
