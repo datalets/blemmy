@@ -13,6 +13,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from puput.models import EntryPage, BlogPage
+
 from .util import TranslatedField
 
 class ArticleIndexPage(Page):
@@ -122,6 +124,15 @@ class ArticleRelatedLink(Orderable):
         FieldPanel('name'),
         FieldPanel('url'),
     ]
+
+class NewsEntryPage(EntryPage):
+    video_url = models.URLField()
+    content_panels = EntryPage.content_panels + [
+        FieldPanel('video_url')
+    ]
+    class Meta:
+        verbose_name = "News"
+BlogPage.subpage_types = NewsEntryPage
 
 class InfoBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
