@@ -6,18 +6,19 @@ from django.conf.urls.i18n import i18n_patterns
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
+from puput import urls as puput_urls
 
 from publichealth.search import views as search_views
 
 
 urlpatterns = [
+    url(r'', include(puput_urls)),
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
-
 ]
 
 

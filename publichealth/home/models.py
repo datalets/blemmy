@@ -41,6 +41,7 @@ class ArticleIndexPage(Page):
         context['articles'] = articles
         return context
 
+    subpage_types = ['home.ArticlePage']
     class Meta:
         verbose_name = "Rubrik"
 
@@ -182,3 +183,6 @@ class HomePage(Page):
         context = super(HomePage, self).get_context(request)
         context['featured'] = featured
         return context
+
+    class Meta:
+        verbose_name = "Frontpage"

@@ -10,16 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
 
 # Application definition
 
@@ -30,6 +27,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailroutablepage',
+    'wagtail.contrib.wagtailsitemaps',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -45,6 +43,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'compressor',
     'taggit',
+    'puput',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -192,3 +191,7 @@ WAGTAILSEARCH_BACKENDS = {
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "Public Health Schweiz"
+
+# Puput settings
+
+PUPUT_AS_PLUGIN = True
