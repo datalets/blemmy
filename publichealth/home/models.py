@@ -13,6 +13,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from puput.models import EntryPage
+
 from .util import TranslatedField
 
 class ArticleIndexPage(Page):
@@ -172,16 +174,25 @@ class HomePage(Page):
     @property
     def featured(self):
         # Get list of live pages that are descendants of this page
-        articles = ArticlePage.objects.live()[:4] #.descendant_of(self)
+        articles = ArticlePage.objects.live() #.descendant_of(self)
         # Order by most recent date first
         #articles = articles.order_by('-date')
-        return articles
+        return articles[:4]
+
+    @property
+    def newsfeed(self):
+        # Get list of latest news
+        # TODO: fetch children of 'News (DE)'
+        entries = EntryPage.objects.live().descendant_of(self)
+        # Order by most recent date first
+        entries = entries.order_by('-date')
+        return entries[:4]
 
     def get_context(self, request):
-        featured = self.featured[:4]
         # Update template context
         context = super(HomePage, self).get_context(request)
-        context['featured'] = featured
+        context['featured'] = self.featured
+        context['newsfeed'] = self.newsfeed
         return context
 
     parent_page_types = []
