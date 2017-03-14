@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -11,47 +13,70 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from puput.models import EntryPage
+
 from .util import TranslatedField
 
 class ArticleIndexPage(Page):
     title_fr = models.CharField(max_length=255, default="")
-    translated_title = TranslatedField(
+    trans_title = TranslatedField(
         'title',
         'title_fr',
     )
+
+    intro_de = RichTextField(default='', blank=True)
+    intro_fr = RichTextField(default='', blank=True)
+    trans_intro = TranslatedField(
+        'intro_de',
+        'intro_fr',
+    )
+
     content_panels = Page.content_panels + [
+        FieldPanel('intro_de'),
         FieldPanel('title_fr'),
+        FieldPanel('intro_fr'),
     ]
+
     def get_context(self, request):
         context = super(ArticleIndexPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['article_entries'] = ArticlePage.objects.child_of(self).live()
+        articles = ArticlePage.objects.child_of(self).live()
+        context['articles'] = articles
         return context
+
+    subpage_types = ['home.ArticlePage']
+    class Meta:
+        verbose_name = "Rubrik"
 
 class ArticlePage(Page):
     title_fr = models.CharField(max_length=255, default="")
-    translated_title = TranslatedField(
+    trans_title = TranslatedField(
         'title',
         'title_fr',
     )
 
-    date = models.DateField("Date")
+    intro_de = RichTextField(default='', blank=True)
+    intro_fr = RichTextField(default='', blank=True)
+    trans_intro = TranslatedField(
+        'intro_de',
+        'intro_fr',
+    )
 
     body_de = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
+        ('section', blocks.CharBlock(classname="full title")),
     ], null=True, blank=True)
     body_fr = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
+        ('section', blocks.CharBlock(classname="full title")),
     ], null=True, blank=True)
-    body = TranslatedField(
+    trans_body = TranslatedField(
         'body_de',
         'body_fr',
     )
 
+    date = models.DateField("Date", null=True, blank=True)
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -65,21 +90,31 @@ class ArticlePage(Page):
         index.SearchField('body_fr'),
         index.SearchField('title'),
         index.SearchField('title_fr'),
-        index.FilterField('date'),
+        index.SearchField('intro_de'),
+        index.SearchField('intro_fr'),
     ]
-    content_panels = Page.content_panels + [
-        FieldPanel('title_fr'),
-        FieldPanel('date'),
-        StreamFieldPanel('body_de'),
-        StreamFieldPanel('body_fr'),
-        InlinePanel('related_links', label="Related links"),
+    content_panels = [
+        MultiFieldPanel([
+            FieldPanel('title'),
+            FieldPanel('intro_de'),
+            StreamFieldPanel('body_de'),
+        ], heading="Deutsch"),
+        MultiFieldPanel([
+            FieldPanel('title_fr'),
+            FieldPanel('intro_fr'),
+            StreamFieldPanel('body_fr'),
+        ], heading="Français"),
+        ImageChooserPanel('feed_image'),
     ]
     promote_panels = [
+        FieldPanel('date'),
+        InlinePanel('related_links', label="Links"),
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
     ]
     parent_page_types = ['home.ArticleIndexPage']
     subpage_types = []
+    class Meta:
+        verbose_name = "Artikel"
 
 class ArticleRelatedLink(Orderable):
     page = ParentalKey(ArticlePage, related_name='related_links')
@@ -93,21 +128,21 @@ class ArticleRelatedLink(Orderable):
 class InfoBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
     photo = ImageChooserBlock()
-    summary = blocks.RichTextBlock()
-    action = blocks.CharBlock(required=True)
-    url = models.URLField()
+    summary = blocks.RichTextBlock(required=True)
+    action = blocks.CharBlock()
+    url = blocks.URLBlock()
 
 class HomePage(Page):
     intro_de = RichTextField(default='')
     intro_fr = RichTextField(default='')
-    intro = TranslatedField(
+    trans_intro = TranslatedField(
         'intro_de',
         'intro_fr',
     )
 
-    body_de = RichTextField(default='')
-    body_fr = RichTextField(default='')
-    body = TranslatedField(
+    body_de = RichTextField(default='', blank=True)
+    body_fr = RichTextField(default='', blank=True)
+    trans_body = TranslatedField(
         'body_de',
         'body_fr',
     )
@@ -118,16 +153,48 @@ class HomePage(Page):
     infos_fr = StreamField([
         ('info', InfoBlock())
     ], null=True, blank=True)
-    infos = TranslatedField(
+    trans_infos = TranslatedField(
         'infos_de',
         'infos_fr',
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro_de', classname="full"),
-        FieldPanel('intro_fr', classname="full"),
-        FieldPanel('body_de', classname="full"),
-        FieldPanel('body_fr', classname="full"),
-        StreamFieldPanel('infos_de'),
-        StreamFieldPanel('infos_fr'),
+        MultiFieldPanel([
+            FieldPanel('intro_de', classname="full"),
+            FieldPanel('body_de', classname="full"),
+            StreamFieldPanel('infos_de'),
+        ], heading="Deutsch"),
+            MultiFieldPanel([
+            FieldPanel('intro_fr', classname="full"),
+            FieldPanel('body_fr', classname="full"),
+            StreamFieldPanel('infos_fr'),
+        ], heading="Français"),
     ]
+
+    @property
+    def featured(self):
+        # Get list of live pages that are descendants of this page
+        articles = ArticlePage.objects.live() #.descendant_of(self)
+        # Order by most recent date first
+        #articles = articles.order_by('-date')
+        return articles[:4]
+
+    @property
+    def newsfeed(self):
+        # Get list of latest news
+        # TODO: fetch children of 'News (DE)'
+        entries = EntryPage.objects.live().descendant_of(self)
+        # Order by most recent date first
+        entries = entries.order_by('-date')
+        return entries[:4]
+
+    def get_context(self, request):
+        # Update template context
+        context = super(HomePage, self).get_context(request)
+        context['featured'] = self.featured
+        context['newsfeed'] = self.newsfeed
+        return context
+
+    parent_page_types = []
+    class Meta:
+        verbose_name = "Frontpage"

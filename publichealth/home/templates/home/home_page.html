@@ -5,48 +5,22 @@
 
 {% block content %}
 
-  {% include 'banner.html' %}
+<!-- Banner (articles) -->
+{% include 'banner.html' %}
 
-  {% include 'news.html' %}
+<!-- News -->
+{% include 'news.html' %}
 
-	<section>
-		<div class="container">
-			<div class="homepage-body">
-        {{ page.body|richtext }}
-      </div>
+<!-- Page body -->
+<section>
+	<div class="container">
+		<div class="homepage-body">
+			{{ page.trans_body|richtext }}
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Three -->
-	<section id="three" class="wrapper align-center">
-		<div class="container">
-			<div class="row">
-        {% for block in page.infos %}
-				<article class="col-md-4">
-					<div class="image round">
-						<img src="{{ block.photo }}" />
-					</div>
-					<header>
-						<h3>{{ block.title }}</h3>
-					</header>
-					{{ block.summary|richtext }}
-					<footer>
-						<a href="{{ block.url }}" class="btn btn-default">{{ block.action }}</a>
-					</footer>
-				</article>
-        {% endif %}
-			</div>
-		</div>
-	</section>
-
-      {% if block.block_type == 'heading' %}
-        <h2>{{ block.value }}</h2>
-      {% else %}
-      <section class="block-{{ block.block_type }}">
-        {% include_block block %}
-      </section>
-    {% endfor %}
-
-  </div>
+<!-- Infoblocks -->
+{% include 'infos.html' %}
 
 {% endblock %}

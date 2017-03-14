@@ -1,39 +1,31 @@
+{% load wagtailcore_tags wagtailimages_tags puput_tags %}
+
 <section id="news">
 	<div class="container">
 		<div class="row">
+        {% for entry in newsfeed %}
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="panel panel-default">
-					<img src="/static/images/thumb_news_1.jpg" alt="">
+					{% if entry.header_image %}
+						{% image entry.header_image fill-360x270 %}
+					{% endif %}
 					<div class="panel-body">
-						<h3><span>Ehrenmitgliedschaften</span></h3>
-						<p>Nicole Probst-Hensch, Professorin für Pharmakologie und Epidemiologie am Schweizerischen Tropen- und Public Health Institut der Universität Basel, wurde die Ehrenmitgliedschaft von Public Health Schweiz verliehen.</p>
-						<a href="/news-details.html" class="btn btn-default btn-xs">Mehr erfahren</a>
+						<h3><span>{{ entry.title }}</span></h3>
+						<p>
+						{% if entry.excerpt %}
+	                        {{ entry.excerpt|richtext }}
+	                    {% else %}
+	                        {{ entry.body|richtext|truncatewords_html:70 }}
+	                    {% endif %}
+						</p>
+						<a href="{% pageurl entry %}" class="btn btn-default btn-xs">Mehr erfahren</a>
 					</div>
-					<a href="/news-details.html" class="fill"></a>
+					<a href="{% pageurl entry %}" class="fill"></a>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="panel panel-default">
-					<img src="/static/images/thumb_news_2.jpg" alt="">
-					<div class="panel-body">
-
-						<h3><span>Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet</span></h3>
-
-						<a href="/news-details.html" class="btn btn-default btn-xs">Mehr erfahren</a>
-					</div>
-					<a href="/news-details.html" class="fill"></a>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="panel panel-default">
-					<div class="img-crop"></div>
-					<div class="panel-body">
-						<h3><span>Wirksamer Schutz der Kinder und Jugendlichen vor Tabakkonsum rückt in weite Ferne<span></h3>
-							<a href="/news-details.html" class="btn btn-default btn-xs">Mehr erfahren</a>
-					</div>
-					<a href="/news-details.html" class="fill"></a>
-				</div>
-			</div>
+		{% empty %}
+		    No news today
+        {% endfor %}
 		</div>
 	</div>
 </section>

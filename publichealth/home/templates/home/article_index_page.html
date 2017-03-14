@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+<section id="article-index">
+  <div class="container">
+
+	<h2>{{ page.trans_title }}</h2>
+
+	<p class="lead">{{ page.trans_intro|richtext }}</p>
+
+    <div class="article-body" role="main">
+	{% for entry in articles %}
+	    <div class="item">
+	      <div class="article-caption">
+	        <h3><a href="{% pageurl entry %}">{{ entry.trans_title }}</a></h3>
+	        <p>{{ entry.trans_intro|richtext }}</p>
+	      </div>
+	    </div>
+	{% empty %}
+	    No articles found
+	{% endfor %}
+
+    </div>
+  </div>
+</section>
+{% endblock %}

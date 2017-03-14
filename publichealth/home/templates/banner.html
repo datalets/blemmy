@@ -1,53 +1,29 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-<!-- Banner -->
 <div id="carousel-banner" class="slide">
-
-	<!-- Wrapper for slides -->
 	<div class="carousel-inner slick" role="listbox">
+        {% for entry in featured %}
 		<div class="item">
-			<image style="background-image:url(/static/images/banner_4.jpg)" />
-			<div class="carousel-caption">
-				<h3>Mitgliedschaft</h3>
-				<p>Werden Sie jetzt Mitglied von Public Health Schweiz und profitieren Sie von vielen Vorteilen und Vergünstigungen. Als Mitglied tragen Sie zudem dazu bei, dass sich Public Health Schweiz weiterhin für die Anliegen der Public-Health-Fachleute einsetzen kann.</p>
-				<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Mitglied werden</a></p>
-			</div>
+			{% image entry.feed_image original as entry_photo %}
+			<image style="background-image:url({{ entry_photo.url }})">
+			<a href="{% pageurl entry %}">
+				<div class="carousel-caption">
+					<h3>{{ entry.trans_title }}</h3>
+					<p>{{ entry.trans_intro|richtext }}</p>
+				</div>
+			</a>
 		</div>
-		<div class="item">
-			<image style="background-image:url(/static/images/banner_1.jpg)" />
-			<div class="carousel-caption">
-				<h3>Swiss Public Health Conference 15. November 2016 in Bern</h3>
-				<p>Die Swiss Public Health Conference 2016 ist erfolgreich zu Ende gegangen. Wir bedanken uns bei Ihnen an dieser Stelle für Ihre engagierte Teilnahme und die vielen angeregten Gespräche während der Konferenz.</p>
-				<p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-			</div>
-		</div>
-		<div class="item">
-			<image style="background-image:url(/static/images/banner_0.jpg)" />
-			<div class="carousel-caption">
-				<h3>Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet</h3>
-				<p>Die Ständeräte Hans Stöckli und Joachim Eder sowie die Nationalrätin Ruth Humbel haben die Parlamentarische Gruppe nichtübertragbare Krankheiten NCD gegründet. Ziel ist es, das Thema NCD in der Schweizer Politik nachhaltig zu verankern. </p>
-				<p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-			</div>
-		</div>
-
-		<div class="item">
-			<image style="background-image:url(/static/images/banner_2.jpg)" />
-			<div class="carousel-caption ">
-				<h3>Wirksamer Schutz der Kinder und Jugendlichen vor Tabakkonsum rückt in weite Ferne </h3>
-				<p>National- und Ständerat finden, dass die wenigen heute geltenden Einschränkungen für Tabakwerbung genügen. Dabei verkennen sie jedoch, dass die omnipräsente Tabakwerbung insbesondere auf Kinder und Jugendliche einen grossen Einfluss hat – und oft
-					auch auf diese ausgerichtet ist.</p>
-				<p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-			</div>
-		</div>
+		{% empty %}
+		    No articles found
+        {% endfor %}
 	</div>
-
 </div><!-- /carousel-banner -->
 
 <section id="banner">
 	<div class="container">
 		<footer class="container">
 			<p class="lead">
-				{{ page.intro|richtext }}
+				{{ page.trans_intro|richtext }}
 			</p>
 		</footer>
 	</div>
