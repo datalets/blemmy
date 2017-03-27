@@ -57,3 +57,12 @@ Now access the admin panel with the user account you created earlier: http://loc
 ## Troubleshooting
 
 - Issues with migrating database tables in SQLite during development? Try `./manage.py migrate --fake`
+
+## Production notes
+
+We are using [Dokku](http://dokku.viewdocs.io/) for automated deployment.
+
+```
+sudo dokku apps:create phase-alpha
+sudo dokku config:set phase-alpha BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-python
+```
