@@ -22,9 +22,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loleg/public-health-ch.git"
+    "url": "git+https://github.com/datalets/public-health-ch.git"
   },
   "author": "Oleg Lavrovsky <oleg@datalets.ch>",
   "license": "MIT",
-  "homepage": "https://github.com/loleg/public-health-ch#readme"
+  "homepage": "https://github.com/datalets/public-health-ch#readme"
 }
