@@ -5,7 +5,9 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bower": "latest"
+  },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-bg-shell": "^2.3.3",
