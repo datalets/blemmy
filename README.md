@@ -64,5 +64,10 @@ We suggest using Docker or [Dokku](http://dokku.viewdocs.io/) for automated depl
 
 ```
 docker-compose run web python manage.py migrate
-docker-compose run web python manage.py createsuperuser
+... createsuperuser
+... compress
+... collectstatic
+
+docker-compose build web
+docker-compose up -d
 ```
