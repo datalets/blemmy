@@ -5,17 +5,17 @@ web:
   volumes:
     - ./:/usr/src/app
   links:
-   - frontend
    - postgres
    - elasticsearch
   ports:
    - "5000:5000"
   environment:
-    - DEBUG=True
-    - DEV=True
+    - DEBUG=${DEBUG}
+    - DEV=${DEBUG}
     - DATABASE_URL=postgres://postgres:@postgres:5432/postgres
     - ELASTICSEARCH_URL=http://elasticsearch:9200
-    - SECRET_KEY=notasecretreplaceme
+    - SECRET_KEY=${SECRET_KEY}
+    - ALLOWED_HOSTS=${HOSTNAME}
 frontend:
   build: .
   dockerfile: .dockerfile-frontend

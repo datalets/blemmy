@@ -6,7 +6,11 @@ WORKDIR /usr/src/app
 COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN python manage.py migrate
+RUN python manage.py createsuperuser
+
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV LANG en_US.UTF-8
 ENV PYTHONIOENCODING utf_8
+
