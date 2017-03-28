@@ -1,14 +1,14 @@
 web:
   build: .
   dockerfile: .dockerfile
-  command: python manage.py runserver 0.0.0.0:80
+  command: python manage.py runserver 0.0.0.0:5000
   volumes:
     - ./:/usr/src/app
   links:
    - postgres
    - elasticsearch
   ports:
-   - "80:80"
+   - "5000:5000"
   environment:
     - DEBUG=True
     - DEV=True
