@@ -10,12 +10,13 @@ web:
   ports:
    - "5000:5000"
   environment:
+    - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+    - SECRET_KEY=${SECRET_KEY}
     - DEBUG=${DEBUG}
     - DEV=${DEBUG}
+    - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
     - DATABASE_URL=postgres://postgres:@postgres:5432/postgres
     - ELASTICSEARCH_URL=http://elasticsearch:9200
-    - SECRET_KEY=${SECRET_KEY}
-    - ALLOWED_HOSTS=${HOSTNAME}
 frontend:
   build: .
   dockerfile: .dockerfile-frontend
