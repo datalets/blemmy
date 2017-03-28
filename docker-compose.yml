@@ -5,6 +5,7 @@ web:
   volumes:
     - ./:/usr/src/app
   links:
+   - frontend
    - postgres
    - elasticsearch
   ports:
@@ -15,6 +16,12 @@ web:
     - DATABASE_URL=postgres://postgres:@postgres:5432/postgres
     - ELASTICSEARCH_URL=http://elasticsearch:9200
     - SECRET_KEY=notasecretreplaceme
+frontend:
+  build: .
+  dockerfile: .dockerfile-frontend
+  volumes:
+    - ./:/usr/src/app
+  working_dir: /usr/src/app
 postgres:
   image: postgres
   ports:
