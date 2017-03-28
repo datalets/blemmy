@@ -7,8 +7,8 @@ from .base import *
 # Instead, use environment variables or create a local.py file on the server.
 
 # Disable debug mode
-DEBUG = True
-TEMPLATES[0]['OPTIONS']['debug'] = True
+DEBUG = False
+TEMPLATES[0]['OPTIONS']['debug'] = False
 
 # Compress static files offline and minify CSS
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE

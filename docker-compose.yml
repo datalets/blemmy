@@ -1,28 +1,28 @@
 web:
   build: .
   dockerfile: .dockerfile
-  command: python manage.py runserver 0.0.0.0:5000
+  command: gunicorn publichealth.wsgi:application -b 0.0.0.0:5000 -w 5 --log-file=-
   volumes:
-    - ./:/usr/src/app
+   - ./:/usr/src/app
+   - /var/log/publichealth:/var/log/publichealth
   links:
+   - redis
    - postgres
    - elasticsearch
   ports:
    - "5000:5000"
   environment:
-    - ALLOWED_HOSTS=${ALLOWED_HOSTS}
-    - SECRET_KEY=${SECRET_KEY}
-    - DEBUG=${DEBUG}
-    - DEV=${DEBUG}
-    - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
-    - DATABASE_URL=postgres://postgres:@postgres:5432/postgres
-    - ELASTICSEARCH_URL=http://elasticsearch:9200
-frontend:
-  build: .
-  dockerfile: .dockerfile-frontend
-  volumes:
-    - ./:/usr/src/app
-  working_dir: /usr/src/app
+   - SECRET_KEY=${SECRET_KEY}
+   - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+   - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+   - DATABASE_URL=postgres://postgres:@postgres:5432/postgres
+   - ELASTICSEARCH_URL=http://elasticsearch:9200
+   - REDIS_URL=redis://redis:6379
+   - LOG_DIR=/var/log/publichealth
+redis:
+  image: redis
+  ports:
+   - "6379:6379"
 postgres:
   image: postgres
   ports:
@@ -30,4 +30,4 @@ postgres:
 elasticsearch:
   image: orchardup/elasticsearch
   ports:
-    - "9200:9200"
+   - "9200:9200"
