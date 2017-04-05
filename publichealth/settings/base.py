@@ -187,6 +187,9 @@ WAGTAILSEARCH_BACKENDS = {
     },
 }
 
+# Email settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Wagtail settings
 
