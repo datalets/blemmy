@@ -87,6 +87,16 @@ else:
     }
 
 
+# Email via ESP
+
+if 'MAILGUN_KEY' in os.environ:
+    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+    ANYMAIL = {
+        "MAILGUN_API_KEY": env['MAILGUN_KEY'],
+        "MAILGUN_SENDER_DOMAIN": env['MAILGUN_DOMAIN']
+    }
+    DEFAULT_FROM_EMAIL = env['MAILGUN_FROM']
+
 # Redis
 # Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
 

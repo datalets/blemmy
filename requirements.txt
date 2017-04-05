@@ -29,3 +29,4 @@ stellar==0.4.3
 gunicorn==19.7.1
 whitenoise==3.3.0
 ConcurrentLogHandler==0.9.1
+django-anymail==0.9

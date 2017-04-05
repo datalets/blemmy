@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'compressor',
     'taggit',
     'puput',
+    'anymail',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -186,10 +187,6 @@ WAGTAILSEARCH_BACKENDS = {
         'INDEX': 'publichealth',
     },
 }
-
-# Email settings
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Wagtail settings
 
