@@ -12,7 +12,7 @@ dj-database-url==0.4.2
 puput==0.8
 
 # Search
-elasticsearch==5.2.0
+elasticsearch>=5.0.0,<6.0.0
 
 # Caching
 django-redis==4.7.0
