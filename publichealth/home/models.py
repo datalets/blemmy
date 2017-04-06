@@ -43,7 +43,7 @@ class ArticleIndexPage(Page):
         context['articles'] = articles
         return context
 
-    subpage_types = ['home.ArticlePage']
+    subpage_types = ['home.ArticlePage', 'home.ArticleIndexPage']
     class Meta:
         verbose_name = "Rubrik"
 
