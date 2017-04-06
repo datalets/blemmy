@@ -1,4 +1,4 @@
-# Updated: 27.3.2017
+# Updated: 5.4.2017
 
 # Core
 wagtail==1.9
@@ -12,7 +12,7 @@ dj-database-url==0.4.2
 puput==0.8
 
 # Search
-elasticsearch==5.2.0
+elasticsearch>=5.0.0,<6.0.0
 
 # Caching
 django-redis==4.7.0
@@ -29,3 +29,4 @@ stellar==0.4.3
 gunicorn==19.7.1
 whitenoise==3.3.0
 ConcurrentLogHandler==0.9.1
+django-anymail==0.9

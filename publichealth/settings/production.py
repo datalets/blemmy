@@ -7,8 +7,8 @@ from .base import *
 # Instead, use environment variables or create a local.py file on the server.
 
 # Disable debug mode
-DEBUG = True
-TEMPLATES[0]['OPTIONS']['debug'] = True
+DEBUG = False
+TEMPLATES[0]['OPTIONS']['debug'] = False
 
 # Compress static files offline and minify CSS
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
@@ -87,6 +87,16 @@ else:
     }
 
 
+# Email via ESP
+
+if 'MAILGUN_KEY' in os.environ:
+    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+    ANYMAIL = {
+        "MAILGUN_API_KEY": env['MAILGUN_KEY'],
+        "MAILGUN_SENDER_DOMAIN": env['MAILGUN_DOMAIN']
+    }
+    DEFAULT_FROM_EMAIL = env['MAILGUN_FROM']
+
 # Redis
 # Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
 
@@ -124,7 +134,7 @@ if REDIS_LOCATION is not None:
 if 'ELASTICSEARCH_URL' in env:
     WAGTAILSEARCH_BACKENDS = {
         'default': {
-            'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+            'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch5',
             'URLS': [env['ELASTICSEARCH_URL']],
             'INDEX': APP_NAME,
             'ATOMIC_REBUILD': True,
