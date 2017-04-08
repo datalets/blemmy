@@ -1,4 +1,4 @@
-{% load wagtailcore_tags navigation %}
+{% load wagtailcore_tags navigation information %}
 {% get_site_root as site_root %}
 
 <!-- Footer -->
@@ -9,27 +9,7 @@
 		<!-- Bottom Menu -->
 		{% footer_menu parent=site_root calling_page=self %}
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-4" id="contact">
-		{{ contact_info }}
-	</div>
-</div>
-<div class="col-md-4">
-	<form action="https://formspree.io/info@datalets.ch" method="POST">
-		<div class="form-group">
-			<input name="name" id="name" type="text" placeholder="Name" class="form-control">
-		</div>
-		<div class="form-group">
-			<input name="_replyto" id="email" type="email" placeholder="E-Mail" class="form-control">
-		</div>
-		<div class="form-group">
-			<textarea name="message" id="message" rows="3" placeholder="Anfrage" class="form-control"></textarea>
-		</div>
-		<button class="btn btn-priamry" type="submit">Senden</button>
-	</form>
-</div>
-
+	{% contact_info %}
 </div><!-- /row -->
 </div><!-- /container -->
 </footer>

@@ -2,7 +2,7 @@
 from django import template
 from django.utils import translation
 
-from ..snippets import Contact
+from ..models.snippets import Contact
 
 register = template.Library()
 
@@ -10,5 +10,5 @@ register = template.Library()
 @register.inclusion_tag('tags/contact_info.html')
 def contact_info():
     return {
-        'contact': Contact.objects.first(),
+        'contact': Contact.objects.last(),
     }
