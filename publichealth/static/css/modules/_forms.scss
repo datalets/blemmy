@@ -1,4 +1,4 @@
-// Contact form
+// Contact page
 #contact-page {
 
   form {
@@ -7,6 +7,21 @@
       border-bottom: 1px dashed #ccc;
       line-height: 155%;
     }
+  }
+
+}
+
+// Footer search form
+#search-form {
+
+  input {
+    float: left;
+    width: auto;
+    color: white;
+  }
+  button {
+    background: none; border: none;
+    padding-top: 0.5em;
   }
 
 }

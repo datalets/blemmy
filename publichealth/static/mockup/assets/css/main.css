@@ -8529,6 +8529,17 @@ footer#footer a {
   line-height: 155%;
 }
 
+#search-form input {
+  float: left;
+  width: auto;
+  color: white;
+}
+#search-form button {
+  background: none;
+  border: none;
+  padding-top: 0.5em;
+}
+
 body {
   margin-top: 104px;
 }

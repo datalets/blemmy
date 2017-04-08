@@ -8,6 +8,14 @@
 	<div class="col-md-4">
 		<!-- Bottom Menu -->
 		{% footer_menu parent=site_root calling_page=self %}
+
+		<!-- Search form -->
+		<form action="/search/" method="get" id="search-form">
+			<input type="text" name="query" value="" class="form-control">
+			<button type="submit" title="Search">
+				<span class="glyphicon glyphicon-search" aria-hidden="false"></span>
+			</button>
+		</form>
 	</div>
 	<div class="col-md-4" id="contact-info">
 		{% contact_info %}
