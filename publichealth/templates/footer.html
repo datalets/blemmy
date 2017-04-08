@@ -5,21 +5,15 @@
 <footer id="footer">
 <div class="container">
 <div class="row">
-
-<div class="col-md-4">
-	<!-- Bottom Menu -->
-	{% footer_menu parent=site_root calling_page=self %}
+	<div class="col-md-4">
+		<!-- Bottom Menu -->
+		{% footer_menu parent=site_root calling_page=self %}
+	</div>
 </div>
-<div class="col-md-4" id="contact">
-	<address>
-		<p>Public Health Schweiz<br>
-		Effingerstrasse 54<br>
-		Postfach 3420<br>
-		3001 Bern</p>
-		<p>Tel. +41 31 389 92 86<br>
-		<a href="#">info@public-health.ch</a><br>
-		<a href="#">www.public-health.ch</a></p>
-	</address>
+<div class="row">
+	<div class="col-md-4" id="contact">
+		{{ contact_info }}
+	</div>
 </div>
 <div class="col-md-4">
 	<form action="https://formspree.io/info@datalets.ch" method="POST">
