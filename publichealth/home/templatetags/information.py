@@ -12,3 +12,10 @@ def contact_info():
     return {
         'contact': Contact.objects.last(),
     }
+
+# Contact form (footer)
+@register.inclusion_tag('tags/contact_form.html')
+def contact_form():
+    return {
+        'contact': Contact.objects.last(),
+    }

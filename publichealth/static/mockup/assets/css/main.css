@@ -8478,6 +8478,7 @@ footer#footer a {
 
 #news-details {
   background: white;
+  padding-top: 0;
 }
 #news-details .category {
   margin-top: 2em;
@@ -8507,6 +8508,25 @@ footer#footer a {
 }
 #news-details .backlink {
   margin-top: 3em;
+}
+#news-details .img-responsive {
+  width: 100%;
+}
+#news-details .links {
+  display: inline-block;
+  border-bottom: 1px solid #999;
+  padding: 1em;
+  margin: 0em;
+  list-style-type: none;
+}
+#news-details .links li:first-child {
+  display: none;
+}
+
+#contact-page form label {
+  width: 15em;
+  border-bottom: 1px dashed #ccc;
+  line-height: 155%;
 }
 
 body {

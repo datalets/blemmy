@@ -9,7 +9,12 @@
 		<!-- Bottom Menu -->
 		{% footer_menu parent=site_root calling_page=self %}
 	</div>
-	{% contact_info %}
+	<div class="col-md-4" id="contact-info">
+		{% contact_info %}
+	</div>
+	<div class="col-md-4" id="contact-form">
+		{% contact_form %}
+	</div>
 </div><!-- /row -->
 </div><!-- /container -->
 </footer>
