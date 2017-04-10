@@ -77,6 +77,9 @@ class ArticlePage(Page):
     )
 
     date = models.DateField("Date", null=True, blank=True)
+
+    on_homepage = models.BooleanField(default=False, verbose_name="Auf der Frontpage anzeigen")
+
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -108,6 +111,7 @@ class ArticlePage(Page):
     ]
     promote_panels = [
         FieldPanel('date'),
+        FieldPanel('on_homepage'),
         InlinePanel('related_links', label="Links"),
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
@@ -175,6 +179,7 @@ class HomePage(Page):
     def featured(self):
         # Get list of live pages that are descendants of this page
         articles = ArticlePage.objects.live() #.descendant_of(self)
+        articles = articles.filter(on_homepage=True)
         # Order by most recent date first
         #articles = articles.order_by('-date')
         return articles[:4]
