@@ -1,0 +1,27 @@
+// Contact page
+#contact-page {
+
+  form {
+    label {
+      width: 15em;
+      border-bottom: 1px dashed #ccc;
+      line-height: 155%;
+    }
+  }
+
+}
+
+// Footer search form
+#search-form {
+
+  input {
+    float: left;
+    width: auto;
+    color: white;
+  }
+  button {
+    background: none; border: none;
+    padding-top: 0.5em;
+  }
+
+}

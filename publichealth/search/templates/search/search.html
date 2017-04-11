@@ -6,12 +6,16 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-    <h1>Search</h1>
-
-    <form action="{% url 'search' %}" method="get">
+<section id="search-page">
+  <div class="container">
+    <center>
+      <form action="{% url 'search' %}" method="get">
         <input type="text" name="query"{% if search_query %} value="{{ search_query }}{% endif %}">
-        <input type="submit" value="Search">
-    </form>
+        <button type="submit" title="Search">
+          <span class="glyphicon glyphicon-search" aria-hidden="false"></span>
+        </button>
+      </form>
+    </center>
 
     {% get_search_promotions search_query as search_picks %}
     {% if search_picks %}
@@ -38,13 +42,20 @@
         </ul>
 
         {% if search_results.has_previous %}
-            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
+            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">
+              {{ search_results.previous_page_number }}
+              &lt;&lt;</a>
         {% endif %}
 
         {% if search_results.has_next %}
-            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
+            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">
+              &gt;&gt;
+              {{ search_results.next_page_number }}</a>
         {% endif %}
     {% elif search_query %}
-        No results found
+      <b>Leider keine Ergebnisse / Désolé, aucun résultat n'a été trouvé</b>
     {% endif %}
+
+</div>
+</section>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+<section id="contact-page">
+  <div class="container">
+
+    <h2>{{ page.trans_title }}</h2>
+
+    <p class="lead">{{ page.trans_intro|richtext }}</p>
+
+    <!-- Main content -->
+    <div class="article-body" role="main">
+      <form action="{% pageurl page %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Senden / Envoi</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -60,14 +60,8 @@ Now access the admin panel with the user account you created earlier: http://loc
 
 ## Production notes
 
-We suggest using Docker or [Dokku](http://dokku.viewdocs.io/) for automated deployment.
+We suggest using Docker or [Dokku](http://dokku.viewdocs.io/) for automated deployment. There is a Makefile to help set up and manage the instance.
 
-```
-docker-compose run web python manage.py migrate
-... createsuperuser
-... compress
-... collectstatic
-
-docker-compose build web
-docker-compose up -d
-```
+- Initial setup: `make setup`
+- Startup: `make run-detached`
+- Release: `make release`
