@@ -43,7 +43,7 @@ class ArticleIndexPage(Page):
         context['articles'] = articles
         return context
 
-    subpage_types = ['home.ArticlePage', 'home.ArticleIndexPage']
+    subpage_types = ['home.ArticlePage', 'home.ArticleIndexPage', 'home.ContactForm']
     class Meta:
         verbose_name = "Rubrik"
 
@@ -118,7 +118,7 @@ class ArticlePage(Page):
         ], heading="Veröffentlichung"),
         MultiFieldPanel(Page.promote_panels, "Einstellungen"),
     ]
-    parent_page_types = ['home.ArticleIndexPage']
+
     subpage_types = []
     class Meta:
         verbose_name = "Artikel"

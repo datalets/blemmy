@@ -55,5 +55,6 @@ class ContactForm(AbstractEmailForm):
         ], "Email"),
     ]
 
+    parent_page_types = ['home.ArticleIndexPage']
     class Meta:
         verbose_name = "Formular"
