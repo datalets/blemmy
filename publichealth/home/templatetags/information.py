@@ -19,3 +19,17 @@ def contact_form():
     return {
         'contact': Contact.objects.last(),
     }
+
+# Contact links (header)
+@register.inclusion_tag('tags/contact_links.html')
+def contact_links():
+    return {
+        'contact': Contact.objects.last(),
+    }
+
+# Styled contact name (header)
+@register.inclusion_tag('tags/contact_name.html')
+def contact_name():
+    return {
+        'contact': Contact.objects.last(),
+    }

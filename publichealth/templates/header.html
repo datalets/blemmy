@@ -1,4 +1,4 @@
-{% load wagtailcore_tags navigation %}
+{% load wagtailcore_tags navigation information %}
 {% get_site_root as site_root %}
 
 <nav class="navbar-pre navbar-fixed-top">
@@ -6,12 +6,7 @@
       <div class="nav">
         <span class="contact-nav">
           <a class="link" href="#contact">Kontakt</a>
-          <a href="{{ contact.phone_link }}">
-            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-            <span class="hidden-xs">{{ contact.phone }}</span></a>
-          <a href="{{ contact.email_link }}">
-            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-            <span class="hidden-xs">{{ contact.email }}</span></a>
+          {% contact_links %}
         </span>
         <span class="language-nav">
           {% language_switcher %}
@@ -29,8 +24,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      <a class="navbar-brand" href="{% pageurl site_root %}"><img src="/static/images/public-health-logo-sign.png" alt="[logo]">
-        <span class="hidden-xs">{{ contact.trans_title }}</span></a>
+      <a class="navbar-brand" href="{% pageurl site_root %}">
+        <img src="/static/images/public-health-logo-sign.png" alt="[logo]">
+        <span class="hidden-xs">{% contact_name %}</span></a>
     </div>
 
     {% block menu %}
