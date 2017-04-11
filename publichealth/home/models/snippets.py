@@ -38,5 +38,9 @@ class Contact(models.Model):
         return 'mailto:%s' % self.email
     def www_domain(self):
         return self.www.replace('http://', '').replace('https://', '')
+    def trans_title_styled(self):
+        v = self.trans_title
+        if len(v) != 3: return v
+        return "<strong>%s %s</strong> %s" % tuple(v)
     def __str__(self):
         return self.trans_title

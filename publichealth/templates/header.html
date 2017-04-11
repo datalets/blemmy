@@ -6,12 +6,12 @@
       <div class="nav">
         <span class="contact-nav">
           <a class="link" href="#contact">Kontakt</a>
-          <a href="tel:+41313899286">
+          <a href="{{ contact.phone_link }}">
             <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-            <span class="hidden-xs">+41 31 389 92 86</span></a>
-          <a href="mailto:info@public-health.ch">
+            <span class="hidden-xs">{{ contact.phone }}</span></a>
+          <a href="{{ contact.email_link }}">
             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-            <span class="hidden-xs">info@public-health.ch</span></a>
+            <span class="hidden-xs">{{ contact.email }}</span></a>
         </span>
         <span class="language-nav">
           {% language_switcher %}
@@ -30,7 +30,7 @@
           <span class="icon-bar"></span>
         </button>
       <a class="navbar-brand" href="{% pageurl site_root %}"><img src="/static/images/public-health-logo-sign.png" alt="[logo]">
-        <span class="hidden-xs"><strong>Public Health</strong> Schweiz</span></a>
+        <span class="hidden-xs">{{ contact.trans_title }}</span></a>
     </div>
 
     {% block menu %}
