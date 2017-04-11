@@ -78,7 +78,8 @@ class ArticlePage(Page):
 
     date = models.DateField("Date", null=True, blank=True)
 
-    on_homepage = models.BooleanField(default=False, verbose_name="Auf der Frontpage anzeigen")
+    on_homepage = models.BooleanField(default=False, verbose_name="Featured",
+        help_text="Auf der Frontpage anzeigen")
 
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -110,10 +111,12 @@ class ArticlePage(Page):
         ImageChooserPanel('feed_image'),
     ]
     promote_panels = [
-        FieldPanel('date'),
-        FieldPanel('on_homepage'),
         InlinePanel('related_links', label="Links"),
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel([
+            FieldPanel('date'),
+            FieldPanel('on_homepage'),
+        ], heading="Veröffentlichung"),
+        MultiFieldPanel(Page.promote_panels, "Einstellungen"),
     ]
     parent_page_types = ['home.ArticleIndexPage']
     subpage_types = []
