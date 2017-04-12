@@ -19,6 +19,12 @@
         <button class="btn btn-primary" type="submit">Senden / Envoi</button>
       </form>
     </div>
+
+    <script language="JavaScript">
+    $('span.helptext').each(function() {
+      $(this).insertBefore( $(this).prev() );
+    });
+    </script>
   </div>
 </section>
 {% endblock %}
