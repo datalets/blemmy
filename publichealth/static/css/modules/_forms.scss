@@ -5,7 +5,17 @@
     label {
       width: 15em;
       border-bottom: 1px dashed #ccc;
-      line-height: 155%;
+      line-height: 166%;
+      vertical-align: top;
+    }
+    label:only-child {
+      width: auto;
+      border: none;
+      font-weight: bold;
+    }
+    ul {
+      list-style: none;
+      label { width: auto; }
     }
   }
 

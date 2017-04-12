@@ -8526,7 +8526,19 @@ footer#footer a {
 #contact-page form label {
   width: 15em;
   border-bottom: 1px dashed #ccc;
-  line-height: 155%;
+  line-height: 166%;
+  vertical-align: top;
+}
+#contact-page form label:only-child {
+  width: auto;
+  border: none;
+  font-weight: bold;
+}
+#contact-page form ul {
+  list-style: none;
+}
+#contact-page form ul label {
+  width: auto;
 }
 
 #search-form input {
