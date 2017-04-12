@@ -7,9 +7,9 @@
 <section id="contact-page">
   <div class="container">
 
-    <h2>{{ page.trans_title }}</h2>
+    <h2>{{ page.title }}</h2>
 
-    <p class="lead">{{ page.trans_intro|richtext }}</p>
+    <p class="lead">{{ page.intro|richtext }}</p>
 
     <!-- Main content -->
     <div class="article-body" role="main">
@@ -19,6 +19,14 @@
         <button class="btn btn-primary" type="submit">Senden / Envoi</button>
       </form>
     </div>
+
+    <script language="JavaScript">
+    window.addEventListener('load', function() {
+      $('span.helptext').each(function() {
+        $(this).insertBefore( $(this).prev() );
+      });
+    });
+    </script>
   </div>
 </section>
 {% endblock %}
