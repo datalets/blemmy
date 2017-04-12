@@ -21,8 +21,10 @@
     </div>
 
     <script language="JavaScript">
-    $('span.helptext').each(function() {
-      $(this).insertBefore( $(this).prev() );
+    window.addEventListener('load', function() {
+      $('span.helptext').each(function() {
+        $(this).insertBefore( $(this).prev() );
+      });
     });
     </script>
   </div>
