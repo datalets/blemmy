@@ -11,6 +11,8 @@
     label:only-child {
       width: auto;
       border: none;
+    }
+    &> p label {
       font-weight: bold;
     }
     ul {
