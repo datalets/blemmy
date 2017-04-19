@@ -38,10 +38,18 @@ class ArticleIndexPage(Page):
         'intro_fr',
     )
 
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel('intro_de'),
         FieldPanel('title_fr'),
         FieldPanel('intro_fr'),
+        ImageChooserPanel('feed_image'),
     ]
 
     def get_context(self, request):
@@ -98,8 +106,7 @@ class ArticlePage(Page):
 
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
-        null=True,
-        blank=True,
+        null=True, blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
@@ -146,7 +153,7 @@ class ArticleRelatedLink(Orderable):
         FieldPanel('name'),
         FieldPanel('url'),
     ]
-    
+
 class HomePage(Page):
     intro_de = RichTextField(default='')
     intro_fr = RichTextField(default='')
