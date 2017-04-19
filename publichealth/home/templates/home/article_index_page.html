@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -27,9 +27,14 @@
     <div class="row">
       {% for block in subcategories %}
       <article class="col-md-4">
-        <header><a href="{% pageurl block %}">
-          <h3>{{ block.trans_title }}</h3>
-        </a></header>
+				<a href="{% pageurl block %}">
+          <div class="image">
+  					{% image block.feed_image fill-300x300 %}
+  				</div>
+          <header>
+            <h3>{{ block.trans_title }}</h3>
+          </header>
+        </a>
         {{ block.trans_intro|richtext }}
       </article>
       {% endfor %}
