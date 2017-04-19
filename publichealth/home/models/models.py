@@ -41,9 +41,15 @@ class ArticleIndexPage(Page):
         context = super(ArticleIndexPage, self).get_context(request)
         articles = ArticlePage.objects.child_of(self).live()
         context['articles'] = articles
+        subcategories = ArticleIndexPage.objects.child_of(self).live()
+        context['subcategories'] = subcategories
         return context
 
-    subpage_types = ['home.ArticlePage', 'home.ArticleIndexPage', 'home.ContactForm']
+    subpage_types = [
+        'home.ArticlePage',
+        'home.ArticleIndexPage',
+        'home.ContactForm'
+    ]
     class Meta:
         verbose_name = "Rubrik"
 

@@ -2,7 +2,7 @@
 
 # Core
 wagtail==1.9
-Django==1.11
+Django==1.10.7
 
 # Database
 psycopg2==2.7.1
