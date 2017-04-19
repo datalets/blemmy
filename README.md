@@ -31,7 +31,13 @@ You will be asked a few questions to create an administrator account.
 
 **Frontend setup**
 
-Make sure a recent version of node.js is installed, then:
+You will need to have Ruby and SASS installed on your system, e.g.:
+
+```
+sudo yum install rubygem-sass
+```
+
+Make sure a recent version of node.js, then:
 
 ```
 npm install -g bower grunt-cli

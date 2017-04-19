@@ -6,24 +6,35 @@
 {% block content %}
 <section id="article-index">
   <div class="container">
-
 	<h2>{{ page.trans_title }}</h2>
-
 	<p class="lead">{{ page.trans_intro|richtext }}</p>
-
-    <div class="article-body" role="main">
-	{% for entry in articles %}
-	    <div class="item">
-	      <div class="article-caption">
-	        <h3><a href="{% pageurl entry %}">{{ entry.trans_title }}</a></h3>
-	        <p>{{ entry.trans_intro|richtext }}</p>
-	      </div>
-	    </div>
-	{% empty %}
-	    ___
-	{% endfor %}
-
+  <div class="article-body" role="main">
+{% for entry in articles %}
+    <div class="item">
+      <div class="article-caption">
+        <h3><a href="{% pageurl entry %}">{{ entry.trans_title }}</a></h3>
+        <p>{{ entry.trans_intro|richtext }}</p>
+      </div>
     </div>
+{% endfor %}
   </div>
+</div><!-- /container -->
 </section>
+
+{% if subcategories %}
+<section id="three" class="article-subcategories" class="wrapper align-center">
+  <div class="container">
+    <div class="row">
+      {% for block in subcategories %}
+      <article class="col-md-4">
+        <header><a href="{% pageurl block %}">
+          <h3>{{ block.trans_title }}</h3>
+        </a></header>
+        {{ block.trans_intro|richtext }}
+      </article>
+      {% endfor %}
+    </div>
+  </div><!-- /container -->
+</section>
+{% endif %}
 {% endblock %}
