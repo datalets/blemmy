@@ -17,6 +17,13 @@ from puput.models import EntryPage
 
 from ..util import TranslatedField
 
+class InfoBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=True)
+    photo = ImageChooserBlock(required=True)
+    summary = blocks.RichTextBlock(required=True)
+    action = blocks.CharBlock(required=False)
+    url = blocks.URLBlock(required=False)
+
 class ArticleIndexPage(Page):
     title_fr = models.CharField(max_length=255, default="")
     trans_title = TranslatedField(
@@ -71,11 +78,13 @@ class ArticlePage(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('section', blocks.CharBlock(classname="full title")),
+        ('info', InfoBlock()),
     ], null=True, blank=True)
     body_fr = StreamField([
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('section', blocks.CharBlock(classname="full title")),
+        ('info', InfoBlock()),
     ], null=True, blank=True)
     trans_body = TranslatedField(
         'body_de',
@@ -137,14 +146,7 @@ class ArticleRelatedLink(Orderable):
         FieldPanel('name'),
         FieldPanel('url'),
     ]
-
-class InfoBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=True)
-    photo = ImageChooserBlock()
-    summary = blocks.RichTextBlock(required=True)
-    action = blocks.CharBlock()
-    url = blocks.URLBlock()
-
+    
 class HomePage(Page):
     intro_de = RichTextField(default='')
     intro_fr = RichTextField(default='')
