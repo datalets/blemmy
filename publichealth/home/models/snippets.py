@@ -21,7 +21,7 @@ class Contact(models.Model):
     )
     address = models.TextField(default="", blank=True)
     phone = models.CharField(max_length=40, default="")
-    email = models.CharField(max_length=40, default="")
+    email = models.EmailField(max_length=100, default="")
     www = models.URLField(null=True, blank=True)
 
     panels = Page.content_panels + [
