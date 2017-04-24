@@ -1,5 +1,5 @@
 - hosts: webservers
-  become: True
+  become: false
   gather_facts: True
   vars:
     release_dir: /opt/publichealth

@@ -11,6 +11,12 @@
     - docker
     - setup
 
+- include: frontend.yaml
+  tags:
+    - frontend
+    - nodejs
+    - setup
+
 - include: manage.yaml
   tags:
     - manage

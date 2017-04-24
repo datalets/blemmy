@@ -21,6 +21,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // TODO: switch to https://github.com/sindresorhus/grunt-sass
     sass: {                              // Task
       dev: {                            // Target
         options: {                       // Target options

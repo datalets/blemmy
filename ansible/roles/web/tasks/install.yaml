@@ -1,7 +1,8 @@
 ---
 
 - name: Create release directory
-  file: path={{ release_dir }} state=directory
+  file: path={{ release_dir }} state=directory owner=ansible group=ansible
+  become: true
 
 - name: Checkout code branch from git
   git:

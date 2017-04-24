@@ -1,4 +1,19 @@
 ---
 
+#- name: Build a current site
+#  shell: "docker-compose build web"
+
+- name: Migrate the site data
+  shell: "docker-compose exec web ./manage.py migrate"
+
+- name: Create administrative user
+  shell: "docker-compose exec web ./manage.py createsuperuser"
+
+- name: Compress site frontend
+  shell: "docker-compose exec web ./manage.py compress"
+
+- name: Collect static frontend files
+  shell: "docker-compose exec web ./manage.py collectstatic"
+
 - name: Start Docker site
-  shell: docker-compose up -d
+  shell: "docker-compose up -d"

@@ -1,0 +1,10 @@
+- hosts: webservers
+  become: yes
+  become_method: 'sudo'
+  gather_facts: yes
+  roles:
+    - role: geerlingguy.nodejs
+      nodejs_install_npm_user: ansible
+      nodejs_npm_global_packages:
+        - name: bower
+        - name: grunt-cli

@@ -2,11 +2,13 @@
 
 # Note that changing the domain leaves the old config in place
 - name: Copy Nginx site config
+  become: true
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/sites-available/{{ domain }}
 
 - name: Activate Nginx site config
+  become: true
   file:
     state: link
     src: /etc/nginx/sites-available/{{ domain }}
