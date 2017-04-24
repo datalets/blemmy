@@ -9,6 +9,7 @@
 /static/
 /media/
 /tmp/
+/.keys/
 /.vagrant/
 /Vagrantfile.local
 /docs/_build/

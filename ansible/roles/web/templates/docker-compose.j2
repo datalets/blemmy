@@ -1,0 +1,36 @@
+web:
+  build: .
+  dockerfile: .dockerfile
+  command: gunicorn {{ django_project_name }}.wsgi:application -b 0.0.0.0:5000 -w 5 --log-file=-
+  volumes:
+    - ./:/usr/src/app
+    - {{ django_log_dir }}:/var/log/wagtail
+  links:
+    - redis
+    - postgres
+    - elasticsearch
+  ports:
+    - "5000:5000"
+  environment:
+    - DJANGO_SETTINGS_MODULE={{ django_project_name }}.settings.production
+    - ALLOWED_HOSTS={{ domain }},{{ ipv4_addresses|join(':5000,') }}
+    - SECRET_KEY={{ django_secret_key }}
+    - MAILGUN_KEY={{ django_email_key }}
+    - MAILGUN_DOMAIN={{ django_email_domain }}
+    - MAILGUN_FROM={{ django_email_from }}
+    - DATABASE_URL=postgres://postgres:@postgres:5432/postgres
+    - ELASTICSEARCH_URL=http://elasticsearch:9200
+    - REDIS_URL=redis://redis:6379
+    - LOG_DIR=/var/log/wagtail
+redis:
+  image: redis
+  ports:
+   - "6379:6379"
+postgres:
+  image: postgres
+  ports:
+   - "5432:5432"
+elasticsearch:
+  image: orchardup/elasticsearch
+  ports:
+   - "9200:9200"

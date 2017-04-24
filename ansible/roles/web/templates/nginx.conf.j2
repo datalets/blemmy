@@ -1,0 +1,70 @@
+#{{ ansible_managed }}
+
+upstream wagtail-site {
+	server localhost:5000;
+}
+server {
+	listen [::]:80;
+	listen 80;
+	server_name {{ domain }} www.{{ domain }};
+
+	client_max_body_size 16M;
+
+	gzip on;
+	gzip_types text/plain text/css application/x-javascript image/svg+xml;
+	gzip_comp_level 1;
+	gzip_disable msie6;
+	gzip_http_version 1.0;
+	gzip_proxied any;
+	gzip_vary on;
+
+	location /static/ {
+		access_log off;
+		expires 3600;
+		alias {{ release_dir }}/static/;
+				add_header Cache-Control "public";
+				add_header Access-Control-Allow-Origin https://{{ domain }};
+	}
+
+	# Set a longer expiry for CACHE/, because the filenames are unique.
+	location /static/CACHE/ {
+		access_log off;
+		expires 864000;
+		alias {{ release_dir }}/static/CACHE/;
+	}
+
+	# Only serve /media/images by default, not e.g. original_images/.
+	location /media/images {
+		alias {{ release_dir }}/media/images;
+				access_log off;
+				expires max;
+				add_header Cache-Control "public";
+	}
+
+	location / {
+		proxy_set_header  X-Real-IP $remote_addr;
+		proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Host $http_host;
+		proxy_redirect off;
+		proxy_pass http://wagtail-site;
+	}
+}
+
+# TODO: parameterize
+server {
+	listen 80; listen 443 ssl;
+	server_name conference.public-health.ch;
+	location /fr {
+		return 301 $scheme://sph17.organizers-congress.org/frontend/index.php?sub=89;
+	}
+	location / {
+		return 301 $scheme://sph17.organizers-congress.org;
+	}
+}
+
+# TODO: parameterize
+server {
+	listen 80; listen 443 ssl;
+	server_name sphc.ch;
+	return 301 $scheme://sph17.organizers-congress.org;
+}

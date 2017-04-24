@@ -1,0 +1,4 @@
+- hosts: localhost
+  roles:
+    - geerlingguy.nginx
+    - ansible-nginx-hardening

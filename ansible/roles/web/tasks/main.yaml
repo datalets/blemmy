@@ -1,0 +1,19 @@
+---
+
+- include: nginx.yaml
+  tags:
+    - nginx
+    - setup
+
+- include: install.yaml
+  tags:
+    - install
+    - docker
+    - setup
+
+- include: manage.yaml
+  tags:
+    - manage
+    - docker
+    - setup
+    - run

@@ -1,0 +1,9 @@
+- hosts: webservers
+  become: yes
+  become_method: 'sudo'
+  gather_facts: yes
+  roles:
+    - role: docker-ubuntu
+      docker_users: ansible
+    - role: docker-compose
+      docker_compose_version: 1.12.0

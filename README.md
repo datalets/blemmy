@@ -66,8 +66,8 @@ Now access the admin panel with the user account you created earlier: http://loc
 
 ## Production notes
 
-We suggest using Docker or [Dokku](http://dokku.viewdocs.io/) for automated deployment. There is a Makefile to help set up and manage the instance.
+We use Ansible for automated deployment. You need to obtain an SSH and vault keys and place these in a `.keys` folder, then:
 
-- Initial setup: `make setup`
-- Startup: `make run-detached`
-- Release: `make release`
+```
+ansible-playbook -s ansible/docker.yaml -i ansible/inventories/production
+```

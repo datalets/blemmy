@@ -1,0 +1,42 @@
+---
+# tasks file for docker-ubuntu
+- name: Install apt-transport-https, ca-certificates
+  apt:
+    name: "{{item}}"
+    update_cache: no
+    install_recommends: no
+  with_items:
+  - apt-transport-https
+  - ca-certificates
+
+- name: Add the new GPG key
+  apt_key:
+    keyserver: hkp://p80.pool.sks-keyservers.net:80
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+
+- name: Template a sources.list
+  template:
+    src: docker.list
+    dest: /etc/apt/sources.list.d/docker.list
+    owner: root
+    group: root
+
+- name: Install the recommended virtual package
+  apt:
+    name: linux-image-extra-virtual
+    update_cache: no
+    install_recommends: yes
+
+- name: Install docker-engine
+  apt:
+    name: docker-engine
+    update_cache: no
+    install_recommends: yes
+
+- name: Add users to the docker group
+  user:
+    name: "{{item}}"
+    groups: docker
+    append: yes
+
+  with_items: "{{docker_users}}"
