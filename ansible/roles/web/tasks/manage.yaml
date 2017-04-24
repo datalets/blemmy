@@ -1,4 +1,4 @@
 ---
 
 - name: Start Docker site
-  shell: docker-compose up
+  shell: docker-compose up -d

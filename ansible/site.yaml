@@ -6,7 +6,7 @@
     django_log_dir: /var/log/publichealth
     ipv4_addresses: "{{ ansible_all_ipv4_addresses }}"
   environment:
-    COMPOSE_FILE: "./docker-compose.yml"
+    COMPOSE_FILE: "{{ release_dir }}/docker-compose.yml"
     COMPOSE_PROJECT_NAME: publichealth
   roles:
     - web

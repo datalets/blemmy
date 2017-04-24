@@ -1,8 +1,5 @@
 ---
 
-- name: Test and reload Nginx
-  service: name=nginx state=reloaded
-
 # Note that changing the domain leaves the old config in place
 - name: Copy Nginx site config
   template:
