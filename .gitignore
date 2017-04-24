@@ -2,7 +2,6 @@
 *.pyc
 .sass-cache
 .DS_Store
-*.min.css
 *.swp
 *.sqlite3
 /env/
