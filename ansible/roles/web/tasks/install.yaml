@@ -16,4 +16,6 @@
     dest: "{{ release_dir }}/docker-compose.yml"
 
 - name: Deploy Docker site
-  shell: docker-compose build
+  shell: make setup
+  args:
+    chdir: "{{ release_dir }}"
