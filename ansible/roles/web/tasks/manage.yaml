@@ -13,7 +13,7 @@
   shell: "docker-compose exec web ./manage.py compress"
 
 - name: Collect static frontend files
-  shell: "docker-compose exec web ./manage.py collectstatic"
+  shell: "docker-compose exec web ./manage.py collectstatic --noinput"
 
 - name: Start Docker site
   shell: "docker-compose up -d"
