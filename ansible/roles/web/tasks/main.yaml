@@ -16,3 +16,7 @@
     - frontend
     - nodejs
     - setup
+
+- include: release.yaml
+  tags:
+    - release
