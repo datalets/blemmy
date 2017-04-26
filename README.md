@@ -98,5 +98,5 @@ For further deployment and system maintenance we have a `Makefile` which automat
 
 ```
 ansible-playbook -s ansible/site.yaml -i ansible/inventories/production --tags release
-ssh -i .keys/ansible.pem ansible@<server-ip> "cd <release_dir> && make"
+ssh -i .keys/ansible.pem ansible@<server-ip> "cd <release_dir> && make release"
 ```

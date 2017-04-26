@@ -13,4 +13,4 @@
 
 - name: Update Docker site
   debug:
-    msg: "Please run 'make' in {{ release_dir }} to finish updating the site"
+    msg: "Please run 'make release' in {{ release_dir }} to finish updating the site"

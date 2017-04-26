@@ -38,9 +38,9 @@ setup:
 	docker-compose exec web ./manage.py collectstatic
 
 release:
+	docker-compose build web
 	docker-compose stop web
 	docker-compose kill web
-	docker-compose build web
 	docker-compose up -d web
 
 django-exec-bash:
