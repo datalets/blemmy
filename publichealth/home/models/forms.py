@@ -12,6 +12,7 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailforms.models import (
     AbstractEmailForm, AbstractFormField
 )
+from wagtail.wagtailsearch import index
 
 from ..util import TranslatedField
 
@@ -21,6 +22,8 @@ class ContactFormField(AbstractFormField):
 class ContactForm(AbstractEmailForm):
     intro = RichTextField(default='', blank=True)
     thanks = RichTextField(default='', blank=True)
+
+    search_fields = [ index.SearchField('intro') ]
 
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel('intro', classname="full"),
