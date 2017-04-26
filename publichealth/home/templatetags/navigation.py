@@ -7,11 +7,14 @@ register = template.Library()
 # Language switcher
 @register.inclusion_tag('tags/language.html', takes_context=True)
 def language_switcher(context):
-    url = context['page'].url
+    url = context['page'].url.split('/')
+    if len(url) > 2 and len(url[1]) == 2:
+        url[1] = '$lang$'
+        url = '/'.join(url)
     return {
         'languages': [
-            { 'code': 'de', 'title': 'De', 'url': url.replace('/fr/','/de/') },
-            { 'code': 'fr', 'title': 'Fr', 'url': url.replace('/de/','/fr/') }
+            { 'code': 'de', 'title': 'De', 'url': url.replace('$lang$','de') },
+            { 'code': 'fr', 'title': 'Fr', 'url': url.replace('$lang$','fr') }
         ],
         'currentlangcode': translation.get_language(),
         'request': context['request'],
