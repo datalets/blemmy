@@ -1,0 +1,42 @@
+// Article sections
+section {
+  padding: 6em 0;
+  &:nth-child(odd) {
+    background-color: $gray-lighter;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+  }
+}
+
+// Article content blocks
+.article-body > div {
+  clear: both;
+}
+
+// Responsive image/video classes
+.rich-text img {
+    max-width: 100%;
+    height: auto;
+}
+.richtext-image.left{
+    float:left;
+}
+.richtext-image.right{
+    float:right;
+}
+.responsive-object {
+    position: relative;
+}
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -8411,6 +8411,10 @@ footer#footer a {
   font-size: 70%;
 }
 
+article footer .btn {
+  margin-bottom: 1em;
+}
+
 #news .panel-default {
   font-size: 90%;
   padding-top: 75%;
@@ -8559,10 +8563,6 @@ footer#footer a {
   padding-top: 0.5em;
 }
 
-body {
-  margin-top: 104px;
-}
-
 section {
   padding: 6em 0;
 }
@@ -8575,7 +8575,10 @@ section h2 {
   text-transform: uppercase;
 }
 
-/* Responsive image/video classes */
+.article-body > div {
+  clear: both;
+}
+
 .rich-text img {
   max-width: 100%;
   height: auto;
@@ -8603,6 +8606,6 @@ section h2 {
   height: 100%;
 }
 
-article footer .btn {
-  margin-bottom: 1em;
+body {
+  margin-top: 104px;
 }
