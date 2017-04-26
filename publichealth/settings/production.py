@@ -178,7 +178,7 @@ LOGGING = {
         },
         'wagtail': {
             'handlers':     [],
-            'level':        'INFO',
+            'level':        'WARNING',
             'propagate':    False,
             'formatter':    'verbose',
         },
@@ -211,7 +211,7 @@ if 'LOG_DIR' in env:
 
     # Wagtail log
     LOGGING['handlers']['wagtail_file'] = {
-        'level':        'INFO',
+        'level':        'WARNING',
         'class':        'cloghandler.ConcurrentRotatingFileHandler',
         'filename':     os.path.join(env['LOG_DIR'], 'wagtail.log'),
         'maxBytes':     5242880, # 5MB
