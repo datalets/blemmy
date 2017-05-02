@@ -6,7 +6,7 @@
 </div>
 {% endif %}
 
-<h2>{{ page.trans_title }}</h2>
+<h1 class="title">{{ page.trans_title }}</h1>
 
 <p class="lead">{{ page.trans_intro|richtext }}</p>
 
@@ -28,7 +28,7 @@
 </div>
 
 <!-- Infoblocks -->
-<div class="row">
+<div class="row infoblocks">
   {% for block in page.trans_body %}
   {% if block.block_type == 'info' %}
   <article class="col-md-4">
