@@ -8569,10 +8569,24 @@ section {
 section:nth-child(odd) {
   background-color: #eeeeee;
 }
-section h2 {
+section h1 {
+  font-size: 40px;
   text-align: center;
   margin-bottom: 1.5em;
   text-transform: uppercase;
+}
+
+.article-body h2 {
+  font-size: 35px;
+}
+.article-body h3 {
+  font-size: 30px;
+}
+.article-body h4 {
+  font-size: 25px;
+}
+.article-body h5 {
+  font-size: 22px;
 }
 
 .article-body > div {
