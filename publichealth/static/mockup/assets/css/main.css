@@ -8576,6 +8576,9 @@ section h1 {
   text-transform: uppercase;
 }
 
+.article-body {
+  line-height: 1.5;
+}
 .article-body h2 {
   font-size: 35px;
 }
@@ -8590,6 +8593,10 @@ section h1 {
 }
 
 .article-body > div {
+  clear: both;
+}
+
+.infoblocks article:nth-child(4) {
   clear: both;
 }
 
