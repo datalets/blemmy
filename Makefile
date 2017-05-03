@@ -48,6 +48,9 @@ release:
 reindex:
 	docker-compose exec web ./manage.py update_index
 
+clear_index:
+	docker-compose exec elasticsearch curl -XDELETE localhost:9200/_all
+
 django-exec-bash:
 		# execute bash in the currently running container
 	docker-compose exec web bash
