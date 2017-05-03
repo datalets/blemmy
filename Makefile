@@ -39,6 +39,8 @@ setup:
 
 release:
 	docker-compose build web
+	docker-compose exec web ./manage.py collectstatic --noinput
+	docker-compose exec web ./manage.py compress
 	docker-compose stop web
 	docker-compose kill web
 	docker-compose up -d web
