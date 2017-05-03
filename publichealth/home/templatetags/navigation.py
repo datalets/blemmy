@@ -8,7 +8,7 @@ register = template.Library()
 @register.inclusion_tag('tags/language.html', takes_context=True)
 def language_switcher(context):
     url = context['page'].url.split('/')
-    if len(url) > 2 and len(url[1]) == 2:
+    if len(url) > 2 and len(url[1]) >= 2:
         url[1] = '$lang$'
         url = '/'.join(url)
     return {
