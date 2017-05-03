@@ -48,6 +48,10 @@ server {
 		proxy_redirect off;
 		proxy_pass http://wagtail-site;
 	}
+
+	location /logicio/pmws/ {
+		return 301 /;
+	}
 }
 
 # TODO: parameterize
