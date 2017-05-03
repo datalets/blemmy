@@ -54,6 +54,6 @@ cd $PROJECT_DIR
 npm install -g bower grunt-cli
 npm install
 bower install
-alias liverun="grunt browser-sync"
+alias bower="bower install"
 
 EOF
