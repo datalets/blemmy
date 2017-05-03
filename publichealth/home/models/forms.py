@@ -23,8 +23,6 @@ class ContactForm(AbstractEmailForm, index.Indexed):
     intro = RichTextField(default='', blank=True)
     thanks = RichTextField(default='', blank=True)
 
-    search_fields = [ index.SearchField('intro') ]
-
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel('intro', classname="full"),
         FieldPanel('thanks', classname="full"),
@@ -38,6 +36,7 @@ class ContactForm(AbstractEmailForm, index.Indexed):
         ], "Email"),
     ]
 
+    search_fields = []
     parent_page_types = ['home.ArticleIndexPage']
     class Meta:
         verbose_name = "Formular"
