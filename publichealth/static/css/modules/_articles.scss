@@ -1,6 +1,7 @@
 // Article sections
 section {
-  padding: 6em 0;
+  padding: 3em 0;
+  
   &:nth-child(odd) {
     background-color: $gray-lighter;
   }

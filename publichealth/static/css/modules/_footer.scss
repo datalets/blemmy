@@ -7,6 +7,10 @@ footer#footer {
   a {
     color: lighten($brand-secondary, 25%);
   }
+
+  form {
+    margin-bottom: 2em;
+  }
 }
 
 .copyright {
