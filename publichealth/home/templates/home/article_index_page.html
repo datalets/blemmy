@@ -7,7 +7,7 @@
 
 {% if articles|length is 1 %}
 
-  <section id="news-details">
+  <section id="news-details" class="article-index-page">
     <div class="container">
     {% for page in articles %}
       {% include 'home/page_content.html' %}
@@ -17,7 +17,7 @@
 
 {% else %}
 
-  <section id="article-index">
+  <section id="article-index" class="article-index-page">
     <div class="container">
     	<h2>{{ page.trans_title }}</h2>
     	<p class="lead">{{ page.trans_intro|richtext }}</p>
