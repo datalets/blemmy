@@ -8,7 +8,7 @@ web:
   links:
     - redis
     - postgres
-    - elasticsearch:2
+    - elasticsearch
   ports:
     - "5000:5000"
   environment:
@@ -31,6 +31,6 @@ postgres:
   ports:
     - "5432:5432"
 elasticsearch:
-  image: orchardup/elasticsearch
+  image: elasticsearch:2
   ports:
     - "9200:9200"
