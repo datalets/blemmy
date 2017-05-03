@@ -15,3 +15,4 @@
 /docs/_build/
 /node_modules/
 /publichealth/static/libs/
+/mockup/assets/css/*.css

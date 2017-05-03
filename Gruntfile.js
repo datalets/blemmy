@@ -29,7 +29,7 @@ module.exports = function(grunt) {
           sourcemap: 'none'
         },
         files: {                         // Dictionary of files
-          "publichealth/static/mockup/assets/css/main.css": "publichealth/static/css/main.scss"
+          "./assets/css/main.css": "publichealth/static/css/main.scss"
         }
       },
       dist: {
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
           sourcemap: 'none'
         },
         files: {
-          "publichealth/static/mockup/assets/css/main.min.css": "publichealth/static/css/main.scss"
+          "./assets/css/main.min.css": "publichealth/static/css/main.scss"
         }
       }
     },
@@ -58,8 +58,8 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            "publichealth/static/mockup/assets/css/*.css",
-            "publichealth/static/mockup/*.html"
+            "./assets/css/*.css",
+            "./*.html"
           ]
         },
         options: {

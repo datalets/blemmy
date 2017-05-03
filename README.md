@@ -29,7 +29,7 @@ bower install
 
 The first command (`..install -g..`) may require `sudo` if you installed node.js as a system package.
 
-If you are only working on the frontend, you can start a local webserver and work on frontend assets without the backend setup described below. Mock content is at `publichealth/static/mockup`
+If you are only working on the frontend, you can start a local webserver and work on frontend assets without the backend setup described below. Mock content is at `mockup`, and there is a `grunt browser-sync` setup for working with frontend assets.
 
 **Backend setup**
 
@@ -57,13 +57,12 @@ If you have one installed, also start your local redis server (`service redis st
 Run this after completing setup:
 
 ```
-./manage.py runserver &
-grunt browser-sync
+./manage.py runserver
 ```
 
 A default browser should open pointing to the default home page.
 
-Now access the admin panel with the user account you created earlier: http://localhost:3000/admin/
+Now access the admin panel with the user account you created earlier: http://localhost:8000/admin/
 
 ## Troubleshooting
 

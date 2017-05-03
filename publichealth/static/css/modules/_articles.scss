@@ -26,9 +26,13 @@ section {
 .article-body > div {
   clear: both;
 }
-
-.infoblocks article:nth-child(4) {
+.infoblocks article:nth-child(3n+0) {
     clear: both;
+}
+
+// Special article layout
+.article-page .lead {
+  h2,h3,h4,h5 { text-align: center; }
 }
 
 // Responsive image/video classes
