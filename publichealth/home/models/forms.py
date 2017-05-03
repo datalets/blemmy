@@ -12,14 +12,13 @@ from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel, FieldRowPanel,
     InlinePanel, MultiFieldPanel
 )
-from wagtail.wagtailsearch import index
 
 from ..util import TranslatedField
 
 class ContactFormField(AbstractFormField):
     page = ParentalKey('ContactForm', related_name='form_fields')
 
-class ContactForm(AbstractEmailForm, index.Indexed):
+class ContactForm(AbstractEmailForm):
     intro = RichTextField(default='', blank=True)
     thanks = RichTextField(default='', blank=True)
 
@@ -36,7 +35,6 @@ class ContactForm(AbstractEmailForm, index.Indexed):
         ], "Email"),
     ]
 
-    search_fields = []
     parent_page_types = ['home.ArticleIndexPage']
     class Meta:
         verbose_name = "Formular"

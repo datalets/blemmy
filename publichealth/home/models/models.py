@@ -11,7 +11,6 @@ from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
 
 from puput.models import EntryPage
 
@@ -111,14 +110,6 @@ class ArticlePage(Page):
         related_name='+'
     )
 
-    search_fields = Page.search_fields + [
-        index.SearchField('body_de'),
-        index.SearchField('body_fr'),
-        index.SearchField('title'),
-        index.SearchField('title_fr'),
-        index.SearchField('intro_de'),
-        index.SearchField('intro_fr'),
-    ]
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title'),
