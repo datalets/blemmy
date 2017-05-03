@@ -2,15 +2,15 @@
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, FieldRowPanel,
-    InlinePanel, MultiFieldPanel
-)
-
 from django.db.models import CharField
+
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailforms.models import (
     AbstractEmailForm, AbstractFormField
+)
+from wagtail.wagtailadmin.edit_handlers import (
+    FieldPanel, FieldRowPanel,
+    InlinePanel, MultiFieldPanel
 )
 from wagtail.wagtailsearch import index
 
@@ -19,7 +19,7 @@ from ..util import TranslatedField
 class ContactFormField(AbstractFormField):
     page = ParentalKey('ContactForm', related_name='form_fields')
 
-class ContactForm(AbstractEmailForm):
+class ContactForm(AbstractEmailForm, index.Indexed):
     intro = RichTextField(default='', blank=True)
     thanks = RichTextField(default='', blank=True)
 

@@ -45,6 +45,9 @@ release:
 	docker-compose kill web
 	docker-compose up -d web
 
+reindex:
+	docker-compose exec web ./manage.py update_index
+
 django-exec-bash:
 		# execute bash in the currently running container
 	docker-compose exec web bash
