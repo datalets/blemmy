@@ -24,6 +24,10 @@
       display: block;
       font-size: 90%;
     }
+    input[type='text'], textarea {
+      border: 1px solid #999;
+      padding: 3px;
+    }
   }
 
 }
