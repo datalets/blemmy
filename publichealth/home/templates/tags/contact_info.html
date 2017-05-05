@@ -6,3 +6,11 @@
   <a href="{{ contact.email_link }}">{{ contact.email }}</a><br>
   <a href="{{ contact.www }}">{{ contact.www_domain }}</a></p>
 </address>
+
+<div class="social-networks">
+{% for sc in socials %}
+  <a href="{{ sc.network_url }}" target="_blank" title="{{ sc.network_title }}"
+     style="background-image:url(/static/images/social/{{ sc.network }}.png)">
+     {{ sc.network_title }}</a>
+{% endfor %}
+</div>

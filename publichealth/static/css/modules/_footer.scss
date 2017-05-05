@@ -23,3 +23,38 @@ footer#footer {
 article footer .btn {
   margin-bottom: 1em;
 }
+
+// Footer search form
+#search-form {
+
+  input {
+    float: left;
+    width: auto;
+    color: white;
+  }
+  button {
+    background: none; border: none;
+    padding-top: 0.5em;
+  }
+
+}
+
+// Footer contact form
+#contact-info {
+  address {
+    margin-bottom: 0px;
+  }
+  .social-networks > a {
+    border: 2px solid white;
+    width: 32px; height: 32px;
+  }
+}
+
+.social-networks > a {
+  width: 14px; height: 14px;
+  font-size: 0px !important;
+  display: inline-block;
+  background-size: auto 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
