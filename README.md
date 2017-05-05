@@ -3,7 +3,9 @@ Public Health Schweiz
 
 New website of the [Swiss Society for Public Health](http://public-health.ch), developed by [datalets,ch](http://datalets.ch) using the open source, [Django](https://www.djangoproject.com/)-based [Wagtail CMS](http://wagtail.io). The frontend has been implemented by [moving water](http://www.movingwater.ch/) using [Bootstrap](https://getbootstrap.com) framework.
 
-> Nota bene: this is a work in progress, licensing details and live site coming soon!
+This project is open source under the [MIT License](LICENSE.md).
+
+[![Dependency Status](https://dependencyci.com/github/datalets/public-health-ch/badge)](https://dependencyci.com/github/datalets/public-health-ch)
 
 ## Development environment
 
