@@ -39,11 +39,11 @@ setup:
 
 release:
 	docker-compose build web
-	docker-compose exec web ./manage.py collectstatic --noinput
-	docker-compose exec web ./manage.py compress
 	docker-compose stop web
 	docker-compose kill web
 	docker-compose up -d web
+	docker-compose exec web ./manage.py collectstatic --noinput
+	docker-compose exec web ./manage.py compress
 
 reindex:
 	docker-compose exec web ./manage.py update_index
@@ -52,7 +52,7 @@ clear_index:
 	docker-compose exec elasticsearch curl -XDELETE localhost:9200/_all
 
 django-exec-bash:
-		# execute bash in the currently running container
+	# execute bash in the currently running container
 	docker-compose exec web bash
 
 django-run-bash:
