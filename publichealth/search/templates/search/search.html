@@ -10,7 +10,7 @@
   <div class="container">
     <center>
       <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}{% endif %}">
+        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
         <button type="submit" title="Search">
           <span class="glyphicon glyphicon-search" aria-hidden="false"></span>
         </button>
@@ -53,7 +53,7 @@
               {{ search_results.next_page_number }}</a>
         {% endif %}
     {% elif search_query %}
-      <b>Leider keine Ergebnisse / Désolé, aucun résultat n'a été trouvé</b>
+      <center><h5><i>Leider keine Ergebnisse gefunden<br><br>Désolé, aucun résultat n'a été trouvé</i></h5></center>
     {% endif %}
 
 </div>

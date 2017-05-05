@@ -1,6 +1,7 @@
 // Article sections
 section {
-  padding: 6em 0;
+  padding: 3em 0;
+
   &:nth-child(odd) {
     background-color: $gray-lighter;
   }
@@ -20,14 +21,23 @@ section {
   h5 { font-size: 22px; }
 
   line-height: 1.5;
+
+  img.full-width {
+    width: 100%;
+  }
 }
 
 // Article content blocks
 .article-body > div {
   clear: both;
 }
-.infoblocks article:nth-child(3n+0) {
-    clear: both;
+.infoblocks {
+  .image img {
+    width: 300px; height: 300px;
+  }
+  article:nth-child(3n+1) {
+    clear: left;
+  }
 }
 
 // Special article layout

@@ -4,6 +4,7 @@
 .DS_Store
 *.swp
 *.sqlite3
+/docker-compose.yml
 /env/
 /venv/
 /static/

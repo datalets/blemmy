@@ -112,12 +112,12 @@ class ArticlePage(Page):
     )
 
     search_fields = Page.search_fields + [
-        index.SearchField('body_de'),
-        index.SearchField('body_fr'),
-        index.SearchField('title'),
-        index.SearchField('title_fr'),
-        index.SearchField('intro_de'),
-        index.SearchField('intro_fr'),
+        index.SearchField('title',    partial_match=True, boost=10),
+        index.SearchField('title_fr', partial_match=True, boost=10),
+        index.SearchField('body_de',  partial_match=True),
+        index.SearchField('body_fr',  partial_match=True),
+        index.SearchField('intro_de', partial_match=True),
+        index.SearchField('intro_fr', partial_match=True),
     ]
     content_panels = [
         MultiFieldPanel([
