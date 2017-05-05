@@ -2,7 +2,7 @@
 from django import template
 from django.utils import translation
 
-from ..models.snippets import Contact
+from ..models.snippets import Contact, SocialContact
 
 register = template.Library()
 
@@ -11,6 +11,7 @@ register = template.Library()
 def contact_info():
     return {
         'contact': Contact.objects.last(),
+        'socials': SocialContact.objects.all()
     }
 
 # Contact form (footer)
@@ -25,6 +26,7 @@ def contact_form():
 def contact_links():
     return {
         'contact': Contact.objects.last(),
+        'socials': SocialContact.objects.all()
     }
 
 # Styled contact name (header)

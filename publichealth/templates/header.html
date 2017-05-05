@@ -1,4 +1,4 @@
-{% load wagtailcore_tags navigation information %}
+{% load static wagtailcore_tags navigation information %}
 {% get_site_root as site_root %}
 
 <nav class="navbar-pre navbar-fixed-top">
@@ -25,7 +25,7 @@
           <span class="icon-bar"></span>
         </button>
       <a class="navbar-brand" href="{% pageurl site_root %}">
-        <img src="/static/images/public-health-logo-sign.png" alt="[logo]">
+        <img src="{% static 'images/public-health-logo-sign.png' %}" alt="[logo]">
         <span class="hidden-xs">{% contact_name %}</span></a>
     </div>
 
