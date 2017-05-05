@@ -1,8 +1,8 @@
 # Updated: 3.5.2017
 
 # Core
-wagtail==1.9.1
-Django==1.10.7
+wagtail==1.10
+Django==1.11
 
 # Database
 psycopg2==2.7.1
