@@ -5,6 +5,7 @@
     repo: 'https://github.com/datalets/public-health-ch'
     dest: "{{ release_dir }}"
     force: yes
+    version: "{{ gitversion }}"
 
 - name: Copy Docker site configuration
   template:

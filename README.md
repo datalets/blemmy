@@ -76,10 +76,10 @@ We use [Ansible](https://www.ansible.com) and [Docker Compose](https://docs.dock
 
 To use Docker Compose to deploy the site, copy `ansible/roles/web/templates/docker-compose.j2` to `/docker-compose.yml` and fill in all `{{ variables }}`. This is done automatically in Ansible.
 
-To do production deployments, you need to obtain SSH and vault keys from your system administrator (who has followed the Ansible guide to set up a vault..), and place these in a `.keys` folder - then to deploy a site:
+To do production deployments, you need to obtain SSH and vault keys from your system administrator (who has followed the Ansible guide to set up a vault..), and place these in a `.keys` folder. To deploy a site with a specific version:
 
 ```
-ansible-playbook -s ansible/<*.yaml> -i ansible/inventories/production
+ansible-playbook -s ansible/<*.yaml> -i ansible/inventories/production -e gitversion=v0.0.1
 ```
 
 We use a StackScript to deploy to Linode, the basic system set up is to have a user in the sudoers and docker group, and a few basic system packages ready.
