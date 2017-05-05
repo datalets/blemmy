@@ -1,4 +1,4 @@
-// Contact page
+// Contact page form
 #contact-page {
 
   form {
@@ -28,21 +28,6 @@
       border: 1px solid $gray-light;
       padding: 3px;
     }
-  }
-
-}
-
-// Footer search form
-#search-form {
-
-  input {
-    float: left;
-    width: auto;
-    color: white;
-  }
-  button {
-    background: none; border: none;
-    padding-top: 0.5em;
   }
 
 }
