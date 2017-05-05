@@ -9,14 +9,14 @@ build-cached:
 build:
 	docker-compose build --no-cache
 
-run:
+run-here:
 	docker-compose stop web	# for restart cases, when already running
 	docker-compose up
 
-run-detached:
-	docker-compose up -d
+run:
+	docker-compose up -d # detach by default
 
-django-restart-detached:
+restart:
 	docker-compose stop web
 	docker-compose up -d web
 
@@ -27,7 +27,7 @@ migrate:
 	docker-compose exec web ./manage.py migrate
 
 migrations:
-	docker-compose exec web ./manage.py makemigrations
+	docker-compose exec web ./manage.py makemigrations --merge
 
 apply-migrations: migrations migrate
 
@@ -77,7 +77,7 @@ django-loaddata:
 	gunzip ~/publichealth.home.json.gz
 	docker-compose exec web ./manage.py loaddata ~/publichealth.home.json
 
-restore: django-loaddata django-restart-detached
+restore: django-loaddata restart
 
 psql:
 	docker-compose exec postgres psql -U postgres -d postgres
