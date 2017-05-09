@@ -26,7 +26,7 @@
         <div class="item">
           <div class="article-caption">
             <h3><a href="{% pageurl entry %}">{{ entry.trans_title }}</a></h3>
-            <p>{{ entry.trans_intro|richtext }}</p>
+            {{ entry.trans_intro|richtext }}
           </div>
         </div>
       {% endfor %}

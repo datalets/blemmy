@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import models
 from modelcluster.fields import ParentalKey
 
-from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.blocks import StructBlock, CharBlock, URLBlock, RichTextBlock
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, MultiFieldPanel
@@ -17,12 +17,12 @@ from puput.models import EntryPage
 
 from ..util import TranslatedField
 
-class InfoBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=True)
+class InfoBlock(StructBlock):
+    title = CharBlock(required=True)
     photo = ImageChooserBlock(required=True)
-    summary = blocks.RichTextBlock(required=True)
-    action = blocks.CharBlock(required=False)
-    url = blocks.URLBlock(required=False)
+    summary = RichTextBlock(required=True)
+    action = CharBlock(required=False)
+    url = URLBlock(required=False)
 
 class ArticleIndexPage(Page):
     title_fr = models.CharField(max_length=255, default="")
@@ -83,15 +83,15 @@ class ArticlePage(Page):
     )
 
     body_de = StreamField([
-        ('paragraph', blocks.RichTextBlock()),
+        ('paragraph', RichTextBlock()),
         ('image', ImageChooserBlock()),
-        ('section', blocks.CharBlock(classname="full title")),
+        ('section', CharBlock(classname="full title")),
         ('info', InfoBlock()),
     ], null=True, blank=True)
     body_fr = StreamField([
-        ('paragraph', blocks.RichTextBlock()),
+        ('paragraph', RichTextBlock()),
         ('image', ImageChooserBlock()),
-        ('section', blocks.CharBlock(classname="full title")),
+        ('section', CharBlock(classname="full title")),
         ('info', InfoBlock()),
     ], null=True, blank=True)
     trans_body = TranslatedField(
@@ -123,14 +123,16 @@ class ArticlePage(Page):
         MultiFieldPanel([
             FieldPanel('title'),
             FieldPanel('intro_de'),
-            StreamFieldPanel('body_de'),
         ], heading="Deutsch"),
+        StreamFieldPanel('body_de'),
         MultiFieldPanel([
             FieldPanel('title_fr'),
             FieldPanel('intro_fr'),
-            StreamFieldPanel('body_fr'),
         ], heading="Français"),
-        ImageChooserPanel('feed_image'),
+        StreamFieldPanel('body_fr'),
+        MultiFieldPanel([
+            ImageChooserPanel('feed_image'),
+        ], heading="Images"),
     ]
     promote_panels = [
         InlinePanel('related_links', label="Links"),
@@ -186,7 +188,7 @@ class HomePage(Page):
             FieldPanel('body_de', classname="full"),
             StreamFieldPanel('infos_de'),
         ], heading="Deutsch"),
-            MultiFieldPanel([
+        MultiFieldPanel([
             FieldPanel('intro_fr', classname="full"),
             FieldPanel('body_fr', classname="full"),
             StreamFieldPanel('infos_fr'),

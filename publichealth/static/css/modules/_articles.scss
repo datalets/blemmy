@@ -4,6 +4,7 @@ section {
 
   &:nth-child(odd) {
     background-color: $gray-lighter;
+    color: black;
   }
 
   h1 {
