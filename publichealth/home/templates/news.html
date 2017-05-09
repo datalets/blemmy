@@ -3,7 +3,7 @@
 <section id="news">
 	<div class="container">
 		<div class="row">
-        {% for entry in newsfeed %}
+      {% for entry in newsfeed %}
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="panel panel-default">
 					{% if entry.header_image %}
@@ -13,10 +13,10 @@
 						<h3><span>{{ entry.title }}</span></h3>
 						<p>
 						{% if entry.excerpt %}
-	                        {{ entry.excerpt|richtext }}
-	                    {% else %}
-	                        {{ entry.body|richtext|truncatewords_html:70 }}
-	                    {% endif %}
+							{{ entry.excerpt|striptags }}
+						{% else %}
+							{{ entry.body|striptags|truncatewords_html:70 }}
+						{% endif %}
 						</p>
 						<a href="{% pageurl entry %}" class="btn btn-default btn-xs">Mehr erfahren</a>
 					</div>
@@ -25,7 +25,7 @@
 			</div>
 		{% empty %}
 		    No news today
-        {% endfor %}
+    {% endfor %}
 		</div>
 	</div>
 </section>
