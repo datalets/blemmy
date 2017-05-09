@@ -9,16 +9,16 @@ This project is open source under the [MIT License](LICENSE.md).
 
 ## Development environment
 
-The easiest way to set up your machine would be to use [Vagrant](https://vagrantup.com), then in the project folder in the terminal type: `vagrant liverun`.
+The easiest way to set up your machine would be to use [Vagrant](https://vagrantup.com), then in the project folder in the terminal type: `vagrant up`. Then when it is ready, follow instructions for *Database setup*.
 
 To set up a full development environment, follow all these instructions.
 
 **Frontend setup**
 
-You will need to have Ruby and SASS installed on your system, e.g.:
+If not using Vagrant, you will need to have Ruby and SASS installed on your system, e.g.:
 
 ```
-sudo yum install rubygem-sass
+sudo apt-get install ruby-sass
 ```
 
 Make sure a recent version of node.js (we recommend using [nave.sh](https://github.com/isaacs/nave)), then:
@@ -35,7 +35,7 @@ If you are only working on the frontend, you can start a local webserver and wor
 
 **Backend setup**
 
-After installing Python 3, from the project folder, deploy system packages and create a virtual environment as detailed (for Ubuntu users) below:
+If not using Vagrant: after installing Python 3, from the project folder, deploy system packages and create a virtual environment as detailed (for Ubuntu users) below:
 
 ```
 sudo apt-get install python3-venv python3-dev libjpeg-dev
@@ -45,7 +45,19 @@ pyvenv env
 
 pip install -U pip
 pip install -r requirements.txt
+```
 
+At this point your backup is ready to be deployed.
+
+## Database setup
+
+Once your installation is ready, you can get a blank database set up and add a user to login with.
+
+If you are using Vagrant, enter the shell of your virtual machine now with `vagrant ssh`
+
+Run these commands:
+
+```
 ./manage.py migrate
 ./manage.py createsuperuser
 ```
@@ -56,13 +68,13 @@ You will be asked a few questions to create an administrator account.
 
 If you have one installed, also start your local redis server (`service redis start`).
 
-Run this after completing setup:
+After completing setup, you can use:
 
 ```
 ./manage.py runserver
 ```
 
-A default browser should open pointing to the default home page.
+(In a Vagrant shell, just use `djrun`)
 
 Now access the admin panel with the user account you created earlier: http://localhost:8000/admin/
 
@@ -109,3 +121,15 @@ For further deployment and system maintenance we have a `Makefile` which automat
 ansible-playbook -s ansible/site.yaml -i ansible/inventories/production --tags release
 ssh -i .keys/ansible.pem ansible@<server-ip> "cd <release_dir> && make release"
 ```
+
+### Restoring a data backup
+
+For development, it's handy to have access to a copy of the production data. To delete your local database and restore from a file backup, run:
+
+```
+rm publichealth-dev.sqlite3
+python manage.py migrate
+python manage.py loaddata publichealth.home.json
+```
+
+You might want to `createsuperuser` again at this point.

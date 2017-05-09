@@ -50,10 +50,23 @@ source $VIRTUALENV_DIR/bin/activate
 export PS1="[$PROJECT_NAME \W]\\$ "
 cd $PROJECT_DIR
 
+# Install Ruby SASS
+apt-get update
+apt-get install ruby-sass
+
+# Install node.js
+curl https://raw.githubusercontent.com/isaacs/nave/master/nave.sh > nave.sh
+chmod a+x nave.sh
+./nave.sh usemain stable
+cp nave.sh /home/vagrant/
+
+su - vagrant -c "/home/vagrant/nave.sh usemain stable"
+su - vagrant -c "/home/vagrant/nave.sh use stable"
+
 # Install Frontend dependencies
-npm install -g bower grunt-cli
-npm install
-bower install
+su - vagrant -c "npm install -g bower grunt-cli"
+su - vagrant -c "npm install --no-bin-links"
+su - vagrant -c "bower install"
 alias bower="bower install"
 
 EOF
