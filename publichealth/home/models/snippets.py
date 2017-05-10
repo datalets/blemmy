@@ -59,6 +59,10 @@ class Contact(models.Model):
     phone = models.CharField(max_length=40, default="")
     email = models.EmailField(max_length=100, default="")
     www = models.URLField(null=True, blank=True)
+    map_url = models.URLField(null=True, blank=True,
+        help_text="Optional link of address to mapping provider")
+    analytics = models.CharField(max_length=60, default="", blank=True,
+        help_text="Optional web analytics property code")
 
     panels = Page.content_panels + [
         FieldPanel('title_fr'),
@@ -66,6 +70,8 @@ class Contact(models.Model):
         FieldPanel('phone'),
         FieldPanel('email'),
         FieldPanel('www'),
+        FieldPanel('map_url'),
+        FieldPanel('analytics'),
     ]
 
     def phone_link(self):
@@ -74,6 +80,13 @@ class Contact(models.Model):
         return 'mailto:%s' % self.email
     def www_domain(self):
         return self.www.replace('http://', '').replace('https://', '')
+    def is_google_analytics(self):
+        return self.analytics.startswith('UA-')
+    def get_piwik_analytics(self):
+        # When formatted as "server|site_id", assume Piwik
+        if not '|' in self.analytics: return False
+        sa = self.analytics.split('|')
+        return { 'server': sa[0], 'site': sa[1] }
     def trans_title_styled(self):
         v = self.trans_title.split(' ')
         if len(v) != 3: return v
