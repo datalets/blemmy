@@ -194,6 +194,9 @@ $banner-height: 700px;
 }
 @include max-screen(480px) {
   .navbar-pre .navbar-nav,
-  #carousel-banner { display: none !important; }
-  #banner { margin-top: 100px; }
+  #carousel-banner {
+    .carousel-caption { left: 0px; right: 0px; }
+    .carousel-inner { margin-bottom: 0px; }
+  }
+  //#banner { margin-top: 100px; }
 }
