@@ -43,12 +43,12 @@
       {% for block in subcategories %}
       <article class="col-md-4">
 				<a href="{% pageurl block %}">
+          <header>
+            <h4>{{ block.trans_title }}</h4>
+          </header>
           <div class="image">
   					{% image block.feed_image fill-300x300 %}
   				</div>
-          <header>
-            <h3>{{ block.trans_title }}</h3>
-          </header>
         </a>
       </article>
       {% endfor %}
