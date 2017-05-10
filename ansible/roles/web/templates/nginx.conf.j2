@@ -6,7 +6,7 @@ upstream wagtail-site {
 server {
 	listen [::]:80;
 	listen 80;
-	server_name {{ domain }} www.{{ domain }};
+	server_name {{ domain }};
 
 	client_max_body_size 16M;
 
@@ -48,26 +48,24 @@ server {
 		proxy_redirect off;
 		proxy_pass http://wagtail-site;
 	}
-
-	location /logicio/pmws/ {
-		return 301 /;
-	}
-}
-
-# Beta site configuration
-server {
-	listen 80;
-	server_name beta.{{ domain }};
-	return 301 $scheme://{{ domain }};
 }
 
 # Web archive configuration
 server {
 	listen 80;
 	server_name www-old.{{ domain }};
+	index index.html index.htm;
+	root {{ archive_dir }};
 	location / {
-		alias {{ release_dir }}/www-old/;
+		try_files $uri $uri/ =404;
 	}
+}
+
+# Beta site configuration
+server {
+ 	listen 80;
+ 	server_name beta.{{ domain }} www.{{ domain }};
+ 	return 301 $scheme://{{ domain }};
 }
 
 # TODO: parameterize

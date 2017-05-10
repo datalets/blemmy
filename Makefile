@@ -38,7 +38,7 @@ setup:
 	docker-compose exec web ./manage.py collectstatic
 
 release:
-	docker-compose build web
+	sudo docker-compose build web
 	docker-compose stop web
 	docker-compose kill web
 	docker-compose up -d web

@@ -3,6 +3,7 @@
   gather_facts: True
   vars:
     release_dir: /opt/publichealth
+    archive_dir: /opt/www-old
     django_log_dir: /var/log/publichealth
     ipv4_addresses: "{{ ansible_all_ipv4_addresses }}"
   environment:
