@@ -195,7 +195,7 @@ $banner-height: 700px;
 @include max-screen(480px) {
   .navbar-pre .navbar-nav,
   #carousel-banner {
-    .carousel-caption { left: 0px; right: 0px; }
+    .carousel-caption { left: 0px; right: 0px; overflow-x: hidden; }
     .carousel-inner { margin-bottom: 0px; }
   }
   //#banner { margin-top: 100px; }
