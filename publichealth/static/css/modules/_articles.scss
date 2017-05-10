@@ -41,6 +41,11 @@ section {
   }
 }
 
+// Article index blocks
+.article-subcategories article {
+  margin-bottom: 1.5em;
+}
+
 // Special article layout
 .article-page .lead {
   h2,h3,h4,h5 { text-align: center; }
