@@ -39,14 +39,22 @@ article footer .btn {
 
 }
 
-// Footer contact form
+// Footer contact information
 #contact-info {
   address {
     margin-bottom: 0px;
   }
+
   .social-networks > a {
     border: 2px solid white;
     width: 32px; height: 32px;
+  }
+}
+
+// Footer contact form
+#footer #contact-form {
+  textarea.form-control, input.form-control {
+    color: white;
   }
 }
 
