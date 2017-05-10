@@ -2,14 +2,14 @@
 {% for sc in socials %}
   <a href="{{ sc.network_url }}" target="_blank" title="{{ sc.network_title }}"
      style="background-image:url(/static/images/social/{{ sc.network }}.png)">
-     {{ sc.network_title }}</a>
+     <span class="hidden">{{ sc.network_title }}</span></a>
 {% endfor %}
 </span>
 
 <a href="{{ contact.phone_link }}">
   <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-  <span class="hidden-xs">{{ contact.phone }}</span></a>
+  <span class="hidden">{{ contact.phone }}</span></a>
 
 <a href="{{ contact.email_link }}">
   <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-  <span class="hidden-xs">{{ contact.email }}</span></a>
+  <span class="hidden">{{ contact.email }}</span></a>
