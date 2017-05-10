@@ -22,8 +22,8 @@ server {
 		access_log off;
 		expires 3600;
 		alias {{ release_dir }}/static/;
-				add_header Cache-Control "public";
-				add_header Access-Control-Allow-Origin https://{{ domain }};
+		add_header Cache-Control "public";
+		add_header Access-Control-Allow-Origin https://{{ domain }};
 	}
 
 	# Set a longer expiry for CACHE/, because the filenames are unique.
@@ -54,10 +54,26 @@ server {
 	}
 }
 
+# Beta site configuration
+server {
+	listen 80;
+	server_name beta.{{ domain }};
+	return 301 $scheme://{{ domain }};
+}
+
+# Web archive configuration
+server {
+	listen 80;
+	server_name www-old.{{ domain }};
+	location / {
+		alias {{ release_dir }}/www-old/;
+	}
+}
+
 # TODO: parameterize
 server {
 	listen 80; listen 443 ssl;
-	server_name conference.public-health.ch;
+	server_name conference.{{ domain }};
 	location /fr {
 		return 301 $scheme://sph17.organizers-congress.org/frontend/index.php?sub=89;
 	}
