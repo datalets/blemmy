@@ -9,14 +9,10 @@
         <meta name="description" content="{% block description %}{% endblock %}">
 
         {% compress css %}
-            <link rel="stylesheet" type="text/x-scss" href="{% static 'libs/slick-carousel/slick/slick.scss' %}">
-            <link rel="stylesheet" type="text/x-scss" href="{% static 'libs/slick-carousel/slick/slick-theme.scss' %}">
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
         {% endcompress %}
 
-        {% block extra_css %}
-
-        {% endblock %}
+        {% block extra_css %}{% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
