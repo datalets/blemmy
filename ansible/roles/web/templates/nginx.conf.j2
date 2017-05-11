@@ -20,7 +20,7 @@ server {
 
 	location /static/ {
 		access_log off;
-		expires 3600;
+		expires 36000;
 		alias {{ release_dir }}/static/;
 		add_header Cache-Control "public";
 		add_header Access-Control-Allow-Origin https://{{ domain }};
@@ -36,9 +36,9 @@ server {
 	# Only serve /media/images by default, not e.g. original_images/.
 	location /media/images {
 		alias {{ release_dir }}/media/images;
-				access_log off;
-				expires max;
-				add_header Cache-Control "public";
+		access_log off;
+		expires max;
+		add_header Cache-Control "public";
 	}
 
 	location / {

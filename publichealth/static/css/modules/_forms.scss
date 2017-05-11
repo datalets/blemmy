@@ -28,6 +28,11 @@
       border: 1px solid $gray-light;
       padding: 3px;
     }
+
+    // Full width comment on mobile screens
+    @include max-screen($screen-xs-max) {
+      textarea { width: 100%; }
+    }
   }
 
 }
