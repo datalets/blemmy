@@ -7,8 +7,9 @@ from django.db import models
 from wagtail.wagtailsnippets.models import register_snippet
 
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, PageChooserPanel
 
+from .forms import ContactForm
 from ..util import TranslatedField
 
 # List of supported social networks
@@ -59,10 +60,18 @@ class Contact(models.Model):
     phone = models.CharField(max_length=40, default="")
     email = models.EmailField(max_length=100, default="")
     www = models.URLField(null=True, blank=True)
+
     map_url = models.URLField(null=True, blank=True,
         help_text="Optional link of address to mapping provider")
     analytics = models.CharField(max_length=60, default="", blank=True,
         help_text="Optional web analytics property code")
+
+    contact_form = models.ForeignKey(
+        'home.ContactForm',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     panels = Page.content_panels + [
         FieldPanel('title_fr'),
@@ -72,6 +81,7 @@ class Contact(models.Model):
         FieldPanel('www'),
         FieldPanel('map_url'),
         FieldPanel('analytics'),
+        PageChooserPanel('contact_form', 'home.ContactForm'),
     ]
 
     def phone_link(self):

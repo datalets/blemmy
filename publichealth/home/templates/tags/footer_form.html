@@ -1,0 +1,5 @@
+<form action="." method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary" type="submit">Senden / Envoi</button>
+</form>

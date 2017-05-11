@@ -15,10 +15,10 @@ def contact_info():
     }
 
 # Contact form (footer)
-@register.inclusion_tag('tags/contact_form.html')
-def contact_form():
+@register.inclusion_tag('tags/footer_form.html')
+def footer_form():
     return {
-        'contact': Contact.objects.last(),
+        'form': Contact.objects.last().contact_form,
     }
 
 # Contact links (header)
