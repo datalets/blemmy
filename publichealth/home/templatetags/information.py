@@ -17,9 +17,10 @@ def contact_info():
 # Contact form (footer)
 @register.inclusion_tag('tags/footer_form.html')
 def footer_form():
-    return {
-        'form': Contact.objects.last().contact_form,
-    }
+    if Contact.objects.last():
+        return {
+            'form': Contact.objects.last().contact_form,
+        }
 
 # Contact links (header)
 @register.inclusion_tag('tags/contact_links.html')
