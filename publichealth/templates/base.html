@@ -9,10 +9,9 @@
         <meta name="description" content="{% block description %}{% endblock %}">
 
         {% compress css %}
+            {% block extra_css %}{% endblock %}
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
         {% endcompress %}
-
-        {% block extra_css %}{% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
