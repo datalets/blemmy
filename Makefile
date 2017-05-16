@@ -65,13 +65,10 @@ django-shell:
 logs:
 	docker-compose logs -f --tail=500
 
-django-backup:
+backup:
 	docker-compose exec web ./manage.py dumpdata --natural-foreign --indent=4 -e contenttypes -e auth.Permission -e sessions -e wagtailcore.pagerevision -e wagtailcore.groupcollectionpermission > ~/publichealth.home.json
-
-backup-archive:
-	gzip -1q ~/publichealth.home.json
-
-backup: django-backup backup-archive
+	zip ~/publichealth.home.json.`date +"%d%m%Y-%H%M"`.zip ~/publichealth.home.json
+	rm ~/publichealth.home.json
 
 django-loaddata:
 	gunzip ~/publichealth.home.json.gz
@@ -90,10 +87,15 @@ pg-exec:
 	docker-compose exec postgres bash
 
 pg-dump:
-	docker-compose exec postgres bash -c 'pg_dump -U postgres -d postgres -f ./dumps/latest.sql'
+	docker-compose exec postgres bash -c 'pg_dump -U postgres -d postgres -f ./latest.sql'
+
+pg-backup:
+	docker-compose exec postgres bash -c 'pg_dump -U postgres -d postgres' > ~/pg-backup.sql
+	zip ~/pg-backup.sql.`date +"%d%m%Y-%H%M"`.zip ~/pg-backup.sql
+	rm ~/pg-backup.sql
 
 pg-restore:
-	docker-compose exec postgres bash -c 'psql -U postgres -d postgres -f ./dumps/latest.sql'
+	docker-compose exec postgres bash -c 'psql -U postgres -d postgres -f ./latest.sql'
 
 pg-surefire-drop-restore-db:
 	# drop existing database, recreate it, and then restore its content from backup.

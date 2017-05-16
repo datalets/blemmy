@@ -9,7 +9,7 @@
 			<a href="{% pageurl entry %}">
 				<div class="carousel-caption">
 					<h3>{{ entry.trans_title }}</h3>
-					<p>{{ entry.trans_intro|richtext }}</p>
+					{{ entry.trans_intro|richtext }}
 				</div>
 			</a>
 		</div>

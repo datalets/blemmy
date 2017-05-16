@@ -18,6 +18,13 @@
         &.link {
           text-transform: uppercase;
         }
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      .social-networks {
+        top: -1px; position: relative;
+        a { margin: 0 10px; }
       }
     }
     .language-nav {

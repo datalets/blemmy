@@ -19,8 +19,7 @@ server {
 	gzip_vary on;
 
 	location /static/ {
-		access_log off;
-		expires 3600;
+		access_log off; expires 36000;
 		alias {{ release_dir }}/static/;
 		add_header Cache-Control "public";
 		add_header Access-Control-Allow-Origin https://{{ domain }};
@@ -28,17 +27,20 @@ server {
 
 	# Set a longer expiry for CACHE/, because the filenames are unique.
 	location /static/CACHE/ {
-		access_log off;
-		expires 864000;
+		access_log off; expires 864000;
 		alias {{ release_dir }}/static/CACHE/;
+	}
+
+	location /favicon.ico {
+		access_log off; expires max;
+		alias {{ release_dir }}/static/images/favicon.ico;
 	}
 
 	# Only serve /media/images by default, not e.g. original_images/.
 	location /media/images {
 		alias {{ release_dir }}/media/images;
-				access_log off;
-				expires max;
-				add_header Cache-Control "public";
+		access_log off; expires max;
+		add_header Cache-Control "public";
 	}
 
 	location / {
