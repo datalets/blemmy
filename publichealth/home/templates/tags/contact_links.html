@@ -1,4 +1,4 @@
-<span class="social-networks hidden-xs">
+<span class="social-networks">
 {% for sc in socials %}
   <a href="{{ sc.network_url }}" target="_blank" title="{{ sc.network_title }}"
      style="background-image:url(/static/images/social/{{ sc.network }}.png)">
@@ -6,16 +6,10 @@
 {% endfor %}
 </span>
 
-<a href="{{ contact.phone_link }}" class="hidden-xs">
+<a href="{{ contact.phone_link }}" class="hidden">
   <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
   <span class="hidden">{{ contact.phone }}</span></a>
 
-<a href="{{ contact.email_link }}" class="hidden-xs">
+<a href="{{ contact.email_link }}" class="hidden">
   <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
   <span class="hidden">{{ contact.email }}</span></a>
-
-<a class="link visible-xs-inline" href="#contact-info" title="Contact">
-  <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></a>
-
-<a class="link visible-xs-inline" href="#contact-info" title="Contact">
-  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a>
