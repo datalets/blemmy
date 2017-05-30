@@ -13,6 +13,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from wagtail.api import APIField
+
 from puput.models import EntryPage
 
 from ..util import TranslatedField
@@ -23,6 +25,7 @@ class InfoBlock(StructBlock):
     summary = RichTextBlock(required=True)
     action = CharBlock(required=False)
     url = URLBlock(required=False)
+    sujees_favorite_color = CharBlock()
 
 class ArticleIndexPage(Page):
     title_fr = models.CharField(max_length=255, default="")
@@ -119,6 +122,11 @@ class ArticlePage(Page):
         index.SearchField('intro_de', partial_match=True),
         index.SearchField('intro_fr', partial_match=True),
     ]
+    api_fields = [
+        APIField('intro_de'),
+        APIField('body_de'),
+    ]
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title'),
