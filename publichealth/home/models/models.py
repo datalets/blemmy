@@ -3,6 +3,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import translation
+
 from modelcluster.fields import ParentalKey
 
 from wagtail.wagtailcore.blocks import StructBlock, CharBlock, URLBlock, RichTextBlock
@@ -13,7 +15,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from puput.models import EntryPage
+from puput.models import EntryPage, BlogPage
 
 from ..util import TranslatedField
 
@@ -182,6 +184,11 @@ class HomePage(Page):
         'infos_fr',
     )
 
+    # news_home_de = models.ForeignKey(
+    #     'puput.EntryPage',
+    #     null=True, blank=True, on_delete=models.SET_NULL,
+    # )
+
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('intro_de', classname="full"),
@@ -207,8 +214,10 @@ class HomePage(Page):
     @property
     def newsfeed(self):
         # Get list of latest news
-        # TODO: fetch children of 'News (DE)'
-        entries = EntryPage.objects.live().descendant_of(self)
+        curlang = translation.get_language()
+        parent = BlogPage.objects.filter(slug='news-%s' % curlang)
+        if not parent: return []
+        entries = EntryPage.objects.live().descendant_of(parent[0])
         # Order by most recent date first
         entries = entries.order_by('-date')
         return entries[:4]
