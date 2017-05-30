@@ -3,8 +3,6 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils import translation
-
 from modelcluster.fields import ParentalKey
 
 from wagtail.wagtailcore.blocks import StructBlock, CharBlock, URLBlock, RichTextBlock
@@ -15,7 +13,9 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from puput.models import EntryPage, BlogPage
+from wagtail.api import APIField
+
+from puput.models import EntryPage
 
 from ..util import TranslatedField
 
@@ -121,6 +121,11 @@ class ArticlePage(Page):
         index.SearchField('intro_de', partial_match=True),
         index.SearchField('intro_fr', partial_match=True),
     ]
+    api_fields = [
+        APIField('intro_de'),
+        APIField('body_de'),
+    ]
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title'),
@@ -184,11 +189,6 @@ class HomePage(Page):
         'infos_fr',
     )
 
-    # news_home_de = models.ForeignKey(
-    #     'puput.EntryPage',
-    #     null=True, blank=True, on_delete=models.SET_NULL,
-    # )
-
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('intro_de', classname="full"),
@@ -214,10 +214,8 @@ class HomePage(Page):
     @property
     def newsfeed(self):
         # Get list of latest news
-        curlang = translation.get_language()
-        parent = BlogPage.objects.filter(slug='news-%s' % curlang)
-        if not parent: return []
-        entries = EntryPage.objects.live().descendant_of(parent[0])
+        # TODO: fetch children of 'News (DE)'
+        entries = EntryPage.objects.live().descendant_of(self)
         # Order by most recent date first
         entries = entries.order_by('-date')
         return entries[:4]
