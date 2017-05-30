@@ -1,5 +1,0 @@
-*.retry
-.vagrant
-tests/_roles
-!tests/_roles/.gitkeep
-.DS_Store

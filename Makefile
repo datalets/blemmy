@@ -1,5 +1,5 @@
 export COMPOSE_FILE=./docker-compose.yml
-export COMPOSE_PROJECT_NAME=publichealth
+export COMPOSE_PROJECT_NAME=blemmy
 
 default: build
 
@@ -66,13 +66,13 @@ logs:
 	docker-compose logs -f --tail=500
 
 backup:
-	docker-compose exec web ./manage.py dumpdata --natural-foreign --indent=4 -e contenttypes -e auth.Permission -e sessions -e wagtailcore.pagerevision -e wagtailcore.groupcollectionpermission > ~/publichealth.home.json
-	zip ~/publichealth.home.json.`date +"%d%m%Y-%H%M"`.zip ~/publichealth.home.json
-	rm ~/publichealth.home.json
+	docker-compose exec web ./manage.py dumpdata --natural-foreign --indent=4 -e contenttypes -e auth.Permission -e sessions -e wagtailcore.pagerevision -e wagtailcore.groupcollectionpermission > ~/blemmy.home.json
+	zip ~/blemmy.home.json.`date +"%d%m%Y-%H%M"`.zip ~/blemmy.home.json
+	rm ~/blemmy.home.json
 
 django-loaddata:
-	gunzip ~/publichealth.home.json.gz
-	docker-compose exec web ./manage.py loaddata ~/publichealth.home.json
+	gunzip ~/blemmy.home.json.gz
+	docker-compose exec web ./manage.py loaddata ~/blemmy.home.json
 
 restore: django-loaddata restart
 

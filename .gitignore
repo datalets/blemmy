@@ -15,5 +15,5 @@
 /Vagrantfile.local
 /docs/_build/
 /node_modules/
-/publichealth/static/libs/
+/blemmy/static/libs/
 /mockup/assets/css/*.css

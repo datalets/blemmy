@@ -1,3 +1,0 @@
----
-# vars file for docker-ubuntu
-docker_nonroot: "{{ (ansible_env.HOME == '/root') | ternary('no', 'yes') }}"

@@ -9,7 +9,6 @@ psycopg2==2.7.1
 dj-database-url==0.4.2
 
 # Addons
-puput==0.8
 
 # Search
 elasticsearch>=2.0.0,<3.0.0

@@ -1,9 +1,0 @@
----
-
-- name: Install packages based on package.json.
-  npm:
-    path: "{{ release_dir }}"
-
-- name: Install packages based on bower.json.
-  bower:
-    path: "{{ release_dir }}"

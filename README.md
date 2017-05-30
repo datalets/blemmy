@@ -1,37 +1,15 @@
-Public Health Schweiz
+Blemmy
 =====================
 
-New website of the [Swiss Society for Public Health](http://public-health.ch), developed by [datalets,ch](http://datalets.ch) using the open source, [Django](https://www.djangoproject.com/)-based [Wagtail CMS](http://wagtail.io). The frontend has been implemented by [moving water](http://www.movingwater.ch/) using [Bootstrap](https://getbootstrap.com) framework.
+An experimental site developed by [datalets,ch](http://datalets.ch) using the open source, [Django](https://www.djangoproject.com/)-based [Wagtail CMS](http://wagtail.io). 
 
 This project is open source under the [MIT License](LICENSE.md).
-
-[![Dependency Status](https://dependencyci.com/github/datalets/public-health-ch/badge)](https://dependencyci.com/github/datalets/public-health-ch)
 
 ## Development environment
 
 The easiest way to set up your machine would be to use [Vagrant](https://vagrantup.com), then in the project folder in the terminal type: `vagrant up`. Then when it is ready, follow instructions for *Database setup*.
 
 To set up a full development environment, follow all these instructions.
-
-**Frontend setup**
-
-If not using Vagrant, you will need to have Ruby and SASS installed on your system, e.g.:
-
-```
-sudo apt-get install ruby-sass
-```
-
-Make sure a recent version of node.js (we recommend using [nave.sh](https://github.com/isaacs/nave)), then:
-
-```
-npm install -g bower grunt-cli
-npm install
-bower install
-```
-
-The first command (`..install -g..`) may require `sudo` if you installed node.js as a system package.
-
-If you are only working on the frontend, you can start a local webserver and work on frontend assets without the backend setup described below. Mock content is at `mockup`, and there is a `grunt browser-sync` setup for working with frontend assets.
 
 **Backend setup**
 
@@ -78,58 +56,16 @@ After completing setup, you can use:
 
 Now access the admin panel with the user account you created earlier: http://localhost:8000/admin/
 
-## Troubleshooting
+## Data backups
 
-- Issues with migrating database tables in SQLite during development? Try `./manage.py migrate --fake`
-
-## Production notes
-
-We use [Ansible](https://www.ansible.com) and [Docker Compose](https://docs.docker.com/compose/reference/overview/) for automated deployment.
-
-To use Docker Compose to deploy the site, copy `ansible/roles/web/templates/docker-compose.j2` to `/docker-compose.yml` and fill in all `{{ variables }}`. This is done automatically in Ansible.
-
-To do production deployments, you need to obtain SSH and vault keys from your system administrator (who has followed the Ansible guide to set up a vault..), and place these in a `.keys` folder. To deploy a site:
-
-```
-ansible-playbook -s ansible/<*.yaml> -i ansible/inventories/production
-```
-
-For an update release with a specific version, use:
-
-```
-ansible-playbook -s ansible/site.yaml -i ansible/inventories/production --tags release  -e gitversion=<v*.*.*>
-```
-
-We use a StackScript to deploy to Linode, the basic system set up is to have a user in the sudoers and docker group, and a few basic system packages ready.
-
-For example, on Ubuntu:
-
-```
-apt-get install -q -y zip git nginx python-virtualenv python-dev
-```
-
-The order of deployment is:
-
-- docker.yaml (base system)
-- node.yaml
-- site.yaml
-- harden.yaml
-
-For further deployment and system maintenance we have a `Makefile` which automates Docker Compose tasks. This should be converted to use [Ansible Container](http://docs.ansible.com/ansible-container/getting_started.html). In the meantime, start a release with Ansible, then complete it using `make`, i.e.:
-
-```
-ansible-playbook -s ansible/site.yaml -i ansible/inventories/production --tags release
-ssh -i .keys/ansible.pem ansible@<server-ip> "cd <release_dir> && make release"
-```
-
-### Restoring a data backup
+Issues with migrating database tables in SQLite during development? Try `./manage.py migrate --fake`
 
 For development, it's handy to have access to a copy of the production data. To delete your local database and restore from a file backup, run:
 
 ```
-rm publichealth-dev.sqlite3
+rm blemmy-dev.sqlite3
 python manage.py migrate
-python manage.py loaddata publichealth.home.json
+python manage.py loaddata blemmy.home.json
 ```
 
 You might want to `createsuperuser` again at this point.

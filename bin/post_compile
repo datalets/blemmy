@@ -1,1 +1,1 @@
-python manage.py compress --settings publichealth.settings.production
+python manage.py compress --settings blemmy.settings.production

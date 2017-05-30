@@ -1,5 +1,4 @@
 import os
-from puput import PUPUT_APPS
 
 WAGTAIL_SITE_NAME = 'Public Health'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -15,7 +14,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
-INSTALLED_APPS += PUPUT_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,7 +51,7 @@ WSGI_APPLICATION = 'tests.testapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'tests/testapp/publichealth.db',
+        'NAME': 'tests/testapp/blemmy.db',
         'USER': '',
         'PASSWORD': '',
     }

@@ -1,5 +1,0 @@
----
-# defaults file for docker-compose
-docker_compose_path: /usr/local/bin
-docker_compose_mode: 0755
-docker_compose_version: 1.11.2

@@ -1,6 +1,6 @@
 logging: 30
 migrate_from_0_3_2: false
-project_name: publichealth
+project_name: blemmy
 stellar_url: postgresql+psycopg2:///stellar_data
-tracked_databases: [publichealth]
+tracked_databases: [blemmy]
 url: postgresql+psycopg2:///template1
