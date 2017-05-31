@@ -1,3 +1,4 @@
+import os
 from .base import *
 
 
@@ -20,6 +21,10 @@ DATABASES = {
         'NAME': 'blemmy-dev.sqlite3',
     }
 }
+
+env = os.environ.copy()
+if 'ALLOWED_HOSTS' in env:
+    ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
 
 try:
     from .local import *
