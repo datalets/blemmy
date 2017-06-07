@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'blemmy.feed',
     'blemmy.home',
 
     'wagtail.contrib.wagtailsearchpromotions',
