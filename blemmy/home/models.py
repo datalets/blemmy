@@ -26,8 +26,13 @@ class ArticleIndexPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro'),
-        ImageChooserPanel('feed_image'),
+        MultiFieldPanel([
+                FieldPanel('intro'),
+                ImageChooserPanel('feed_image'),
+            ],
+            heading="Un MultiFieldPanel",
+            classname="collapsible collapsed",
+    ),
     ]
 
     def get_context(self, request):
@@ -64,6 +69,8 @@ class ArticlePage(Page):
         related_name='+'
     )
 
+    postdate = models.DateField(default='YYYY-MM-DD', blank=True)
+
     api_fields = [
         APIField('intro'),
         APIField('body'),
@@ -76,9 +83,15 @@ class ArticlePage(Page):
         index.SearchField('body',     partial_match=True),
     ]
     content_panels = Page.content_panels + [
-        FieldPanel('intro'),
-        StreamFieldPanel('body'),
         ImageChooserPanel('feed_image'),
+        FieldPanel('intro', classname="col7"),
+        FieldPanel('postdate', classname="col5"),
+        MultiFieldPanel([
+            StreamFieldPanel('body'),
+            ],
+            heading="Content",
+            classname="collapsible collapsed col12",
+    ),
     ]
     promote_panels = [
         InlinePanel('related_links', label="Links"),
@@ -88,7 +101,7 @@ class ArticlePage(Page):
         MultiFieldPanel(Page.promote_panels, "Settings"),
     ]
 
-    subpage_types = []
+    subpage_types = ['wagtailcore.Page']
     class Meta:
         verbose_name = "Web page"
 
