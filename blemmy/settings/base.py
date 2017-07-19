@@ -22,10 +22,12 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'blemmy.home',
+    'openfarms',
 
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailroutablepage',
     'wagtail.contrib.wagtailsitemaps',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.settings',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
