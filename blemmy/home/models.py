@@ -26,13 +26,8 @@ class ArticleIndexPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel([
-                FieldPanel('intro'),
-                ImageChooserPanel('feed_image'),
-            ],
-            heading="Un MultiFieldPanel",
-            classname="collapsible collapsed",
-    ),
+        FieldPanel('intro'),
+        ImageChooserPanel('feed_image'),
     ]
 
     def get_context(self, request):
@@ -86,12 +81,7 @@ class ArticlePage(Page):
         ImageChooserPanel('feed_image'),
         FieldPanel('intro', classname="col7"),
         FieldPanel('postdate', classname="col5"),
-        MultiFieldPanel([
-            StreamFieldPanel('body'),
-            ],
-            heading="Content",
-            classname="collapsible collapsed col12",
-    ),
+        StreamFieldPanel('body'),
     ]
     promote_panels = [
         InlinePanel('related_links', label="Links"),
