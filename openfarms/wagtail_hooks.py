@@ -17,8 +17,8 @@ class FarmModelAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = True
-    list_display = ('name', 'region', 'updated')
-    search_fields = ('name', 'about', 'person')
+    list_display = ('title', 'region', 'updated')
+    search_fields = ('title', 'about', 'person')
 
 modeladmin_register(FarmModelAdmin)
 

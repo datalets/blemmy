@@ -7,12 +7,19 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from django.utils.translation import ugettext_lazy as _
+from wagtail.api import APIField
+
+from wagtail.wagtailimages.api.fields import ImageRenditionField
+from .serializers import ProduceRenditionField, LabelRenditionField, RegionRenditionField
 
 class Datasource(models.Model):
     title = models.CharField(max_length=255)
     homepage = models.URLField()
     feed = models.URLField(blank=True)
     notes = models.TextField(blank=True)
+    api_fields = [
+        'title', 'homepage',
+    ]
     def __str__(self):
         return self.title
 
@@ -43,13 +50,20 @@ class Produce(models.Model):
         FieldPanel('info'),
         ImageChooserPanel('image'),
     ]
+    api_fields = [
+        APIField('name'),
+        APIField('info'),
+        APIField('farms'),
+        APIField('image_thumb', serializer=ImageRenditionField('width-160', source='image')),
+        APIField('image_full',  serializer=ImageRenditionField('width-800', source='image')),
+    ]
     def __str__(self):
         return self.name
     class Meta:
         verbose_name_plural = 'Produce'
 
 class Farm(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    title = models.CharField(max_length=255, unique=True)
     about = RichTextField(blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -74,7 +88,7 @@ class Farm(models.Model):
     is_producer = models.BooleanField(default=True,
         verbose_name='Producer',
         help_text=_('Is this a producer (and not only distributor)?'))
-    produce = models.ManyToManyField(Produce, blank=True)
+    produce = models.ManyToManyField(Produce, blank=True, related_name='farms')
     distributors = models.ManyToManyField("self", blank=True)
 
     labels = models.ManyToManyField(Label, blank=True)
@@ -84,7 +98,7 @@ class Farm(models.Model):
         null=True, blank=True, on_delete=models.PROTECT)
 
     panels = [
-        FieldPanel('name'),
+        FieldPanel('title'),
         FieldPanel('about'),
         ImageChooserPanel('image'),
         MultiFieldPanel([
@@ -118,5 +132,21 @@ class Farm(models.Model):
         ),
     ]
 
+    api_fields = [
+        APIField('title'), APIField('about'),
+        APIField('image_thumb', serializer=ImageRenditionField('width-160', source='image')),
+        APIField('image_full',  serializer=ImageRenditionField('width-800', source='image')),
+        APIField('produce', serializer=ProduceRenditionField()),
+        APIField('labels',  serializer=LabelRenditionField()),
+        APIField('region',  serializer=RegionRenditionField()),
+        APIField('distributors')
+    ]
+    api_meta_fields = [
+        'person', 'phone', 'mobile',
+        'email', 'website', 'address',
+        'longitude', 'latitude',
+        'is_producer',
+    ]
+
     def __str__(self):
-        return self.name
+        return self.title
