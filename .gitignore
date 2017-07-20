@@ -7,7 +7,6 @@
 /docker-compose.yml
 /env/
 /venv/
-/static/
 /media/
 /tmp/
 /.keys/
