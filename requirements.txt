@@ -9,6 +9,8 @@ psycopg2==2.7.1
 dj-database-url==0.4.2
 
 # Addons
+django-money==0.11.4
+py-moneyed==0.7.0
 
 # Search
 elasticsearch>=2.0.0,<3.0.0
