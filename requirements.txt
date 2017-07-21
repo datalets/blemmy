@@ -21,7 +21,7 @@ django-redis==4.8.0
 # Frontend
 django-libsass==0.7
 libsass==0.13.2
-Pillow==4.1.1
+Pillow==4.2.1
 
 # Development tools
 stellar==0.4.3
