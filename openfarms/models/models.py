@@ -42,6 +42,9 @@ class Category(models.Model):
     title = models.CharField(max_length=255)
     info = models.TextField(blank=True)
     imageurl = models.URLField(blank=True)
+    parent = models.ManyToManyField("self", blank=True,
+        help_text=_('Specify if another category is a parent of this one (e.g. Fruits > Apples)'))
+    verbose_name_plural = 'Categories'
     def __str__(self):
         return self.title
 
@@ -106,11 +109,11 @@ class Farm(models.Model):
         MultiFieldPanel([
             FieldPanel('is_producer'),
             FieldPanel('distributors'),
+            FieldPanel('datasource'),
         ],
         heading="Connections",
         classname="col7",
         ),
-        FieldPanel('datasource'),
     ]
 
     api_fields = [
@@ -177,10 +180,13 @@ class Produce(models.Model):
 
     panels = [
         FieldPanel('name'),
+        FieldPanel('farms'),
         MultiFieldPanel([
             FieldPanel('category'),
             FieldPanel('about'),
             ImageChooserPanel('image'),
+            FieldPanel('price_chf'),
+            FieldPanel('price_quantity'),
         ],
         heading="Details",
         classname="col5",
@@ -196,7 +202,6 @@ class Produce(models.Model):
         heading="Features",
         classname="col7",
         ),
-        FieldPanel('farms'),
     ]
 
     api_fields = [
