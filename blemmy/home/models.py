@@ -48,11 +48,7 @@ class ArticleIndexPage(Page):
 class ArticlePage(Page):
     intro = RichTextField(default='', blank=True)
 
-    body = StreamField([
-        ('paragraph', RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('section', CharBlock(classname="full title")),
-    ], null=True, blank=True)
+    body = RichTextField(default='', blank=True)
 
     is_featured = models.BooleanField(default=False, verbose_name="Featured",
         help_text="Is this a featured entry?")
@@ -63,8 +59,6 @@ class ArticlePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
-    postdate = models.DateField(default='YYYY-MM-DD', blank=True)
 
     api_fields = [
         APIField('intro'),
@@ -79,9 +73,8 @@ class ArticlePage(Page):
     ]
     content_panels = Page.content_panels + [
         ImageChooserPanel('feed_image'),
-        FieldPanel('intro', classname="col7"),
-        FieldPanel('postdate', classname="col5"),
-        StreamFieldPanel('body'),
+        FieldPanel('intro'),
+        FieldPanel('body'),
     ]
     promote_panels = [
         InlinePanel('related_links', label="Links"),
@@ -91,7 +84,11 @@ class ArticlePage(Page):
         MultiFieldPanel(Page.promote_panels, "Settings"),
     ]
 
-    subpage_types = ['wagtailcore.Page']
+    parent_page_types = [
+        'wagtailcore.Page',
+        'home.ArticlePage',
+        'home.ArticleIndexPage',
+    ]
     class Meta:
         verbose_name = "Web page"
 

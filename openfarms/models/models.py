@@ -20,7 +20,7 @@ class Datasource(models.Model):
     feed = models.URLField(blank=True)
     notes = models.TextField(blank=True)
     api_fields = [
-        'title', 'homepage',
+        'title', 'homepage', 'feed', 'notes'
     ]
     def __str__(self):
         return self.title
@@ -28,7 +28,11 @@ class Datasource(models.Model):
 class Label(models.Model):
     title = models.CharField(max_length=255)
     about = models.TextField(blank=True)
+    homepage = models.URLField(blank=True)
     imageurl = models.URLField(blank=True)
+    api_fields = [
+        'title', 'about', 'homepage', 'imageurl'
+    ]
     def __str__(self):
         return self.title
 
