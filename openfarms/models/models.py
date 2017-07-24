@@ -164,8 +164,10 @@ class Produce(models.Model):
         ('l',  'Litre'),
         ('b',  'Bushel'),
     )
-    price_quantity = models.CharField(max_length=2, choices=QUANTITYCHOICE)
-    price_chf = MoneyField(max_digits=10, decimal_places=2, default_currency='CHF')
+    price_quantity = models.CharField(max_length=2, choices=QUANTITYCHOICE,
+        null=True, blank=True)
+    price_chf = MoneyField(max_digits=10, decimal_places=2,
+        default_currency='CHF', null=True, blank=True)
 
     image = models.ForeignKey(
         'wagtailimages.Image',
