@@ -9,7 +9,7 @@
   	<div class="row">
   		<section class="6u 12u(narrower)">
         <div class="box post" each={ items }>
-          <a href={ meta.detail_url } target="_blank" class="image left">
+          <a if={ image_thumb } href={ meta.detail_url } target="_blank" class="image left">
             <img src={ image_thumb.url } alt="">
           </a>
           <div class="inner">

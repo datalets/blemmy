@@ -3,7 +3,7 @@
 
   <ul>
     <li each={ items }>
-      <img src={ imageurl } />
+      <span class="icon" style="background-image:url({ imageurl })"></span>
       <a href={ homepage }>
         { title }
       </a>

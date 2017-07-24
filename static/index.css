@@ -11,3 +11,11 @@
 #contact {
   margin-bottom: 2em;
 }
+
+labels .icon {
+  height: 1.4em;
+  width: 1.4em;
+  display: inline-block;
+  background-size: auto 100%;
+  margin-right: 0.3em;
+}
