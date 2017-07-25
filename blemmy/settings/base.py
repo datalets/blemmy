@@ -21,11 +21,13 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'cultinadb',
     'blemmy.home',
 
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailroutablepage',
     'wagtail.contrib.wagtailsitemaps',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.settings',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
