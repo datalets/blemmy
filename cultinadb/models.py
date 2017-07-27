@@ -13,19 +13,18 @@ from wagtail.api import APIField
 ####################### Menue ########################
 ######################################################
 
-class TypeOfDish(models.Model):
-    _type = models.CharField(max_length=255,
-        verbose_name='Art der Nahrung',
-        help_text=_('Gericht, Suppe, Dessert'))
-
-    def __str__(self):
-        return self._type
-
 class Menue(models.Model):
+
     title = models.CharField(max_length=255)
     picture_url = models.URLField(blank=True)
-    type_of_dish = models.ForeignKey(TypeOfDish,
-        null=True, blank=True, on_delete=models.PROTECT)
+    ARTDERNAHRUNG = (
+        ('Gericht', 'Gericht'),
+        ('Suppe', 'Suppe'),
+        ('Dessert', 'Dessert'),
+        ('...', '...'),
+    )
+    type_of_dish_quantity = models.CharField(max_length=2, choices=ARTDERNAHRUNG,
+        null=True, blank=True)
     step_1 = models.CharField(max_length=500)
     step_2 = models.CharField(max_length=500)
     step_3 = models.CharField(max_length=500)
@@ -56,48 +55,54 @@ class Ingredients(models.Model):
 ####################### Woche ########################
 ######################################################
 
-class M_Jahr(models.Model):
-    jahr = models.CharField(max_length=4,
-    help_text=_('2017, 2018, 2019, 2020...'))
-    def __str__(self):
-        return self.jahr
-class M_Woche(models.Model):
-    woche = models.CharField(max_length=2,
-    help_text=_('01, 02, 03, 04, 05, 06...'))
-    def __str__(self):
-        return self.woche
-class M_Tag(models.Model):
-    tag = models.CharField(max_length=2,
-    help_text=_('Mo, Di, Mi, Do, Fr, Sa'))
-    def __str__(self):
-        return self.tag
-
 class Wochen(models.Model):
-    jahr = models.ForeignKey(M_Jahr,
-        null=True, blank=True, on_delete=models.PROTECT)
-    woche = models.ForeignKey(M_Woche,
-        null=True, blank=True, on_delete=models.PROTECT)
-    tag = models.ForeignKey(M_Tag,
-        null=True, blank=True, on_delete=models.PROTECT)
+    JAHR = (
+        ('2017', '2017'),
+        ('2018', '2018'),
+    )
+    WOCHE = (
+        ('01','01'),('02','02'),('03','03'),('04','04'),('05','05'),('06','06'),
+        ('07','07'),('08','08'),('09','09'),('10','10'),('11','11'),('12','12'),
+        ('13','13'),('14','14'),('15','15'),('16','16'),('17','17'),('18','18'),
+        ('19','19'),('20','20'),('21','21'),('22','22'),('23','23'),('24','24'),
+        ('25','25'),('26','26'),('27','27'),('28','28'),('29','29'),('30','30'),
+        ('31','31'),('32','32'),('33','33'),('34','34'),('35','35'),('36','36'),
+        ('37','37'),('38','38'),('39','39'),('40','40'),('41','41'),('42','42'),
+        ('43','43'),('44','44'),('45','45'),('46','46'),('47','47'),('48','48'),
+        ('49','49'),('50','50'),('51','51'),('52','52'),('53','53'),
+    )
+    TAG = (
+        ('Mo','Mo'),
+        ('Di','Di'),
+        ('Mi','Mi'),
+        ('Do','Do'),
+        ('Fr','Fr'),
+    )
+    jahr_quantity = models.CharField(max_length=2, verbose_name='Jahr', choices=JAHR,
+        null=True, blank=True)
+    woche_quantity = models.CharField(max_length=2, verbose_name='Woche' ,choices=WOCHE,
+        null=True, blank=True)
+    tag_quantity = models.CharField(max_length=2, verbose_name='Tag', choices=TAG,
+        null=True, blank=True)
     menu_1 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_1")
+        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_1+")
     menu_2 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_2")
+        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_2+")
     menu_3 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_3")
+        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_3+")
     menu_4 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_4")
+        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_4+")
     wochen_spezialitaet = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="wochen_spezialitaet")
+        null=True, blank=True, verbose_name='Wochenspezialität', on_delete=models.PROTECT, related_name="wochen_spezialitaet+")
     tages_suppe = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="tages_suppe")
+        null=True, blank=True, verbose_name='Tagessuppe', on_delete=models.PROTECT, related_name="tages_suppe+")
     tages_dessert = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="tages_dessert")
+        null=True, blank=True, verbose_name='Tagesdessert', on_delete=models.PROTECT, related_name="tages_dessert+")
 
     panels = [
-        FieldPanel('jahr', classname="col4"),
-        FieldPanel('woche', classname="col4"),
-        FieldPanel('tag', classname="col4"),
+        FieldPanel('jahr_quantity', classname="col4"),
+        FieldPanel('woche_quantity', classname="col4"),
+        FieldPanel('tag_quantity', classname="col4"),
         MultiFieldPanel([
             FieldPanel('menu_1'),
             FieldPanel('menu_2'),
@@ -113,7 +118,7 @@ class Wochen(models.Model):
     ]
 
     def __str__(self):
-        return self.tag
+        return self.tag_quantity
 
     # api_fields = [
     #     APIField('title'),
