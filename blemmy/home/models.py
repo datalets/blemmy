@@ -15,6 +15,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from .forms import *
+
 class ArticleIndexPage(Page):
     intro = RichTextField(default='', blank=True)
 
@@ -41,6 +43,7 @@ class ArticleIndexPage(Page):
     subpage_types = [
         'home.ArticlePage',
         'home.ArticleIndexPage',
+        'home.ContactForm',
     ]
     class Meta:
         verbose_name = "Index page"
