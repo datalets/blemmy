@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'cultinadb',
     'blemmy.home',
     
+    'wagtailmodelchooser',
     'wagtail.contrib.wagtailstyleguide',
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailroutablepage',

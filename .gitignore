@@ -4,16 +4,7 @@
 .DS_Store
 *.swp
 *.sqlite3
-/docker-compose.yml
 /env/
-/venv/
-/static/
-/media/
-/tmp/
 /.keys/
-/.vagrant/
-/Vagrantfile.local
 /docs/_build/
 /node_modules/
-/blemmy/static/libs/
-/mockup/assets/css/*.css

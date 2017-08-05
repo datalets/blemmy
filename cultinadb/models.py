@@ -5,44 +5,18 @@ from django.utils.translation import ugettext_lazy as _
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.api.fields import ImageRenditionField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.api import APIField
-
-######################################################
-####################### Menue ########################
-######################################################
-
-class Menue(models.Model):
-
-    title = models.CharField(max_length=255)
-    picture_url = models.URLField(blank=True)
-    ARTDERNAHRUNG = (
-        ('Gericht', 'Gericht'),
-        ('Suppe', 'Suppe'),
-        ('Dessert', 'Dessert'),
-        ('...', '...'),
-    )
-    type_of_dish_quantity = models.CharField(max_length=2, choices=ARTDERNAHRUNG,
-        null=True, blank=True)
-    step_1 = models.CharField(max_length=500)
-    step_2 = models.CharField(max_length=500)
-    step_3 = models.CharField(max_length=500)
-    step_4 = models.CharField(max_length=500)
-    is_spicy = models.BooleanField(default=False,
-        verbose_name='Scharf',
-        help_text=_('Ist diese Gericht Scharf?'))
-    is_vegi = models.BooleanField(default=False,
-        verbose_name='Vegi',
-        help_text=_('Ist diese Gericht Vegi?'))
-
-    def __str__(self):
-        return self.title
+from wagtailmodelchooser import register_model_chooser
+from wagtailmodelchooser.blocks import ModelChooserBlock
+from wagtailmodelchooser.edit_handlers import ModelChooserPanel
 
 ######################################################
 #################### Ingredients #####################
 ######################################################
 
+@register_model_chooser
 class Ingredients(models.Model):
     name = models.CharField(max_length=255)
     picture_url = models.URLField(blank=True)
@@ -52,13 +26,62 @@ class Ingredients(models.Model):
         return self.name
 
 ######################################################
+####################### Menue ########################
+######################################################
+
+class Menue(models.Model):
+
+    title = models.CharField(max_length=255, verbose_name='Titel')
+    picture_url = models.URLField(blank=True, verbose_name='Bild URL')
+    ARTDERNAHRUNG = (
+        ('Gericht', 'Gericht'),
+        ('Suppe', 'Suppe'),
+        ('Dessert', 'Dessert'),
+        ('...', '...'),
+    )
+    type_of_dish_quantity = models.CharField(max_length=2, choices=ARTDERNAHRUNG,
+        blank=True, verbose_name='Art der Nahrung')
+    zutaten = StreamField([
+        ('zutaten', ModelChooserBlock('cultinadb.Ingredients')),
+    ])
+    schritte_1 = models.TextField(max_length=500, blank=True)
+    schritte_2 = models.TextField(max_length=500, blank=True)
+    schritte_3 = models.TextField(max_length=500, blank=True)
+    schritte_4 = models.TextField(max_length=500, blank=True)
+    is_spicy = models.BooleanField(default=False, blank=True,
+        verbose_name='Scharf')
+    is_vegi = models.BooleanField(default=False,
+        verbose_name='Vegi')
+
+    panels = [
+        FieldPanel('title', classname="col12"),
+        FieldPanel('picture_url', classname="col8"),
+        FieldPanel('type_of_dish_quantity', classname="col4"),
+        StreamFieldPanel('zutaten'),
+        MultiFieldPanel([
+            FieldPanel('schritte_1'),
+            FieldPanel('schritte_2'),
+            FieldPanel('schritte_3'),
+            FieldPanel('schritte_4'),
+        ],
+        heading="Vorbereitung",
+        classname="col12",
+        ),
+        FieldPanel('is_vegi', classname="col2"),
+        FieldPanel('is_spicy', classname="col2"),
+    ]
+
+    def __str__(self):
+        return self.title
+
+######################################################
 ####################### Woche ########################
 ######################################################
 
 class Wochen(models.Model):
     JAHR = (
         ('2017', '2017'),
-        ('2018', '2018'),
+        # ('2018', '2018'),
     )
     WOCHE = (
         ('01','01'),('02','02'),('03','03'),('04','04'),('05','05'),('06','06'),
@@ -79,25 +102,25 @@ class Wochen(models.Model):
         ('Fr','Fr'),
     )
     jahr_quantity = models.CharField(max_length=2, verbose_name='Jahr', choices=JAHR,
-        null=True, blank=True)
+        null=True)
     woche_quantity = models.CharField(max_length=2, verbose_name='Woche' ,choices=WOCHE,
-        null=True, blank=True)
+        null=True)
     tag_quantity = models.CharField(max_length=2, verbose_name='Tag', choices=TAG,
-        null=True, blank=True)
+        null=True)
     menu_1 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_1+")
+        null=True, on_delete=models.PROTECT, related_name="menu_1+")
     menu_2 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_2+")
+        null=True, on_delete=models.PROTECT, related_name="menu_2+")
     menu_3 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_3+")
+        null=True, on_delete=models.PROTECT, related_name="menu_3+")
     menu_4 = models.ForeignKey(Menue,
-        null=True, blank=True, on_delete=models.PROTECT, related_name="menu_4+")
+        null=True, on_delete=models.PROTECT, related_name="menu_4+")
     wochen_spezialitaet = models.ForeignKey(Menue,
-        null=True, blank=True, verbose_name='Wochenspezialität', on_delete=models.PROTECT, related_name="wochen_spezialitaet+")
+        null=True, verbose_name='Wochenspezialität', on_delete=models.PROTECT, related_name="wochen_spezialitaet+")
     tages_suppe = models.ForeignKey(Menue,
-        null=True, blank=True, verbose_name='Tagessuppe', on_delete=models.PROTECT, related_name="tages_suppe+")
+        null=True, verbose_name='Tagessuppe', on_delete=models.PROTECT, related_name="tages_suppe+")
     tages_dessert = models.ForeignKey(Menue,
-        null=True, blank=True, verbose_name='Tagesdessert', on_delete=models.PROTECT, related_name="tages_dessert+")
+        null=True, verbose_name='Tagesdessert', on_delete=models.PROTECT, related_name="tages_dessert+")
 
     panels = [
         FieldPanel('jahr_quantity', classname="col4"),
