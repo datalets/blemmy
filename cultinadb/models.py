@@ -57,7 +57,7 @@ class Menue(models.Model):
         FieldPanel('title', classname="col12"),
         FieldPanel('picture_url', classname="col8"),
         FieldPanel('type_of_dish_quantity', classname="col4"),
-        StreamFieldPanel('zutaten'),
+        StreamFieldPanel('zutaten', 'cultinadb.Ingredients'),
         MultiFieldPanel([
             FieldPanel('schritte_1'),
             FieldPanel('schritte_2'),
