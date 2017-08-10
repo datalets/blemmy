@@ -4,35 +4,35 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin, ModelAdminGroup, modeladmin_register)
 
 from .models import (
-    Wochen,
-    Menue,
-    Ingredients,
+    Week,
+    Menu,
+    Ingredient,
 )
 
 ######################################################
 #################### Sidebar Menu ####################
 ######################################################
 
-class WochenModelAdmin(ModelAdmin):
-    model = Wochen
+class WeekModelAdmin(ModelAdmin):
+    model = Week
     menu_icon = 'form'
 
 ######################################################
 ########## Settings Menu Permanent Daten #############
 ######################################################
 
-class MenueModelAdmin(ModelAdmin):
-    model = Menue
+class MenuModelAdmin(ModelAdmin):
+    model = Menu
     menu_icon = 'plus'
 
-class IngredientsModelAdmin(ModelAdmin):
-    model = Ingredients
+class IngredientModelAdmin(ModelAdmin):
+    model = Ingredient
     menu_icon = 'snippet'
 
-class MyModels(ModelAdminGroup):
+class LaCultinaModels(ModelAdminGroup):
     menu_label = 'LaCULTina'
     menu_icon = 'folder-open-inverse'
     menu_order = 200
-    items = (WochenModelAdmin, MenueModelAdmin, IngredientsModelAdmin)
+    items = (WeekModelAdmin, MenuModelAdmin, IngredientModelAdmin)
 
-modeladmin_register(MyModels)
+modeladmin_register(LaCultinaModels)

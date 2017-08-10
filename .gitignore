@@ -4,6 +4,7 @@
 .DS_Store
 *.swp
 *.sqlite3
+/media/
 /env/
 /.keys/
 /docs/_build/
