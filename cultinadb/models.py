@@ -33,12 +33,7 @@ class Ingredient(models.Model):
 @register_model_chooser
 class Menu(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    image = models.URLField(blank=True, null=True)
     MENUTYPE = (
         ('Gericht', 'Gericht'),
         ('Suppe', 'Suppe'),
@@ -48,27 +43,29 @@ class Menu(models.Model):
         max_length=20, choices=MENUTYPE,
         blank=True, null=True, verbose_name='Art der Teller')
     Ingredient = StreamField([
-        ('zutaten', ModelChooserBlock('cultinadb.Ingredient')),
-    ])
+        ('zutaten', ModelChooserBlock('cultinadb.Ingredient')) ],
+        null=True, verbose_name='', blank=True)
     steps = StreamField([
-        ('paragraph', TextBlock()),
-    ])
+        ('Schritt', TextBlock()) ], verbose_name='', blank=True)
     is_spicy = models.BooleanField(default=False, blank=True,
         verbose_name='Scharf')
     is_vegi = models.BooleanField(default=False,
         verbose_name='Vegi')
 
     panels = [
-        FieldPanel('title'),
-        ImageChooserPanel('image'),
-        StreamFieldPanel('Ingredient'),
-        StreamFieldPanel('steps',
-            # heading="Vorbereitung",
-            classname="col12",
-        ),
-        FieldPanel('type_of_dish_quantity', classname="col4"),
+        FieldPanel('title', classname="col7"),
+        FieldPanel('type_of_dish_quantity', classname="col5"),
+        FieldPanel('image', classname="col7"),
         FieldPanel('is_vegi', classname="col2"),
-        FieldPanel('is_spicy', classname="col2"),
+        FieldPanel('is_spicy', classname="col3"),
+        MultiFieldPanel(
+            [ StreamFieldPanel('steps') ],
+            heading="Vorbereitung", classname="col7"
+        ),
+        MultiFieldPanel(
+            [ StreamFieldPanel('Ingredient') ],
+            heading="Zutaten", classname="col5"
+        ),
     ]
 
     def __str__(self):
@@ -79,19 +76,19 @@ class Menu(models.Model):
 ######################################################
 
 YEARS = (
-    ('2017', 2017),
-    # ('2018', 2018),
+    (2017, 2017),
+    # (2018, 2018),
 )
 WEEKS = (
-    ('01',1),('02',2),('03',3),('04',4),('05',5),('06',6),
-    ('07',7),('08',8),('09',9),('10',10),('11',11),('12',12),
-    ('13',13),('14',14),('15',15),('16',16),('17',17),('18',18),
-    ('19',19),('20',20),('21',21),('22',22),('23',23),('24',24),
-    ('25',25),('26',26),('27',27),('28',28),('29',29),('30',30),
-    ('31',31),('32',32),('33',33),('34',34),('35',35),('36',36),
-    ('37',37),('38',38),('39',39),('40',40),('41',41),('42',42),
-    ('43',43),('44',44),('45',45),('46',46),('47',47),('48',48),
-    ('49',49),('50',50),('51',51),('52',52),('53',53),
+    (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),
+    (7,7),(8,8),(9,9),(10,10),(11,11),(12,12),
+    (13,13),(14,14),(15,15),(16,16),(17,17),(18,18),
+    (19,19),(20,20),(21,21),(22,22),(23,23),(24,24),
+    (25,25),(26,26),(27,27),(28,28),(29,29),(30,30),
+    (31,31),(32,32),(33,33),(34,34),(35,35),(36,36),
+    (37,37),(38,38),(39,39),(40,40),(41,41),(42,42),
+    (43,43),(44,44),(45,45),(46,46),(47,47),(48,48),
+    (49,49),(50,50),(51,51),(52,52),(53,53),
 )
 DAYS = (
     ('Montag',1),
@@ -107,48 +104,67 @@ class Week(models.Model):
     week = models.SmallIntegerField(verbose_name='Woche' ,choices=WEEKS,
         null=True)
     dishes_sp = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ], null=True)
-
-    dishes_1 = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ], null=True)
-    dishes_2 = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ], null=True)
-    dishes_3 = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ], null=True)
-    dishes_4 = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ], null=True)
-    dishes_5 = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ], null=True)
+        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        null=True, verbose_name='', blank=True)
+    monday = StreamField([
+        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        null=True, verbose_name='', blank=True)
+    tuesday = StreamField([
+        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        null=True, verbose_name='', blank=True)
+    wednesday = StreamField([
+        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        null=True, verbose_name='', blank=True)
+    thursday = StreamField([
+        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        null=True, verbose_name='', blank=True)
+    friday = StreamField([
+        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        null=True, verbose_name='', blank=True)
 
     panels = [
-        FieldPanel('year', classname="col3"),
-        FieldPanel('week', classname="col9"),
+        FieldPanel('year', classname="col5"),
+        FieldPanel('week', classname="col7"),
         MultiFieldPanel(
             [ StreamFieldPanel('dishes_sp') ],
-            heading="Wochenspezialität"
-        )
+            heading="Wochenspezialität", classname="col6"
+        ),
+        MultiFieldPanel(
+            [ StreamFieldPanel('monday') ],
+            heading="Montag", classname="col6"
+        ),
+        MultiFieldPanel(
+            [ StreamFieldPanel('tuesday') ],
+            heading="Dienstag", classname="col6"
+        ),
+        MultiFieldPanel(
+            [ StreamFieldPanel('wednesday') ],
+            heading="Mittwoch", classname="col6"
+        ),
+        MultiFieldPanel(
+            [ StreamFieldPanel('thursday') ],
+            heading="Donnerstag", classname="col6"
+        ),
+        MultiFieldPanel(
+            [ StreamFieldPanel('friday') ],
+            heading="Freitag", classname="col6"
+        ),
     ]
-    for d in DAYS:
-        panels.append(
-            MultiFieldPanel(
-                [ StreamFieldPanel('dishes_' + str(d[1])) ],
-                heading=d[0]
-            )
-        )
 
     def get_name(self):
-        return "%d / %d" % (self.week, self.year)
+        for d in DAYS:
+            return "%d / %d" % (self.week, self.year)
 
     def __str__(self):
         return self.get_name()
 
-    # api_fields = [
-    #     APIField('title'),
-    #     APIField('about'),
-    #     APIField('image_thumb', serializer=ImageRenditionField('width-160', source='image')),
-    #     APIField('image_full',  serializer=ImageRenditionField('width-800', source='image')),
-    #     APIField('produce', serializer=ProduceRenditionField()),
-    #     APIField('labels',  serializer=LabelRenditionField()),
-    #     APIField('region',  serializer=RegionRenditionField()),
-    #     APIField('distributors')
-    # ]
+    api_fields = [
+        APIField('year'),
+        APIField('week'),
+        APIField('dishes_sp'),
+        APIField('monday'),
+        APIField('tuesday'),
+        APIField('wednesday'),
+        APIField('thursday'),
+        APIField('friday'),
+    ]
