@@ -12,9 +12,16 @@ from wagtail.api import APIField
 from wagtailmodelchooser import register_model_chooser
 from wagtailmodelchooser.blocks import ModelChooserBlock
 from wagtailmodelchooser.edit_handlers import ModelChooserPanel
+from django_countries.fields import CountryField
 
 ######################################################
-#################### Ingredient #####################
+##################### Countries ######################
+######################################################
+
+
+
+######################################################
+#################### Ingredient ######################
 ######################################################
 
 @register_model_chooser
@@ -27,7 +34,7 @@ class Ingredient(models.Model):
         return self.name
 
 ######################################################
-####################### Menu ########################
+####################### Menu #########################
 ######################################################
 
 @register_model_chooser
@@ -99,6 +106,8 @@ DAYS = (
 )
 
 class Week(models.Model):
+    country = CountryField(
+        verbose_name='Land', blank=True, null=True, blank_label='Wochenspezialität ist aus ...')
     year = models.IntegerField(verbose_name='Jahr', choices=YEARS,
         null=True)
     week = models.SmallIntegerField(verbose_name='Woche' ,choices=WEEKS,
@@ -123,8 +132,9 @@ class Week(models.Model):
         null=True, verbose_name='', blank=True)
 
     panels = [
-        FieldPanel('year', classname="col5"),
-        FieldPanel('week', classname="col7"),
+        FieldPanel('country', classname="col6"),
+        FieldPanel('year', classname="col4"),
+        FieldPanel('week', classname="col2"),
         MultiFieldPanel(
             [ StreamFieldPanel('dishes_sp') ],
             heading="Wochenspezialität", classname="col6"

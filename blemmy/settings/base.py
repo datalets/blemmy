@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.utils.translation import ugettext_lazy as _
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -23,7 +24,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'cultinadb',
     'blemmy.home',
-    
+
+    'django_countries',
     'wagtailmodelchooser',
     'wagtail.contrib.wagtailstyleguide',
     'wagtail.contrib.wagtailsearchpromotions',
@@ -107,6 +109,9 @@ DATABASES = {
     }
 }
 
+COUNTRIES_OVERRIDE = {
+    'XZ': _('Tibet')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
