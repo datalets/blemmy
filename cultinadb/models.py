@@ -15,12 +15,6 @@ from wagtailmodelchooser.edit_handlers import ModelChooserPanel
 from django_countries.fields import CountryField
 
 ######################################################
-##################### Countries ######################
-######################################################
-
-
-
-######################################################
 #################### Ingredient ######################
 ######################################################
 
@@ -52,12 +46,14 @@ class Menu(models.Model):
     Ingredient = StreamField([
         ('zutaten', ModelChooserBlock('cultinadb.Ingredient')) ],
         null=True, verbose_name='', blank=True)
-    steps = StreamField([
-        ('Schritt', TextBlock()) ], verbose_name='', blank=True)
+    zutaten_beschreibung = models.TextField(verbose_name='Zutaten Beschreibung', blank=True)
     is_spicy = models.BooleanField(default=False, blank=True,
         verbose_name='Scharf')
     is_vegi = models.BooleanField(default=False,
         verbose_name='Vegi')
+    steps = StreamField([
+        ('Schritt', TextBlock())
+        ], null=True, verbose_name='Vorbereitungsschritte', blank=True)
 
     panels = [
         FieldPanel('title', classname="col7"),
@@ -65,14 +61,12 @@ class Menu(models.Model):
         FieldPanel('image', classname="col7"),
         FieldPanel('is_vegi', classname="col2"),
         FieldPanel('is_spicy', classname="col3"),
-        MultiFieldPanel(
-            [ StreamFieldPanel('steps') ],
-            heading="Vorbereitung", classname="col7"
-        ),
+        FieldPanel('zutaten_beschreibung', classname="col7"),
         MultiFieldPanel(
             [ StreamFieldPanel('Ingredient') ],
             heading="Zutaten", classname="col5"
         ),
+        StreamFieldPanel('steps', classname="col12"),
     ]
 
     def __str__(self):
