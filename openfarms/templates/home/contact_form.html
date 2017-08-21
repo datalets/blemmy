@@ -11,7 +11,7 @@
 
     <!-- Main content -->
     <div class="article-body" role="main">
-      <form action="{% pageurl page %}" method="POST">
+      <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-primary" type="submit">Senden / Envoi</button>
