@@ -40,6 +40,7 @@ class Menu(models.Model):
         ('Suppe', 'Suppe'),
         ('Dessert', 'Dessert'),
     )
+    price = models.FloatField(blank=True, null=True, max_length=255)
     type_of_dish_quantity = models.CharField(
         max_length=20, choices=MENUTYPE,
         blank=True, null=True, verbose_name='Art der Teller')
@@ -57,7 +58,8 @@ class Menu(models.Model):
 
     panels = [
         FieldPanel('title', classname="col7"),
-        FieldPanel('type_of_dish_quantity', classname="col5"),
+        FieldPanel('price', classname="col2"),
+        FieldPanel('type_of_dish_quantity', classname="col3"),
         FieldPanel('image', classname="col7"),
         FieldPanel('is_vegi', classname="col2"),
         FieldPanel('is_spicy', classname="col3"),
