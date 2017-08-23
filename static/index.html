@@ -1,36 +1,231 @@
-<!doctype html>
-
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Riot hello</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="index.css">
+	<head>
+		<title>OpenFarms - Demo</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 
-    <!--[if lt IE 9]>
+		<!--
+			Template: Arcana by HTML5 UP
+			html5up.net | @ajlkn
+			Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+		-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script>html5.addElements('todo')</script>
+    <script>
+			html5.addElements('farms');
+			html5.addElements('produce');
+			html5.addElements('labels');
+			html5.addElements('datasources');
+			html5.addElements('articlepage');
+		</script>
     <![endif]-->
 
-  </head>
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<div id="page-wrapper">
 
-  <body>
+			<!-- Header -->
+				<div id="header">
 
-    <hello></hello>
+					<!-- Logo -->
+						<h1><a href="farms.html" id="logo"><em>Open</em> Farms</a></h1>
 
-    <script src="hello.tag" type="riot/tag"></script>
-    <script src="https://cdn.jsdelivr.net/npm/riot@3.6/riot+compiler.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/zepto/1.2.0/zepto.min.js"></script>
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="#about">Welcome</a></li>
+								<li><a href="#farms">Farms</a></li>
+								<li><a href="#produce">Produce</a></li>
+								<li>
+									Technologies
+									<ul>
+										<li><a target="_blank" href="http://github.com/datalets/blemmy">Blemmy</a></li>
+										<li><a target="_blank" href="http://wagtail.io/">Wagtail</a></li>
+										<li><a target="_blank" href="http://riotjs.com">Riot v2</a></li>
+										<li><a target="_blank" href="https://html5up.net/arcana">Arcana</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1" id="main">
+					<div class="container">
+						<div id="content">
+
+							<!-- Content -->
+
+								<a name="about"></a>
+								<articlepage id="3"></articlepage>
+
+						</div>
+					</div>
+				</section>
+
+			<!-- Details -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(narrower)">
+								<div id="sidebar">
+
+									<!-- Sidebar -->
+
+										<section>
+
+											<h5>Labels</h5>
+											<small><labels></labels></small>
+
+											<h5>Sources</h5>
+											<small><datasources></datasources></small>
+
+											<h5>Filters</h5>
+
+												<footer>
+													<input placeholder="Search .."></input><br><br>
+													<input type="checkbox"> Fresh<br>
+													<input type="checkbox"> Gluten-free<br>
+													<input type="checkbox"> Dairy-free<br>
+													<input type="checkbox"> Nuts-free<br>
+													<input type="checkbox"> Vegan<br>
+												</footer>
+
+											<p>Use the options above to navigate through the data.</p>
+										</section>
+								</div>
+							</div>
+							<div class="8u  12u(narrower) important(narrower)">
+								<div id="details">
+
+									<!-- Details -->
+
+										<a name="farms"></a>
+										<article>
+											<header>
+												<h2>Producers</h2>
+											</header>
+
+											<farms></farms>
+
+										</article>
+
+										<a name="produce"></a>
+										<article style="margin-top:5em">
+											<header>
+												<h2>Produce</h2>
+											</header>
+
+											<produce></produce>
+
+										</article>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="3u 6u(narrower) 12u$(mobilep)">
+								<h3>More information</h3>
+								<ul class="links">
+									<li><a target="_blank" href="https://food.opendata.ch/">Open Food Data</a></li>
+									<li><a target="_blank" href="https://hack.opendata.ch/project/65">Hackday project</a></li>
+									<li><a target="_blank" href="https://github.com/loleg/openfarms">Source code</a></li>
+								</ul>
+							</section>
+
+							<section class="6u 12u(narrower)" id="contact">
+								<h3>Contact</h3>
+								<form action="https://formspree.io/info@datalets.ch" method="POST">
+									<div class="row 50%">
+										<div class="6u 12u(mobilep)">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="6u 12u(mobilep)">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="12u">
+											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="12u">
+											<ul class="actions">
+												<li><input type="submit" class="button alt" value="Send" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
+						</div>
+					</div>
+
+					<!-- Icons -->
+						<ul class="icons">
+							<li><a href="#" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" target="_blank" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" target="_blank" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+						</ul>
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Open Farms. All rights reserved &nbsp;</li>
+
+								<li>Development: <a href="http://datalets.ch">Datalets.ch</a></li>
+								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/riot+compiler.min.js"></script>
+			<script src="assets/js/arcana.js"></script>
+
+		<!-- Page code -->
+		<script src="articlepage.tag" type="riot/tag"></script>
+
+		<script src="datasources.tag" type="riot/tag"></script>
+		<script src="labels.tag" type="riot/tag"></script>
+		<script src="farms.tag" type="riot/tag"></script>
+		<script src="produce.tag" type="riot/tag"></script>
 
     <script>
-    $.get('/api/v2/farms/1/', function(json) {
-      console.log(json);
-      riot.mount('hello', json)
-    })
+		['datasources', 'labels', 'farms', 'produce'].forEach(function(datatype) {
+			$.get('/api/v2/' + datatype + '/?format=json', function(json) {
+	      riot.mount(datatype, json)
+	    })
+		})
+		$.get('/api/v2/pages/3/?format=json', function(json) {
+			riot.mount('articlepage', json)
+		})
     </script>
 
-    <center><small>It's a <a href="http://riotjs.com/guide/">Riot</a></small></center>
-
-  </body>
-
+	</body>
 </html>

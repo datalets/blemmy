@@ -5,6 +5,7 @@ from wagtail.contrib.modeladmin.options import (
 
 from .models import (
     Datasource,
+    Category,
     Produce,
     Label,
     Region,
@@ -31,10 +32,19 @@ class ProduceModelAdmin(ModelAdmin):
 
 modeladmin_register(ProduceModelAdmin)
 
+class CategoryModelAdmin(ModelAdmin):
+    model = Category
+    menu_icon = 'radio-empty'
+    menu_order = 1000
+    add_to_settings_menu = True
+    exclude_from_explorer = True
+
+modeladmin_register(CategoryModelAdmin)
+
 class LabelModelAdmin(ModelAdmin):
     model = Label
     menu_icon = 'radio-empty'
-    menu_order = 1000
+    menu_order = 1010
     add_to_settings_menu = True
     exclude_from_explorer = True
 
@@ -43,7 +53,7 @@ modeladmin_register(LabelModelAdmin)
 class RegionModelAdmin(ModelAdmin):
     model = Region
     menu_icon = 'radio-empty'
-    menu_order = 1005
+    menu_order = 1020
     add_to_settings_menu = True
     exclude_from_explorer = True
 
@@ -52,7 +62,7 @@ modeladmin_register(RegionModelAdmin)
 class DatasourceModelAdmin(ModelAdmin):
     model = Datasource
     menu_icon = 'radio-empty'
-    menu_order = 1010
+    menu_order = 1030
     add_to_settings_menu = True
     exclude_from_explorer = True
     list_display = ('title', 'notes', 'homepage')

@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.api.fields import ImageRenditionField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
-from django.utils.translation import ugettext_lazy as _
 from wagtail.api import APIField
 
-from wagtail.wagtailimages.api.fields import ImageRenditionField
+from djmoney.models.fields import MoneyField
+
 from .serializers import ProduceRenditionField, LabelRenditionField, RegionRenditionField
 
 class Datasource(models.Model):
@@ -18,7 +20,7 @@ class Datasource(models.Model):
     feed = models.URLField(blank=True)
     notes = models.TextField(blank=True)
     api_fields = [
-        'title', 'homepage',
+        'title', 'homepage', 'feed', 'notes'
     ]
     def __str__(self):
         return self.title
@@ -26,7 +28,11 @@ class Datasource(models.Model):
 class Label(models.Model):
     title = models.CharField(max_length=255)
     about = models.TextField(blank=True)
+    homepage = models.URLField(blank=True)
     imageurl = models.URLField(blank=True)
+    api_fields = [
+        'title', 'about', 'homepage', 'imageurl'
+    ]
     def __str__(self):
         return self.title
 
@@ -36,31 +42,15 @@ class Region(models.Model):
     def __str__(self):
         return self.title
 
-class Produce(models.Model):
-    name = models.CharField(max_length=255)
+class Category(models.Model):
+    title = models.CharField(max_length=255)
     info = models.TextField(blank=True)
-    image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('info'),
-        ImageChooserPanel('image'),
-    ]
-    api_fields = [
-        APIField('name'),
-        APIField('info'),
-        APIField('farms'),
-        APIField('image_thumb', serializer=ImageRenditionField('width-160', source='image')),
-        APIField('image_full',  serializer=ImageRenditionField('width-800', source='image')),
-    ]
+    imageurl = models.URLField(blank=True)
+    parent = models.ManyToManyField("self", blank=True,
+        help_text=_('Specify if another category is a parent of this one (e.g. Fruits > Apples)'))
+    verbose_name_plural = 'Categories'
     def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name_plural = 'Produce'
+        return self.title
 
 class Farm(models.Model):
     title = models.CharField(max_length=255, unique=True)
@@ -88,7 +78,6 @@ class Farm(models.Model):
     is_producer = models.BooleanField(default=True,
         verbose_name='Producer',
         help_text=_('Is this a producer (and not only distributor)?'))
-    produce = models.ManyToManyField(Produce, blank=True, related_name='farms')
     distributors = models.ManyToManyField("self", blank=True)
 
     labels = models.ManyToManyField(Label, blank=True)
@@ -115,7 +104,7 @@ class Farm(models.Model):
         classname="collapsible collapsed",
         ),
         MultiFieldPanel([
-            FieldPanel('produce'),
+            FieldPanel('region'),
             FieldPanel('labels'),
         ],
         heading="Details",
@@ -124,7 +113,6 @@ class Farm(models.Model):
         MultiFieldPanel([
             FieldPanel('is_producer'),
             FieldPanel('distributors'),
-            FieldPanel('region'),
             FieldPanel('datasource'),
         ],
         heading="Connections",
@@ -150,3 +138,92 @@ class Farm(models.Model):
 
     def __str__(self):
         return self.title
+
+class Produce(models.Model):
+    name = models.CharField(max_length=255)
+    about = models.TextField(blank=True)
+
+    category = models.ForeignKey(Category,
+        null=True, blank=True, on_delete=models.PROTECT)
+
+    is_fresh = models.BooleanField(default=True,
+        verbose_name='Fresh',
+        help_text=_('This is a fresh product (i.e. unprocessed).'))
+    is_glutenfree = models.BooleanField(default=True,
+        verbose_name='Gluten-free',
+        help_text=_('Check if this product is free of gluten.'))
+    is_dairyfree = models.BooleanField(default=True,
+        verbose_name='Dairy-free',
+        help_text=_('Milk is not part of this produce.'))
+    is_nutsfree = models.BooleanField(default=True,
+        verbose_name='Nut-free',
+        help_text=_('Nuts are not part of this produce.'))
+    is_vegan = models.BooleanField(default=True,
+        verbose_name='Vegan',
+        help_text=_('This is not an animal product.'))
+
+    QUANTITYCHOICE = (
+        ('kg', 'Kilogram'),
+        ('g',  'Gram'),
+        ('l',  'Litre'),
+        ('b',  'Bushel'),
+    )
+    price_quantity = models.CharField(max_length=2, choices=QUANTITYCHOICE,
+        null=True, blank=True)
+    price_chf = MoneyField(max_digits=10, decimal_places=2,
+        default_currency='CHF', null=True, blank=True)
+
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    labels = models.ManyToManyField(Label, blank=True,
+        help_text=_('What special modes of production were used.'))
+    farms = models.ManyToManyField(Farm, blank=True, related_name='produce',
+        help_text=_('Where is this produce available.'))
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('farms'),
+        MultiFieldPanel([
+            FieldPanel('category'),
+            FieldPanel('about'),
+            ImageChooserPanel('image'),
+            FieldPanel('price_chf'),
+            FieldPanel('price_quantity'),
+        ],
+        heading="Details",
+        classname="col5",
+        ),
+        MultiFieldPanel([
+            FieldPanel('is_fresh'),
+            FieldPanel('is_glutenfree'),
+            FieldPanel('is_dairyfree'),
+            FieldPanel('is_nutsfree'),
+            FieldPanel('is_vegan'),
+            FieldPanel('labels'),
+        ],
+        heading="Features",
+        classname="col7",
+        ),
+    ]
+
+    api_fields = [
+        APIField('name'),
+        APIField('about'),
+        APIField('category'),
+        APIField('image_thumb', serializer=ImageRenditionField('width-160', source='image')),
+        APIField('image_full',  serializer=ImageRenditionField('width-800', source='image')),
+        APIField('labels'),
+        APIField('farms'),
+    ]
+    api_meta_fields = [
+        'is_fresh', 'is_glutenfree', 'is_dairyfree',
+        'is_nutsfree', 'is_vegan',
+    ]
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = 'Produce'

@@ -15,6 +15,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from .forms import *
+
 class ArticleIndexPage(Page):
     intro = RichTextField(default='', blank=True)
 
@@ -26,13 +28,8 @@ class ArticleIndexPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel([
-                FieldPanel('intro'),
-                ImageChooserPanel('feed_image'),
-            ],
-            heading="Un MultiFieldPanel",
-            classname="collapsible collapsed",
-    ),
+        FieldPanel('intro'),
+        ImageChooserPanel('feed_image'),
     ]
 
     def get_context(self, request):
@@ -46,6 +43,7 @@ class ArticleIndexPage(Page):
     subpage_types = [
         'home.ArticlePage',
         'home.ArticleIndexPage',
+        'home.ContactForm',
     ]
     class Meta:
         verbose_name = "Index page"
@@ -53,11 +51,7 @@ class ArticleIndexPage(Page):
 class ArticlePage(Page):
     intro = RichTextField(default='', blank=True)
 
-    body = StreamField([
-        ('paragraph', RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('section', CharBlock(classname="full title")),
-    ], null=True, blank=True)
+    body = RichTextField(default='', blank=True)
 
     is_featured = models.BooleanField(default=False, verbose_name="Featured",
         help_text="Is this a featured entry?")
@@ -68,8 +62,6 @@ class ArticlePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
-    postdate = models.DateField(default='YYYY-MM-DD', blank=True)
 
     api_fields = [
         APIField('intro'),
@@ -84,14 +76,8 @@ class ArticlePage(Page):
     ]
     content_panels = Page.content_panels + [
         ImageChooserPanel('feed_image'),
-        FieldPanel('intro', classname="col7"),
-        FieldPanel('postdate', classname="col5"),
-        MultiFieldPanel([
-            StreamFieldPanel('body'),
-            ],
-            heading="Content",
-            classname="collapsible collapsed col12",
-    ),
+        FieldPanel('intro'),
+        FieldPanel('body'),
     ]
     promote_panels = [
         InlinePanel('related_links', label="Links"),
@@ -101,7 +87,11 @@ class ArticlePage(Page):
         MultiFieldPanel(Page.promote_panels, "Settings"),
     ]
 
-    subpage_types = ['wagtailcore.Page']
+    parent_page_types = [
+        'wagtailcore.Page',
+        'home.ArticlePage',
+        'home.ArticleIndexPage',
+    ]
     class Meta:
         verbose_name = "Web page"
 

@@ -29,7 +29,7 @@ class ProduceRenditionField(Field):
             url = get_object_detail_url(self.context, type(produce), produce.pk)
             d.append(OrderedDict([
                 ('name', produce.name),
-                ('info', produce.info),
+                ('about', produce.about),
                 ('thumb', get_thumbnail(produce.image)),
                 ('detail_url', url)
             ]))
