@@ -2,16 +2,14 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from wagtail.wagtailcore.blocks import TextBlock, DateBlock
+from wagtail.wagtailcore.blocks import TextBlock
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.api.fields import ImageRenditionField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.api import APIField
 from wagtailmodelchooser import register_model_chooser
 from wagtailmodelchooser.blocks import ModelChooserBlock
-from wagtailmodelchooser.edit_handlers import ModelChooserPanel
 from django_countries.fields import CountryField
 
 ######################################################
@@ -27,6 +25,21 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name
 
+    api_fields = [
+        APIField('name'),
+        APIField('picture_url'),
+        APIField('translate_url'),
+    ]
+
+class IngredientChooserBlock(ModelChooserBlock):
+    def get_api_representation(self, value, context=None):
+        if value:
+            return {
+                'id': value.id,
+                'name': value.name,
+                'picture': value.picture_url,
+                'translate': value.translate_url
+            }
 ######################################################
 ####################### Menu #########################
 ######################################################
@@ -45,7 +58,7 @@ class Menu(models.Model):
         max_length=20, choices=MENUTYPE,
         blank=True, null=True, verbose_name='Art der Teller')
     Ingredient = StreamField([
-        ('zutaten', ModelChooserBlock('cultinadb.Ingredient')) ],
+        ('zutaten', IngredientChooserBlock('cultinadb.Ingredient')) ],
         null=True, verbose_name='', blank=True)
     zutaten_beschreibung = models.TextField(verbose_name='Zutaten Beschreibung', blank=True)
     is_spicy = models.BooleanField(default=False, blank=True,
@@ -73,6 +86,18 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.title
+
+    api_fields = [
+        APIField('title'),
+        APIField('image'),
+        APIField('price'),
+        APIField('type_of_dish_quantity'),
+        APIField('Ingredient'),
+        APIField('zutaten_beschreibung'),
+        APIField('is_spicy'),
+        APIField('is_vegi'),
+        APIField('steps'),
+    ]
 
 ######################################################
 ####################### Woche ########################
@@ -165,6 +190,7 @@ class Week(models.Model):
         return self.get_name()
 
     api_fields = [
+        APIField('country'),
         APIField('year'),
         APIField('week'),
         APIField('dishes_sp'),
