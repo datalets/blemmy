@@ -48,16 +48,16 @@ class IngredientChooserBlock(ModelChooserBlock):
 class Menu(models.Model):
     title = models.CharField(max_length=255)
     image = models.URLField(blank=True, null=True)
+    price = models.FloatField(blank=True, null=True, max_length=255)
     MENUTYPE = (
         ('Gericht', 'Gericht'),
         ('Suppe', 'Suppe'),
         ('Dessert', 'Dessert'),
     )
-    price = models.FloatField(blank=True, null=True, max_length=255)
     type_of_dish_quantity = models.CharField(
         max_length=20, choices=MENUTYPE,
         blank=True, null=True, verbose_name='Art der Teller')
-    Ingredient = StreamField([
+    ingredient = StreamField([
         ('zutaten', IngredientChooserBlock('cultinadb.Ingredient')) ],
         null=True, verbose_name='', blank=True)
     zutaten_beschreibung = models.TextField(verbose_name='Zutaten Beschreibung', blank=True)
@@ -78,7 +78,7 @@ class Menu(models.Model):
         FieldPanel('is_spicy', classname="col3"),
         FieldPanel('zutaten_beschreibung', classname="col7"),
         MultiFieldPanel(
-            [ StreamFieldPanel('Ingredient') ],
+            [ StreamFieldPanel('ingredient') ],
             heading="Zutaten", classname="col5"
         ),
         StreamFieldPanel('steps', classname="col12"),
@@ -92,12 +92,26 @@ class Menu(models.Model):
         APIField('image'),
         APIField('price'),
         APIField('type_of_dish_quantity'),
-        APIField('Ingredient'),
         APIField('zutaten_beschreibung'),
         APIField('is_spicy'),
         APIField('is_vegi'),
         APIField('steps'),
     ]
+
+class WeekChooserBlock(ModelChooserBlock):
+    def get_api_representation(self, value, context=None):
+        if value:
+            return {
+                'id': value.id,
+                'title': value.title,
+                'picture': value.image,
+                'price': value.price,
+                'type_of_dish_quantity': value.type_of_dish_quantity,
+                'zutaten_beschreibung': value.zutaten_beschreibung,
+                'is_spicy': value.is_spicy,
+                'is_vegi': value.is_vegi,
+                'steps': value.steps
+            }
 
 ######################################################
 ####################### Woche ########################
@@ -134,22 +148,22 @@ class Week(models.Model):
     week = models.SmallIntegerField(verbose_name='Woche' ,choices=WEEKS,
         null=True)
     dishes_sp = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        ('menu', WeekChooserBlock('cultinadb.Menu')) ],
         null=True, verbose_name='', blank=True)
     monday = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        ('menu', WeekChooserBlock('cultinadb.Menu')) ],
         null=True, verbose_name='', blank=True)
     tuesday = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        ('menu', WeekChooserBlock('cultinadb.Menu')) ],
         null=True, verbose_name='', blank=True)
     wednesday = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        ('menu', WeekChooserBlock('cultinadb.Menu')) ],
         null=True, verbose_name='', blank=True)
     thursday = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        ('menu', WeekChooserBlock('cultinadb.Menu')) ],
         null=True, verbose_name='', blank=True)
     friday = StreamField([
-        ('menu', ModelChooserBlock('cultinadb.Menu')) ],
+        ('menu', WeekChooserBlock('cultinadb.Menu')) ],
         null=True, verbose_name='', blank=True)
 
     panels = [
