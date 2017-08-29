@@ -87,18 +87,6 @@ class Menu(models.Model):
     def __str__(self):
         return self.title
 
-    api_fields = [
-        APIField('title'),
-        APIField('image'),
-        APIField('price'),
-        APIField('type_of_dish_quantity'),
-        APIField('ingredient'),
-        APIField('zutaten_beschreibung'),
-        APIField('is_spicy'),
-        APIField('is_vegi'),
-        APIField('steps'),
-    ]
-
 class WeekChooserBlock(ModelChooserBlock):
     def get_api_representation(self, value, context=None):
         if value:
@@ -108,11 +96,9 @@ class WeekChooserBlock(ModelChooserBlock):
                 'picture': value.image,
                 'price': value.price,
                 'type_of_dish_quantity': value.type_of_dish_quantity,
-                'ingredients': value.ingredient,
                 'zutaten_beschreibung': value.zutaten_beschreibung,
                 'is_spicy': value.is_spicy,
-                'is_vegi': value.is_vegi,
-                'steps': value.steps
+                'is_vegi': value.is_vegi
             }
 
 ######################################################
