@@ -35,7 +35,6 @@ class IngredientChooserBlock(ModelChooserBlock):
     def get_api_representation(self, value, context=None):
         if value:
             return {
-                'id': value.id,
                 'name': value.name,
                 'picture': value.picture_url,
                 'translate': value.translate_url
@@ -90,15 +89,19 @@ class Menu(models.Model):
 class WeekChooserBlock(ModelChooserBlock):
     def get_api_representation(self, value, context=None):
         if value:
+            ingredient = value.ingredient
+            steps = str(value.steps)
             return {
                 'id': value.id,
                 'title': value.title,
                 'picture': value.image,
                 'price': value.price,
                 'type_of_dish_quantity': value.type_of_dish_quantity,
+                'ingredients': ingredient.stream_block.get_api_representation(ingredient, context=context),
                 'zutaten_beschreibung': value.zutaten_beschreibung,
                 'is_spicy': value.is_spicy,
-                'is_vegi': value.is_vegi
+                'is_vegi': value.is_vegi,
+                'steps': steps
             }
 
 ######################################################
