@@ -1,34 +1,34 @@
-# Updated: 31.7.2017
+# Updated: 11.9.2017
 
 # Core
-wagtail==1.11.1
-Django==1.11.3
+wagtail>=1.12.1
+Django>=1.11.5
 
 # Database
-psycopg2==2.7.3
-dj-database-url==0.4.2
+psycopg2>=2.7.3
+dj-database-url>=0.4.2
 
 # Addons
-wagtail-modelchooser==0.3.0
-django-money==0.11.4
-py-moneyed==0.7.0
+wagtail-modelchooser>=0.3.0
+django-money>=0.11.4
+py-moneyed>=0.7.0
 
 # Search
 elasticsearch>=2.0.0,<3.0.0
 
 # Caching
-django-redis==4.8.0
+django-redis>=4.8.0
 
 # Frontend
-django-libsass==0.7
-libsass==0.13.2
-Pillow==4.2.1
+django-libsass>=0.7
+libsass>=0.13.2
+Pillow>=4.2.1
 
 # Development tools
-stellar==0.4.3
+stellar>=0.4.3
 
 # Production dependencies
-gunicorn==19.7.1
-whitenoise==3.3.0
-ConcurrentLogHandler==0.9.1
-django-anymail==0.11.1
+gunicorn>=19.7.1
+whitenoise>=3.3.0
+ConcurrentLogHandler>=0.9.1
+django-anymail>=0.11.1
