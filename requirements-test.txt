@@ -1,3 +1,5 @@
-pytest==3.0.3
-pytest-splinter==1.7.6
-tox==2.3.1
+# Updated: 11.9.2017
+
+pytest==3.2.2
+pytest-splinter==1.8.5
+tox==2.8.2
